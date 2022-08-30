@@ -63,89 +63,93 @@
       <div class="main_text0">
         <h1>ABOUT</h1>
         <div class="contents1">우리는 재규어처럼 재빠르게, 남들과는 다르게 옷을 뽑아냅니다.</div>
-        
-        
-        
-        <ul class="icons">
-          <li>
-            <div class="icon_img">
-              <img src="image/product_icon.png">
-            </div>
-            <div class="contents1_bold">품목관리</div>
-            <div class="contents2">
-                품목 조회부터 수정 관리가 가능한 메뉴입니다
-            </div>
-            <div class="more">
-              MORE
-            </div>
-          </li>
 
-		 	<li>
-            <div class="icon_img">
-              <img src="image/order_icon.png">
-            </div>
-            <div class="contents1_bold">주문관리</div>
-            <div class="contents2">
-                우리는 계획적으로 단속을 피해서 치밀하게 일을 처리합니다
-            </div>
-            <div class="more">
-              MORE
-            </div>
-          </li>
-           <li>
-            <div class="icon_img">
-              <img src="image/produce_icon.png">
-            </div>
-            <div class="contents1_bold">생산관리</div>
-            <div class="contents2">
-                우리는 계획적으로 단속을 피해서 치밀하게 일을 처리합니다
-            </div>
-            <div class="more">
-              MORE
-            </div>
-          </li>
-          </ul>
-          <ul class="icons">
-          <li>
-            <div class="icon_img">
-              <img src="image/process_icon.png">
-            </div>
-            <div class="contents1_bold">공정관리</div>
-            <div class="contents2">
-                우리는 언제든지 환술에 걸린것처럼 순식간에 시야에서 사라질 수 있습니다
-            </div>
-            <div class="more">
-              MORE
-            </div>
-          </li>
 
-          <li>
-            <div class="icon_img">
-              <img src="image/result_icon.png">
-            </div>
-            <div class="contents1_bold">실적관리</div>
-            <div class="contents2">
-                다량의 오징어를 한번에 싹쓸이 하여 시중에 유통할 수 있는 기술력이 있습니다
-            </div>
-            <div class="more">
-              MORE
-            </div>
-          </li>
+
+		<c:choose>
+			<c:when test="${MenuList.length } < 7">
+				<c:forEach var='obj' items="${MenuList }">
+					<ul class="icons">
+						<li>
+							<div class="icon_img">
+								<img src="image/main_icon${obj.menu_idx }.png">
+							</div>
+							<div class="contents1_bold">${obj.menu_title }</div>
+							<div class="contents2">${obj.menu_content }</div>
+							<div class="more">MORE</div>
+						</li>
+					</ul>
+				</c:forEach>
+			</c:when>
+			<c:otherwise>
+
+			</c:otherwise>
+		</c:choose>
+		<!-- 		 	<li> -->
+<!--             <div class="icon_img"> -->
+<!--               <img src="image/order_icon.png"> -->
+<!--             </div> -->
+<!--             <div class="contents1_bold">주문관리</div> -->
+<!--             <div class="contents2"> -->
+<!--                 우리는 계획적으로 단속을 피해서 치밀하게 일을 처리합니다 -->
+<!--             </div> -->
+<!--             <div class="more"> -->
+<!--               MORE -->
+<!--             </div> -->
+<!--           </li> -->
+<!--            <li> -->
+<!--             <div class="icon_img"> -->
+<!--               <img src="image/produce_icon.png"> -->
+<!--             </div> -->
+<!--             <div class="contents1_bold">생산관리</div> -->
+<!--             <div class="contents2"> -->
+<!--                 우리는 계획적으로 단속을 피해서 치밀하게 일을 처리합니다 -->
+<!--             </div> -->
+<!--             <div class="more"> -->
+<!--               MORE -->
+<!--             </div> -->
+<!--           </li> -->
+<!--           <ul class="icons"> -->
+<!--           <li> -->
+<!--             <div class="icon_img"> -->
+<!--               <img src="image/process_icon.png"> -->
+<!--             </div> -->
+<!--             <div class="contents1_bold">공정관리</div> -->
+<!--             <div class="contents2"> -->
+<!--                 우리는 언제든지 환술에 걸린것처럼 순식간에 시야에서 사라질 수 있습니다 -->
+<!--             </div> -->
+<!--             <div class="more"> -->
+<!--               MORE -->
+<!--             </div> -->
+<!--           </li> -->
+
+<!--           <li> -->
+<!--             <div class="icon_img"> -->
+<!--               <img src="image/result_icon.png"> -->
+<!--             </div> -->
+<!--             <div class="contents1_bold">실적관리</div> -->
+<!--             <div class="contents2"> -->
+<!--                 다량의 오징어를 한번에 싹쓸이 하여 시중에 유통할 수 있는 기술력이 있습니다 -->
+<!--             </div> -->
+<!--             <div class="more"> -->
+<!--               MORE -->
+<!--             </div> -->
+<!--           </li> -->
           
-          <li>
-            <div class="icon_img">
-              <img src="image/input_icon.png">
-            </div>
-            <div class="contents1_bold">기초정보관리</div>
-            <div class="contents2">
-                다량의 오징어를 한번에 싹쓸이 하여 시중에 유통할 수 있는 기술력이 있습니다
-            </div>
-            <div class="more">
-              MORE
-            </div>
-          </li>
-        </ul>
-      </div>
+<!--           <li> -->
+<!--             <div class="icon_img"> -->
+<!--               <img src="image/input_icon.png"> -->
+<!--             </div> -->
+<!--             <div class="contents1_bold">기초정보관리</div> -->
+<!--             <div class="contents2"> -->
+<!--                 다량의 오징어를 한번에 싹쓸이 하여 시중에 유통할 수 있는 기술력이 있습니다 -->
+<!--             </div> -->
+<!--             <div class="more"> -->
+<!--               MORE -->
+<!--             </div> -->
+<!--           </li> -->
+<!--         </ul> -->
+<!--       </div> -->
 
       <div class="main_text1">
         <h1>SERVICE</h1>

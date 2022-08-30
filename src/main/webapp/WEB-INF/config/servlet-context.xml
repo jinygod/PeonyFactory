@@ -14,7 +14,8 @@
 	<annotation-driven/>
 	
 	<!-- 스캔할 bean들이 모여있는 패키지를 지정한다. -->
-	<context:component-scan base-package="kr.co.softcampus.controller"/>
+	<context:component-scan base-package="menu"/>
+	<context:component-scan base-package="controller"/>
 	
 	<!-- Controller의 메서드에서 반환하는 문자열 앞 뒤에 붙힐 경로 정보를 셋팅한다. -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -25,18 +26,55 @@
 	<!-- 정적파일(이미지, 사운드, 동영상, JS, CSS 등등) 경로 셋팅 -->
 	<resources mapping="/**" location="/resources/"/>
 	
-			 
+	<!-- properties 파일의 내용을 사용할 수 있도록 Bean을 정의한다. -->
+	<beans:bean class='org.springframework.beans.factory.config.PropertyPlaceholderConfigurer'>
+		<beans:property name="locations">
+			<beans:list>
+					<beans:value>/WEB-INF/properties/db.properties</beans:value>
+					<beans:value>/WEB-INF/properties/option.properties</beans:value>
+					
+			</beans:list>
+
+		</beans:property>
+	</beans:bean>
+	
+	<beans:bean class='org.apache.commons.dbcp2.BasicDataSource' id='basic_data_source'>
+		<beans:property name="driverClassName" value="${db.classname}"/>
+		<beans:property name="url" value="${db.url}"/>
+		<beans:property name='username' value="${db.username}"/>
+		<beans:property name='password' value="${db.password}"/>
+	</beans:bean>
+	
+	
+	<!-- SqlSessionFactory Bean 설정 -->
+	<beans:bean class='org.mybatis.spring.SqlSessionFactoryBean' id='sqlSession'>
+		<beans:property name="dataSource" ref='basic_data_source'/>
+		<beans:property name="mapperLocations" value="/WEB-INF/mapper/*.xml"/>
+	</beans:bean>
+	
+	<!-- 실제로 쿼리문을 동작시킬 Bean 정의 -->
+	<beans:bean class='org.mybatis.spring.SqlSessionTemplate' id='sqlSessionTemplate'>
+		<beans:constructor-arg index='0' ref='sqlSession'/>
+	</beans:bean>
+	
+
+	
+	<!-- MessageSource를 등록한다 -->
+	<beans:bean class = 'org.springframework.context.support.ReloadableResourceBundleMessageSource' id = 'messageSource'>
+		<beans:property name="basenames">
+			<beans:list>
+				<beans:value>/WEB-INF/properties/error_message</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
+	<!-- Message 접근을 위한 접근자 등록 -->
+	<beans:bean class = 'org.springframework.context.support.MessageSourceAccessor'>
+		<beans:constructor-arg ref='messageSource'/>
+	</beans:bean>
+	
+	<beans:bean class='org.springframework.web.multipart.support.StandardServletMultipartResolver'
+				id='multipartResolver'/>
 </beans:beans>
-
-
-
-
-
-
-
-
-
-
-
 
 
