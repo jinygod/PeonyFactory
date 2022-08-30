@@ -14,6 +14,7 @@ public class MenuService {
 	public List<MenuBean> getMenuInfo(){
 		
 		List<MenuBean> MenuList = MenuDao.getMenuInfo();
+		
 		return MenuList;
 	}
 	
