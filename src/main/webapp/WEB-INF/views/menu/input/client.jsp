@@ -12,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="${root }style.css">
   </head>
 <body>
-
 <c:import url="/WEB-INF/views/include/top_menu.jsp"/>
 
 	<form:form action="client_pro" method="post" modelAttribute="clientInfoBean">
@@ -54,9 +53,9 @@
 		<a href = "${root }menu/input" class="btn btn-dark" >취소</a>
 		</div>
 		</div>
-		
-		
 	</form:form>
 </body>
+<footer>
 <c:import url="/WEB-INF/views/include/bottom_info.jsp"/>
+</footer>
 </html>
