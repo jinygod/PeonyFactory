@@ -20,6 +20,7 @@ public class ClientController {
 	}
 	
 	@PostMapping("/client_pro")
+
 	public String client_pro(@ModelAttribute("clientInfoBean") ClientBean clientInfoBean) {
 		
 		clientService.addClientInfo(clientInfoBean);
@@ -27,6 +28,7 @@ public class ClientController {
 		return "menu/input/client";
 	}
 	
+
 
 	
 }

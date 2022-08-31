@@ -258,6 +258,7 @@ h1 {
   margin:16px auto;
 }
 
+
 .footer{
   display: flex;
   background: #1f1f1f;
@@ -292,27 +293,3 @@ h1 {
 	
 }
 
-.side_menu{
-  background: #1f1f1f;
-  width: 300px;
-  height:100vh;
-}
-
-.side_menu > ul {
-	padding-top:50px;
-	padding-left:50px;
-}
-.side_menu > ul > li {
-	padding-top:20px;
-}
-.side_menu > ul > li > a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 20px;
-	
-}
-
-.order_title{
-	
-	margin-top:100px;
-}

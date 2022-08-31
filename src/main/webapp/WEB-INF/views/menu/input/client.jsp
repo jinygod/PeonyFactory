@@ -12,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="${root }style.css">
   </head>
 <body>
-
 <c:import url="/WEB-INF/views/include/top_menu.jsp"/>
 
 		<div class="side_menu">  
@@ -67,5 +66,4 @@
 
 <%-- <c:import url="/WEB-INF/views/include/bottom_info.jsp"/> --%>
 </body>
-
 </html>
