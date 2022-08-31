@@ -1,4 +1,4 @@
-package input.client;
+package input.order;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,26 +9,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/menu/input")
-public class ClientController {
+public class OrderController {
 	
 	@Autowired
-	private ClientService clientService;
+	private OrderService orderService;
 	
-	@GetMapping("/client")
-	public String input_client(@ModelAttribute("clientInfoBean") ClientBean clientInfoBean) {
-		return "menu/input/client";
+	@GetMapping("/order")
+	public String input_order(@ModelAttribute("orderInfoBean") OrderBean orderInfoBean) {
+		return "menu/input/order";
 	}
 	
-	@PostMapping("/client_pro")
-
-	public String client_pro(@ModelAttribute("clientInfoBean") ClientBean clientInfoBean) {
+	@PostMapping("/order_pro")
+	public String order_pro(@ModelAttribute("orderInfoBean") OrderBean orderInfoBean) {
 		
-		clientService.addClientInfo(clientInfoBean);
+		orderService.addOrderInfo(orderInfoBean);
 		
-		return "menu/input/client";
+		return "menu/input/order";
 	}
 	
-
 
 	
 }

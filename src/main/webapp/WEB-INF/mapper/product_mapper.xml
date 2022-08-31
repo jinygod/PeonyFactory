@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+					    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="product">
+	<insert id="addProductInfo" parameterType="input.product.ProductBean">
+		<![CDATA[
+			insert into product_table(
+				product_idx,
+				product_div,
+				product_modelno,
+				product_name,
+				product_size,  
+				product_unit, 
+				product_info)
+			values(
+				#{product_idx},
+				#{product_div},
+				#{product_modelno},
+				#{product_name},
+				#{product_size},  
+				#{product_unit}, 
+				#{product_info})
+		]]>
+	</insert>
+</mapper>

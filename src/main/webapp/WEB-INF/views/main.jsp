@@ -28,7 +28,7 @@
           </ul>
         </div>
       </div>
-      </div>
+      
 
       <!-- intro end-->
       <ul class="amount">
@@ -72,7 +72,7 @@
 						<div class="contents1_bold">${obj.menu_title }</div>
 						<div class="contents2">${obj.menu_content }</div>
 						<div class="more">
-							<a href="${root }menu/menu?menu_idx=${obj.menu_idx}">MORE</a>
+							<a href="${root }menu/submenu?menu_idx=${obj.menu_idx}">MORE</a>
 						</div>
 					</li>
 				</c:if>
@@ -88,7 +88,7 @@
 						<div class="contents1_bold">${obj.menu_title }</div>
 						<div class="contents2">${obj.menu_content }</div>
 						<div class="more">
-							<a href="${root }menu/menu?menu_idx=${obj.menu_idx}">MORE</a>
+							<a href="${root }menu/submenu?menu_idx=${obj.menu_idx}">MORE</a>
 						</div>
 					</li>
 				</c:if>
@@ -144,6 +144,15 @@
 				<li></li>
 			</ul>
 		</div>
-<c:import url="/WEB-INF/views/include/bottom_info.jsp"/>
+		</div>
+
+	<div class="footer">
+		<div class="footer-first">LOGO</div>
+		<div class="footer-last">
+			Co. Team division3 <br> Addr. 경기도 성남시 중원구 성남동 3219번지 KR 아트팰리스 4호
+			5층 <br> 031-751-3688 <br> COPYRIGHT 2022. Team division3.
+			ALL RIGHT RESERVED.
+		</div>
+	</div>
 </body>
 </html>

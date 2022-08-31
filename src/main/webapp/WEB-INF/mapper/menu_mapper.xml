@@ -9,4 +9,13 @@
 			order by menu_idx
 		]]>
 	</select>
+
+	<select id="getSubMenuInfo" parameterType="java.lang.String" resultType="menu.MenuBean">
+		<![CDATA[
+			select menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng
+			from submenu_table
+			where menu_idx = #{menu_idx}
+			order by submenu_idx
+		]]>
+	</select>
 </mapper>

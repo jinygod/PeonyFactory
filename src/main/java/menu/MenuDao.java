@@ -18,4 +18,8 @@ public class MenuDao {
 		return MenuList;
 }
 	
+	public List<MenuBean> getSubMenuInfo(String menu_idx){
+		return sqlSessionTemplate.selectList("menu.getSubMenuInfo", menu_idx);
+}
+	
 }

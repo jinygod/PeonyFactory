@@ -1,26 +1,17 @@
-package input.client;
-
-
-import java.util.List;
+package input.process;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
-import menu.MenuBean;
-
-
 @Repository
-public class ClientDao {
+public class ProcessDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-
-	public void addClientInfo(ClientBean clientInfoBean) {
-		sqlSessionTemplate.insert("client.addClientInfo", clientInfoBean);
+	public void addProcessInfo(ProcessBean processInfoBean) {
+		sqlSessionTemplate.insert("process.addProcessInfo", processInfoBean);
 	}
 	
-
 }
