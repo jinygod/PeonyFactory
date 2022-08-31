@@ -11,24 +11,50 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <div class="wrap">
-      <div class="intro_bg">
-        <div class="header">
-          <div class="searchArea">
-            <form>
-              <input type="search" placeholder="search">
-              <span>검색</span>
-            </form>
-          </div>
-          <ul class="nav">
-            <li><a href="${root }menu/input/client">거래처등록</a></li>
-            <li><a href="${root }menu/input/product">품목등록</a></li>
-            <li><a href="${root }menu/input/order">주문등록</a></li>
-            <li><a href="${root }menu/input/process">공정등록</a></li>
-          </ul>
-        </div>
-      </div>
-      </div>
+  
+  <c:import url="/WEB-INF/views/include/top_menu.jsp"/>
+  
 
+		<div class="table_arrange">
+				<ul class="icons">
+					<li>
+						<div class="icon_img">
+							<img src="${root}image/main_icon7.png">
+						</div>
+						<div class="contents1_bold">거래처등록</div>
+						<div class="reg_button">
+							<a href="${root }menu/input/client">등록</a>
+						</div>
+					</li>
+					<li>
+						<div class="icon_img">
+							<img src="${root}image/main_icon1.png">
+						</div>
+						<div class="contents1_bold">품목등록</div>
+						<div class="reg_button">
+							<a href="${root }menu/input/product">등록</a>
+						</div>
+					</li>
+					<li>
+						<div class="icon_img">
+							<img src="${root}image/main_icon2.png">
+						</div>
+						<div class="contents1_bold">주문등록</div>
+						<div class="reg_button">
+							<a href="${root }menu/input/order">등록</a>
+						</div>
+					</li>
+					<li>
+						<div class="icon_img">
+							<img src="${root}image/main_icon4.png">
+						</div>
+						<div class="contents1_bold">공정목록</div>
+						<div class="reg_button">
+							<a href="${root }menu/input/process">등록</a>
+						</div>
+					</li>
+		</ul>
+		</div>
+	
 </body>
 </html>

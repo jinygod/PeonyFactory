@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+					    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="order">
+	<insert id="addOrderInfo" parameterType="input.order.OrderBean">
+		<![CDATA[
+			insert into order_table(
+				order_idx,
+				order_status,
+				order_shipment,
+				client_idx,
+				product_idx,
+				product_modelno,
+				order_regdate,
+				order_deadline,
+				order_exdate,
+				order_cnt,
+				order_unit,
+				order_unit_price,
+				order_amt,
+				order_manager,
+				order_date)
+			values(
+				#{order_idx},
+				#{order_status},
+				#{order_shipment},
+				#{client_idx},
+				#{product_idx},
+				#{product_modelno},
+				#{order_regdate},
+				#{order_deadline},
+				#{order_exdate},
+				#{order_cnt},
+				#{order_unit},
+				#{order_unit_price},
+				#{order_amt},
+				#{order_manager},
+				#{order_date}
+			)
+		]]>
+	</insert>
+</mapper>

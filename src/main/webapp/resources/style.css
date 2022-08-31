@@ -182,6 +182,21 @@ h1 {
   line-height: 30px;
   margin:25px auto;
 }
+.reg_button {
+  width:100px;
+  height: 30px;
+  background: #2F7AF4;
+/*   color: #fff; */
+/*   font-size: 12px; */
+  line-height: 30px;
+  margin:25px auto;
+}
+.reg_button > a{
+  color: #fff;
+  font-size: 12px;
+  text-decoration: none;
+}
+
 
 /* main_text1*/
 
@@ -243,17 +258,12 @@ h1 {
   margin:16px auto;
 }
 
-.bottom_info {
-  position: absolute;
-  bottom:0%;
-  transform: translateY(0%);
-}
-
 .footer{
   display: flex;
   background: #1f1f1f;
   padding:30px;
 }
+
 .footer > div:first-child {
   flex:3;
   text-align: center;
@@ -280,4 +290,29 @@ h1 {
 .button-arrange {
 	float: right;
 	
+}
+
+.side_menu{
+  background: #1f1f1f;
+  width: 300px;
+  height:100vh;
+}
+
+.side_menu > ul {
+	padding-top:50px;
+	padding-left:50px;
+}
+.side_menu > ul > li {
+	padding-top:20px;
+}
+.side_menu > ul > li > a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+	
+}
+
+.order_title{
+	
+	margin-top:100px;
 }

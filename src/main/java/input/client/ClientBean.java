@@ -3,8 +3,8 @@ package input.client;
 public class ClientBean {
 	private String client_idx;        
 	private String client_name;        
-	private String client_tel;        
 	private String client_ceo;        
+	private String client_tel;        
 	private String client_zipcode;        
 	private String client_addr;
 	
@@ -20,17 +20,17 @@ public class ClientBean {
 	public void setClient_name(String client_name) {
 		this.client_name = client_name;
 	}
-	public String getClient_tel() {
-		return client_tel;
-	}
-	public void setClient_tel(String client_tel) {
-		this.client_tel = client_tel;
-	}
 	public String getClient_ceo() {
 		return client_ceo;
 	}
 	public void setClient_ceo(String client_ceo) {
 		this.client_ceo = client_ceo;
+	}
+	public String getClient_tel() {
+		return client_tel;
+	}
+	public void setClient_tel(String client_tel) {
+		this.client_tel = client_tel;
 	}
 	public String getClient_zipcode() {
 		return client_zipcode;

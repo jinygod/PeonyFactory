@@ -12,7 +12,7 @@
     	  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   </head>
 <body>
-    <div class="wrap">
+<!--     <div class="wrap"> -->
     <nav class="navbar navbar-dark bg-dark">
         <div class="header">
           <div class="searchArea">
@@ -29,5 +29,5 @@
           </ul>
         </div>
       </nav>
-      </div>
+<!--       </div> -->
 </body>

@@ -15,7 +15,16 @@
 
 <c:import url="/WEB-INF/views/include/top_menu.jsp"/>
 
-	<form:form action="client_pro" method="post" modelAttribute="clientInfoBean">
+		<div class="side_menu">  
+			<ul>
+            <li class="nav-item"><a href="${root }menu/input/client">거래처등록</a></li>
+            <li class="nav-item"><a href="${root }menu/input/product">품목등록</a></li>
+            <li class="nav-item"><a href="${root }menu/input/order">주문등록</a></li>
+            <li class="nav-item"><a href="${root }menu/input/process">공정등록</a></li>
+            </ul>
+		</div>
+
+	<form:form action="${root }menu/input/client_pro" method="post" modelAttribute="clientInfoBean">
 		
 		<div class="table_arrange">
 		<div class="table_title">
@@ -54,9 +63,9 @@
 		<a href = "${root }menu/input" class="btn btn-dark" >취소</a>
 		</div>
 		</div>
-		
-		
 	</form:form>
+
+<%-- <c:import url="/WEB-INF/views/include/bottom_info.jsp"/> --%>
 </body>
-<c:import url="/WEB-INF/views/include/bottom_info.jsp"/>
+
 </html>

@@ -17,6 +17,9 @@
 	<context:component-scan base-package="menu"/>
 	<context:component-scan base-package="controller"/>
 	<context:component-scan base-package="input.client"/>
+	<context:component-scan base-package="input.order"/>
+	<context:component-scan base-package="input.process"/>
+	<context:component-scan base-package="input.product"/>
 	
 	<!-- Controller의 메서드에서 반환하는 문자열 앞 뒤에 붙힐 경로 정보를 셋팅한다. -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
