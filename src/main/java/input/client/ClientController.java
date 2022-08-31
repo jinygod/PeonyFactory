@@ -25,7 +25,7 @@ public class ClientController {
 		
 		clientService.addClientInfo(clientInfoBean);
 		
-		return "menu/input/client";
+		return "menu/input/client_success";
 	}
 	
 

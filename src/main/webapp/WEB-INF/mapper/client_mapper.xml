@@ -9,4 +9,12 @@
 			values(#{client_idx}, #{client_name}, #{client_ceo}, #{client_tel}, #{client_zipcode}, #{client_addr})
 		]]>
 	</insert>
+	
+	<select id="getClientInfo" resultType="input.client.ClientBean">
+		<![CDATA[
+			select client_idx, client_name, client_ceo, client_tel, client_zipcode, client_addr
+			from client_table
+		]]>
+	</select>
+	
 </mapper>

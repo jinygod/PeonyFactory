@@ -24,7 +24,7 @@ public class OrderController {
 		
 		orderService.addOrderInfo(orderInfoBean);
 		
-		return "menu/input/order";
+		return "menu/input/order_success";
 	}
 	
 

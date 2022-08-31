@@ -20,4 +20,11 @@
 				#{process_timeunit})
 		]]>
 	</insert>
+	
+		<select id="getProcessInfo" resultType="input.process.ProcessBean">
+		<![CDATA[
+			select process_idx, process_seq, process_name, process_info, process_time, process_timeunit
+			from process_table
+		]]>
+	</select>
 </mapper>

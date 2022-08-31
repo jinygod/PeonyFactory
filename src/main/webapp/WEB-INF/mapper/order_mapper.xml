@@ -39,4 +39,12 @@
 			)
 		]]>
 	</insert>
+	
+		<select id="getOrderInfo" resultType="input.order.OrderBean">
+		<![CDATA[
+			select order_idx, order_status, order_shipment, client_idx, product_idx, product_modelno, order_regdate,
+			order_deadline, order_exdate, order_cnt, order_unit, order_unit_price, order_amt, order_manager, order_date
+			from order_table
+		]]>
+	</select>
 </mapper>

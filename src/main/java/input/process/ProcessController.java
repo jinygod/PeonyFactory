@@ -24,7 +24,7 @@ public class ProcessController {
 		
 		processService.addProcessInfo(processInfoBean);
 		
-		return "menu/input/process";
+		return "menu/input/process_success";
 	}
 	
 

@@ -24,7 +24,7 @@ public class ProductController {
 		
 		productService.addProductInfo(productInfoBean);
 		
-		return "menu/input/product";
+		return "menu/input/product_success";
 	}
 	
 
