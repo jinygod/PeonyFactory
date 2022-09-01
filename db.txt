@@ -104,3 +104,104 @@ INSERT INTO menu_table values (3, '생산관리', '생산 조회부터 수정 �
 INSERT INTO menu_table values (4, '공정관리', '공정현황을 확인할 수 있는 메뉴입니다');
 INSERT INTO menu_table values (5, '실적관리', '생산실적을 다양한 보고서 형식으로 볼 수 있습니다');
 INSERT INTO menu_table values (6, '기초정보관리', '기초 데이터를 입력하는 메뉴입니다');
+
+create table submenu_table(
+    menu_idx number not null,
+    menu_title varchar2(20) not null,
+    submenu_idx number constraint submenu_pk primary key,
+    submenu_title varchar2(30) not null,
+    submenu_eng varchar2(20) not null,
+    constraint submenu_menu_fk foreign key (menu_idx) references menu_table (menu_idx));
+    
+insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(1,'품목관리',1,'품목등록','product_reg');
+insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(1,'품목관리',2,'품목조회','product_list');
+insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(2,'주문관리',3,'거래처조회','client_list');
+insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(2,'주문관리',4,'주문등록','order_reg');
+insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(2,'주문관리',5,'주문승인','order_approve');
+insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(2,'주문관리',6,'주문조회','order_list');
+insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(3,'생산관리',7,'생산등록','produce_reg');
+insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(3,'생산관리',8,'생산조회','produce_list');
+insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(4,'공정관리',9,'공정등록','process_reg');
+insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(4,'공정관리',10,'공정조회','process_list');
+insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(4,'공정관리',11,'품목별공정정보','process_info');
+insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(5,'실적관리',12,'품목별생산실적조회','result_product_list');
+insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(5,'실적관리',13,'공정별생산실적조회','result_process_list');
+insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(5,'실적관리',14,'에러현황조회','result_error');
+insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(5,'실적관리',15,'실적보고서','result_report');
+
+insert into pop_table values(1001,1001,'재단','version01','30',4,0,0,3);
+insert into pop_table values(1001,2001,'재봉','version01','30',7,0,8,3);
+insert into pop_table values(1001,3001,'포장','version01','30',6,0,2,2);
+insert into pop_table values(1002,1001,'재단','version01','30',7,8,7,1);
+insert into pop_table values(1002,2001,'재봉','version01','30',0,7,3,6);
+insert into pop_table values(1002,3001,'포장','version01','30',9,0,3,2);
+insert into pop_table values(1003,1001,'재단','version01','30',9,3,1,2);
+insert into pop_table values(1003,2001,'재봉','version01','30',9,0,3,1);
+insert into pop_table values(1003,3001,'포장','version01','30',0,5,9,3);
+insert into pop_table values(1004,1001,'재단','version01','30',9,6,0,0);
+insert into pop_table values(1004,2001,'재봉','version01','30',0,5,1,3);
+insert into pop_table values(1004,3001,'포장','version01','30',2,7,4,3);
+insert into pop_table values(1005,1001,'재단','version01','30',6,9,3,4);
+insert into pop_table values(1005,2001,'재봉','version01','30',9,7,7,6);
+insert into pop_table values(1005,3001,'포장','version01','30',4,9,3,0);
+insert into pop_table values(1006,1001,'재단','version01','30',2,5,5,7);
+insert into pop_table values(1006,2001,'재봉','version01','30',6,4,0,5);
+insert into pop_table values(1006,3001,'포장','version01','30',5,3,1,9);
+insert into pop_table values(2001,1001,'재단','version01','30',6,6,1,2);
+insert into pop_table values(2001,2001,'재봉','version01','30',4,8,7,2);
+insert into pop_table values(2001,3001,'포장','version01','30',7,5,4,8);
+insert into pop_table values(2002,1001,'재단','version01','30',6,1,3,0);
+insert into pop_table values(2002,2001,'재봉','version01','30',0,8,0,5);
+insert into pop_table values(2002,3001,'포장','version01','30',3,8,1,3);
+insert into pop_table values(2003,1001,'재단','version01','30',3,8,1,2);
+insert into pop_table values(2003,2001,'재봉','version01','30',1,6,3,8);
+insert into pop_table values(2003,3001,'포장','version01','30',2,5,9,7);
+insert into pop_table values(2004,1001,'재단','version01','30',6,5,9,7);
+insert into pop_table values(2004,2001,'재봉','version01','30',1,9,8,1);
+insert into pop_table values(2004,3001,'포장','version01','30',2,0,4,6);
+insert into pop_table values(2005,1001,'재단','version01','30',1,4,6,9);
+insert into pop_table values(2005,2001,'재봉','version01','30',3,2,0,1);
+insert into pop_table values(2005,3001,'포장','version01','30',5,3,2,7);
+insert into pop_table values(2006,1001,'재단','version01','30',6,5,4,5);
+insert into pop_table values(2006,2001,'재봉','version01','30',6,1,1,6);
+insert into pop_table values(2006,3001,'포장','version01','30',9,2,6,3);
+insert into pop_table values(1001,1001,'재단','version02','30',0,9,4,6);
+insert into pop_table values(1001,2001,'재봉','version02','30',5,3,4,0);
+insert into pop_table values(1001,3001,'포장','version02','30',6,3,1,3);
+insert into pop_table values(1002,1001,'재단','version02','30',7,7,5,9);
+insert into pop_table values(1002,2001,'재봉','version02','30',4,8,8,6);
+insert into pop_table values(1002,3001,'포장','version02','30',9,0,7,6);
+insert into pop_table values(1003,1001,'재단','version02','30',7,1,0,5);
+insert into pop_table values(1003,2001,'재봉','version02','30',6,4,4,1);
+insert into pop_table values(1003,3001,'포장','version02','30',4,9,0,0);
+insert into pop_table values(1004,1001,'재단','version02','30',9,6,6,3);
+insert into pop_table values(1004,2001,'재봉','version02','30',8,4,0,1);
+insert into pop_table values(1004,3001,'포장','version02','30',4,6,8,7);
+insert into pop_table values(1005,1001,'재단','version02','30',4,2,8,8);
+insert into pop_table values(1005,2001,'재봉','version02','30',3,2,7,2);
+insert into pop_table values(1005,3001,'포장','version02','30',9,5,4,1);
+insert into pop_table values(1006,1001,'재단','version02','30',1,3,6,3);
+insert into pop_table values(1006,2001,'재봉','version02','30',8,0,3,6);
+insert into pop_table values(1006,3001,'포장','version02','30',4,6,1,3);
+insert into pop_table values(2001,1001,'재단','version02','30',2,7,1,3);
+insert into pop_table values(2001,2001,'재봉','version02','30',2,4,1,9);
+insert into pop_table values(2001,3001,'포장','version02','30',3,2,9,9);
+insert into pop_table values(2002,1001,'재단','version02','30',3,6,6,4);
+insert into pop_table values(2002,2001,'재봉','version02','30',4,3,8,3);
+insert into pop_table values(2002,3001,'포장','version02','30',2,5,2,6);
+insert into pop_table values(2003,1001,'재단','version02','30',1,1,8,7);
+insert into pop_table values(2003,2001,'재봉','version02','30',2,2,2,7);
+insert into pop_table values(2003,3001,'포장','version02','30',8,7,6,9);
+insert into pop_table values(2004,1001,'재단','version02','30',7,9,3,0);
+insert into pop_table values(2004,2001,'재봉','version02','30',6,6,1,4);
+insert into pop_table values(2004,3001,'포장','version02','30',9,8,7,6);
+insert into pop_table values(2005,1001,'재단','version02','30',1,9,2,9);
+insert into pop_table values(2005,2001,'재봉','version02','30',6,0,1,4);
+insert into pop_table values(2005,3001,'포장','version02','30',3,9,6,3);
+insert into pop_table values(2006,1001,'재단','version02','30',6,1,8,3);
+insert into pop_table values(2006,2001,'재봉','version02','30',0,8,8,2);
+insert into pop_table values(2006,3001,'포장','version02','30',9,8,4,1);
+
+alter table submenu_table add (submenu_eng varchar2(20));
+alter table submenu_table add (menu_eng varchar2(20));
+alter table menu_table add (menu_eng varchar2(20));

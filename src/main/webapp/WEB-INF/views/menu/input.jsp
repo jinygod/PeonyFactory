@@ -23,7 +23,7 @@
 						</div>
 						<div class="contents1_bold">거래처등록</div>
 						<div class="reg_button">
-							<a href="${root }menu/input/client">등록</a>
+							<a href="${root }input/client?menu_idx=${menu_idx}">등록</a>
 						</div>
 					</li>
 					<li>
@@ -32,7 +32,7 @@
 						</div>
 						<div class="contents1_bold">품목등록</div>
 						<div class="reg_button">
-							<a href="${root }menu/input/product">등록</a>
+							<a href="${root }input/product?menu_idx=${menu_idx}">등록</a>
 						</div>
 					</li>
 					<li>
@@ -41,7 +41,7 @@
 						</div>
 						<div class="contents1_bold">주문등록</div>
 						<div class="reg_button">
-							<a href="${root }menu/input/order">등록</a>
+							<a href="${root }input/order?menu_idx=${menu_idx}">등록</a>
 						</div>
 					</li>
 					<li>
@@ -50,7 +50,7 @@
 						</div>
 						<div class="contents1_bold">공정목록</div>
 						<div class="reg_button">
-							<a href="${root }menu/input/process">등록</a>
+							<a href="${root }input/process?menu_idx=${menu_idx}">등록</a>
 						</div>
 					</li>
 		</ul>

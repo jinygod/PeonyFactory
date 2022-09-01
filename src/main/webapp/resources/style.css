@@ -290,6 +290,33 @@ h1 {
 
 .button-arrange {
 	float: right;
-	
 }
 
+.side_menu{
+	 background: #1f1f1f;
+	 height: 100vh;
+	 width: 300px;
+	 margin:0px;
+}
+.side_menu > ul {
+	 padding-top: 50px;
+	 padding-left: 50px;
+}
+.side_menu >ul > li{
+	
+	 padding-top:20px;
+	 
+}
+.side_menu > ul > li > a{
+	
+	 text-decoration:none;
+	 font-size: 20px;
+	 color: #fff;
+	 
+}
+
+.container {
+	transform: translate(150px,-750px);
+/* 	transform: translateY(-400px); */
+	background: lime;
+}

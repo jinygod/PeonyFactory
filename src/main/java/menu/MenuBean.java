@@ -4,6 +4,7 @@ public class MenuBean {
 
 	private String menu_idx;
 	private String menu_title;
+	private String menu_eng;
 	private String menu_content;
 	
 	private String submenu_idx;
@@ -23,6 +24,12 @@ public class MenuBean {
 	}
 	public void setMenu_title(String menu_title) {
 		this.menu_title = menu_title;
+	}
+	public String getMenu_eng() {
+		return menu_eng;
+	}
+	public void setMenu_eng(String menu_eng) {
+		this.menu_eng = menu_eng;
 	}
 	public String getMenu_content() {
 		return menu_content;
