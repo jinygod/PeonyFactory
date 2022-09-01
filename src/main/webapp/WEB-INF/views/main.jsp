@@ -102,7 +102,7 @@
 					<div class="contents1_bold">${obj.menu_title }</div>
 					<div class="contents2">${obj.menu_content }</div>
 					<div class="more">
-						<a href="${root }menu/input">MORE</a>
+						<a href="${root }menu/input?menu_idx=${obj.menu_idx}">MORE</a>
 					</div>
 				</li>
 			</c:if>

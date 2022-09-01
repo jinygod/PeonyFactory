@@ -17,11 +17,11 @@
 		<c:forEach var="obj" items="${SubMenuList }">
 					<li>
 						<div class="icon_img">
-							<img src="${root}image/main_icon7.png">
+							<img src="${root}image/main_icon${obj.submenu_idx }.png">
 						</div>
 						<div class="contents1_bold">${obj.submenu_title }</div>
 						<div class="reg_button">
-							<a href="${root }menu/${obj.submenu_eng }">MORE</a>
+							<a href="${root }${obj.menu_eng}/${obj.submenu_eng }?menu_idx=${obj.menu_idx}">MORE</a>
 						</div>
 					</li>		
 					</c:forEach>

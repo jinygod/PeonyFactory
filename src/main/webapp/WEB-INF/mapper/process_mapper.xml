@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="process">
-	<insert id="addProcessInfo" parameterType="input.process.ProcessBean">
+	<insert id="addProcessInfo" parameterType="process.ProcessBean">
 		<![CDATA[
 			insert into process_table(
 				process_idx,
@@ -21,7 +21,7 @@
 		]]>
 	</insert>
 	
-		<select id="getProcessInfo" resultType="input.process.ProcessBean">
+		<select id="getProcessList" resultType="process.ProcessBean">
 		<![CDATA[
 			select process_idx, process_seq, process_name, process_info, process_time, process_timeunit
 			from process_table
