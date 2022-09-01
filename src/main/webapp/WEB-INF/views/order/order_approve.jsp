@@ -50,9 +50,10 @@
 						<th><span class="input-group-text" id="basic-addon1">거절</span></th>
 						
 					</tr>
-					<c:forEach var="obj" items="${UnapprovedOrderList }">
+					<c:forEach var="obj" items="${UnapprovedOrderList }" varStatus="status">
+						<input type="hidden" id="order_hidden" value= "${status.current }">
 					<tr>
-						<td><input type="text" id="${obj.order_idx }" name="order_idx" class="form-control" value="${obj.order_idx }" style="background-color:white" readonly></td>
+						<td><input type="text" id="order_idx" name="order_idx" class="form-control" value="${obj.order_idx }" style="background-color:white" readonly></td>
 						<td><input type="text" id="order_shipment" name="order_shipment" class="form-control" value="${obj.order_shipment }" style="background-color:white" readonly></td>
 						<td><input type="text" id="client_idx" name="client_idx" class="form-control" value="${obj.client_idx }" style="background-color:white" readonly></td>
 						<td><input type="text" id="product_modelno" name="product_modelno" class="form-control" value="${obj.product_modelno }" style="background-color:white" readonly></td>
@@ -67,13 +68,8 @@
 						<td><input type="text" id="order_manager" name="order_manager" class="form-control" value="${obj.order_manager }" style="background-color:white" readonly></td>
 						<td><input type="text" id="order_date" name="order_date" class="form-control" value="${obj.order_date }" style="background-color:white" readonly></td>
 						<td><input type="text" id="order_status" name="order_status" class="form-control" value="${obj.order_status }" style="background-color:white" readonly></td>
-<%-- 						<td><a href="${root }order/order_approve?order_idx=${obj.order_idx}&menu_idx=${menu_idx }"><input type="button" name="order_approve" value="승인" class="btn btn-primary"/></a></td> --%>
-<%-- 						<td><a href="${root }order/order_approve?order_idx=${obj.order_idx}&menu_idx=${menu_idx }" class="btn btn-danger">거절</a></td> --%>
-						<td><input type="submit" id="${obj.order_idx }" name="order_approve" class="btn btn-primary" value="승인"></td>
-						<td><input type="submit" id="order_idx" name="order_approve" class="btn btn-danger" value="거절"></td>
-<!-- 							<td><input type="button" name="order_approve" value="승인" class="btn btn-primary" onClick='button()'> </td> -->
-<!-- 							<td><input type="button" name="order_approve" value="거절" class="btn btn-primary" onClick="location.href=''"> </td> -->
-
+						<td><input type="submit" id=order_hidden name="order_approve" class="btn btn-primary" value="승인"></td>
+						<td><input type="submit" id="order_hidden" name="order_approve" class="btn btn-danger" value="거절"></td>
 					</tr>
 					</c:forEach>
 				</table>

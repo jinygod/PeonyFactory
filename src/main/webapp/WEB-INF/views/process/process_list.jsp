@@ -16,7 +16,7 @@
   <c:import url="/WEB-INF/views/include/top_menu.jsp"/>
   <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
 		
-	<form:form action="${root }process/modify" method="post" modelAttribute="modifyProcessBean">
+	<form:form action="${root }process/process_list" method="post" modelAttribute="processListBean">
 		
 		<div class="table_arrange">
 		<div class="table_title">

@@ -16,7 +16,7 @@
 <c:import url="/WEB-INF/views/include/top_menu.jsp"/>
 <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
 		
-	<form:form action="${root }input/product_pro" method="post" modelAttribute="productInfoBean">
+	<form:form action="${root }input/product_pro?menu_idx=${menu_idx }" method="post" modelAttribute="productInfoBean">
 		
 		<div class="table_arrange">
 		<div class="table_title">

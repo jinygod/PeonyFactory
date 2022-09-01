@@ -76,6 +76,8 @@
 		<![CDATA[
 			update order_table set order_status = '승인완료'
 			where order_idx=#{order_idx}
+		<foreach collection="sUser_type" item="type" separator=",">
+			</foreach>
 		]]>
 	</update>
 <!-- 	주문승인(미승인->거절) -->
