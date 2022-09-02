@@ -2,6 +2,7 @@
 CREATE TABLE user_table (
     user_idx number constraint USER_PK primary key,
     user_name varchar2(20) not null,
+    user_id varchar2(20) not null,
     user_pw varchar2(20) not null,
     user_email varchar2(20) not null,
     user_tel varchar2(20)  not null
@@ -11,7 +12,7 @@ CREATE TABLE user_table (
 CREATE TABLE product_table (
     product_idx number constraint product_PK primary key,
     product_div varchar2(20) not null,
-    product_modelno varchar2(20) not null,
+    product_modelno number not null,
     product_name varchar2(50) not null,
     product_size varchar2(20) not null,
     product_unit varchar2(20) not null,
@@ -32,6 +33,7 @@ CREATE TABLE process_table (
 CREATE TABLE pop_table (
     product_idx number not null,
     process_idx number not null,
+    product_name varchar2(20),
     pop_info varchar2(2000) not null,
     pop_version varchar2(20) not null,
     pop_processtime varchar2(20) not null,
@@ -91,13 +93,15 @@ CREATE TABLE perform_table(
     
     );
 
+-- 메뉴테이블
 CREATE TABLE menu_table(
     menu_idx number constraint menu_pk primary key,
     menu_title varchar2(30) not null,
+    menu_eng varchar2(20),
     menu_content varchar2(200) not null
     );
 
-
+-- 메뉴테이블 데이터
 INSERT INTO menu_table values (1, '품목관리', '제품 조회부터 수정 및 관리가 가능한 메뉴입니다');
 INSERT INTO menu_table values (2, '주문관리', '주문 조회부터 수정 및 관리가 가능한 메뉴입니다');
 INSERT INTO menu_table values (3, '생산관리', '생산 조회부터 수정 및 관리가 가능한 메뉴입니다');
@@ -105,14 +109,17 @@ INSERT INTO menu_table values (4, '공정관리', '공정현황을 확인할 수
 INSERT INTO menu_table values (5, '실적관리', '생산실적을 다양한 보고서 형식으로 볼 수 있습니다');
 INSERT INTO menu_table values (6, '기초정보관리', '기초 데이터를 입력하는 메뉴입니다');
 
+-- 서브메뉴테이블
 create table submenu_table(
     menu_idx number not null,
     menu_title varchar2(20) not null,
+    menu_eng varchar2(20),
     submenu_idx number constraint submenu_pk primary key,
     submenu_title varchar2(30) not null,
     submenu_eng varchar2(20) not null,
     constraint submenu_menu_fk foreign key (menu_idx) references menu_table (menu_idx));
-    
+   
+-- 서브메뉴테이블 데이터
 insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(1,'품목관리',1,'품목등록','product_reg');
 insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(1,'품목관리',2,'품목조회','product_list');
 insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(2,'주문관리',3,'거래처조회','client_list');
@@ -129,6 +136,7 @@ insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, subm
 insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(5,'실적관리',14,'에러현황조회','result_error');
 insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(5,'실적관리',15,'실적보고서','result_report');
 
+-- 품목별공정정보테이블 데이터
 insert into pop_table values(1001,1001,'재단','version01','30',4,0,0,3);
 insert into pop_table values(1001,2001,'재봉','version01','30',7,0,8,3);
 insert into pop_table values(1001,3001,'포장','version01','30',6,0,2,2);
