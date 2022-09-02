@@ -29,15 +29,33 @@ public class ProcessController {
 	}
 	
 	@GetMapping("/process_list")
-	public String process_list(ProcessBean processBean,
+	public String process_list(ProcessBean processListBean,
 							   @RequestParam("menu_idx") String menu_idx,
 							   Model model) {
 		
-		List<ProcessBean> ProcessList = processService.getProcessList(processBean);
+		List<ProcessBean> ProcessList = processService.getProcessList(processListBean);
 		model.addAttribute("ProcessList", ProcessList);
 		model.addAttribute("menu_idx", menu_idx);
 		
 		return "process/process_list";
+	}
+	
+	@GetMapping("/process_info")
+	public String process_info(ProcessBean processInfoBean,
+							   @RequestParam("menu_idx") String menu_idx,
+							   @RequestParam(value = "page", defaultValue = "1") int page,
+							   Model model) {
+		
+		List<ProcessBean> ProcessInfo = processService.getProcessInfo(processInfoBean, page);
+		model.addAttribute("ProcessInfo", ProcessInfo);
+		model.addAttribute("menu_idx", menu_idx);
+		
+		PageBean pageBean = processService.getContentCnt(page);
+		model.addAttribute("pageBean", pageBean);
+		
+		model.addAttribute("page", page);
+		
+		return "process/process_info";
 	}
 	
 }

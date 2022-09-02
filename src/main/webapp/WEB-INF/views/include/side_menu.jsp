@@ -31,8 +31,8 @@
 		</c:if>
 		<c:if test="${menu_idx == 3 }">
 			<ul>
-				<li class="nav-item"><a href="${root }input/produce?menu_idx=${menu_idx}">생산등록</a></li>
-				<li class="nav-item"><a href="${root }produce/produce_list?menu_idx=${menu_idx}">생산조회</a></li>
+				<li class="nav-item"><a href="${root }produce/produce_orderwork?menu_idx=${menu_idx}">작업지시서</a></li>
+				<li class="nav-item"><a href="${root }produce/produce_status?menu_idx=${menu_idx}">생산현황조회</a></li>
 			</ul>
 		</c:if>
 		<c:if test="${menu_idx == 4 }">

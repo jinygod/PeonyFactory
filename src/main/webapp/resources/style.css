@@ -308,15 +308,18 @@ h1 {
 	 
 }
 .side_menu > ul > li > a{
-	
 	 text-decoration:none;
 	 font-size: 20px;
 	 color: #fff;
-	 
 }
 
 .container {
 	transform: translate(150px,-750px);
-/* 	transform: translateY(-400px); */
 	background: lime;
+}
+
+.login_button {
+	
+	margin-top:20px;
+	float:right;
 }

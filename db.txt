@@ -119,8 +119,8 @@ insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, subm
 insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(2,'주문관리',4,'주문등록','order_reg');
 insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(2,'주문관리',5,'주문승인','order_approve');
 insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(2,'주문관리',6,'주문조회','order_list');
-insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(3,'생산관리',7,'생산등록','produce_reg');
-insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(3,'생산관리',8,'생산조회','produce_list');
+insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(3,'생산관리',7,'생산지시서','produce_orderwork');
+insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(3,'생산관리',8,'생산현황조회','produce_status');
 insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(4,'공정관리',9,'공정등록','process_reg');
 insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(4,'공정관리',10,'공정조회','process_list');
 insert into submenu_table(menu_idx, menu_title, submenu_idx, submenu_title, submenu_eng) values(4,'공정관리',11,'품목별공정정보','process_info');
@@ -202,6 +202,35 @@ insert into pop_table values(2006,1001,'재단','version02','30',6,1,8,3);
 insert into pop_table values(2006,2001,'재봉','version02','30',0,8,8,2);
 insert into pop_table values(2006,3001,'포장','version02','30',9,8,4,1);
 
+create table orderwork_table(
+    orderwork_idx number constraint orderwork_pk primary key,
+    process_name varchar2(20) not null,
+    product_idx number not null,
+	product_modelno number not null, 
+	order_regdate varchar2(20) not null,
+	order_deadline varchar2(20) not null,
+	order_exdate varchar2(20) not null,
+	order_cnt number not null,
+	order_unit varchar2(20) not null,
+	order_unit_price number not null,
+	order_amt number not null,
+    orderwork_date varchar2(20) not null,
+    constraint orderwork_product_fk foreign key (product_idx) references  product_table (product_idx)
+    );
+    
 alter table submenu_table add (submenu_eng varchar2(20));
 alter table submenu_table add (menu_eng varchar2(20));
 alter table menu_table add (menu_eng varchar2(20));
+alter table product_table modify product_modelno number;
+
+create sequence orderwork_seq
+start with 1
+increment by 1
+minvalue 1;
+
+alter table pop_table add product_name varchar2(20);
+
+--update  pop_table set  product_name = 'slacks'
+--where product_idx = 2004 or  product_idx = 2005 or  product_idx = 2006;
+
+alter table user_table add user_id varchar2(20) not null;
