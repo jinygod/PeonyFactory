@@ -18,6 +18,11 @@ public class OrderBean {
 	private String order_manager;
 	private String order_date;
 	
+	// orderwork
+	private String process_name;
+	private String orderwork_idx;
+	private String orderwork_date;
+	
 	public String getOrder_idx() {
 		return order_idx;
 	}
@@ -108,6 +113,25 @@ public class OrderBean {
 	public void setOrder_date(String order_date) {
 		this.order_date = order_date;
 	}
+	// orderwork
 	
+	public String getProcess_name() {
+		return process_name;
+	}
+	public void setProcess_name(String process_name) {
+		this.process_name = process_name;
+	}
+	public String getOrderwork_idx() {
+		return orderwork_idx;
+	}
+	public void setOrderwork_idx(String orderwork_idx) {
+		this.orderwork_idx = orderwork_idx;
+	}
+	public String getOrderwork_date() {
+		return orderwork_date;
+	}
+	public void setOrderwork_date(String orderwork_date) {
+		this.orderwork_date = orderwork_date;
+	}
 	
 }

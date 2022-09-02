@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+					    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="produce">
+		<insert id="addOrderworkInfo" parameterType="order.OrderBean">
+			<![CDATA[
+				insert into orderwork_table (
+					orderwork_idx,
+					process_name,
+					product_idx, 
+				   	product_modelno, 
+				   	order_regdate,
+				   	order_deadline,
+				   	order_exdate,
+				   	order_cnt,
+				   	order_unit,
+				   	order_unit_price,
+				   	order_amt,
+				   	orderwork_date)
+				values (
+					orderwork_seq.nextval,
+					#{process_name},
+					#{product_idx}, 
+				   	#{product_modelno}, 
+				   	#{order_regdate},
+				   	#{order_deadline},
+				   	#{order_exdate},
+				   	#{order_cnt},
+				   	#{order_unit},
+				   	#{order_unit_price},
+				   	#{order_amt},
+				   	#{orderwork_date})
+			]]>
+		</insert>
+	
+		<select id="getOrderworkList" resultType="order.OrderBean">
+		<![CDATA[
+			select product_idx, 
+				   product_modelno, 
+				   order_regdate,
+				   order_deadline,
+				   order_exdate,
+				   order_cnt,
+				   order_unit,
+				   order_unit_price,
+				   order_amt,
+				   to_char(sysdate, 'YYYYMMDD') as orderwork_date
+			from order_table
+			where order_status = '승인완료'
+		]]>
+	</select>
+</mapper>

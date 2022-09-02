@@ -21,6 +21,9 @@
 	<context:component-scan base-package="product"/>
 	<context:component-scan base-package="order"/>
 	<context:component-scan base-package="process"/>
+	<context:component-scan base-package="produce"/>
+	<context:component-scan base-package="user"/>
+	<context:component-scan base-package="result"/>
 	
 	<!-- Controller의 메서드에서 반환하는 문자열 앞 뒤에 붙힐 경로 정보를 셋팅한다. -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

@@ -2,11 +2,10 @@ package process;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import order.OrderBean;
 
 @Repository
 public class ProcessDao {
@@ -18,7 +17,15 @@ public class ProcessDao {
 		sqlSessionTemplate.insert("process.addProcessInfo", processInfoBean);
 	}
 	
-	public List<ProcessBean> getProcessList(ProcessBean processInfoBean) {
-		return sqlSessionTemplate.selectList("process.getProcessList", processInfoBean);
+	public List<ProcessBean> getProcessList(ProcessBean processListBean) {
+		return sqlSessionTemplate.selectList("process.getProcessList", processListBean);
+	}
+	
+	public List<ProcessBean> getProcessInfo(ProcessBean processInfoBean, RowBounds rowBounds) {
+		return sqlSessionTemplate.selectList("process.getProcessInfo", processInfoBean, rowBounds);
+	}
+	
+	public int getContentCnt() {
+		return sqlSessionTemplate.selectOne("process.getContentCnt");
 	}
 }

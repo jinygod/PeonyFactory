@@ -12,25 +12,31 @@
   <body>
       
  	<div class="wrap">
-      <div class="intro_bg">
-        <div class="header">
-          <div class="searchArea">
-            <form>
-              <input type="search" placeholder="search">
-              <span>검색</span>
-            </form>
-          </div>
-          <ul class="nav">
-            <li><a href="${root }">HOME</a></li>
-            <li><a href="#">LOGIN</a></li>
-            <li><a href="#">JOIN</a></li>
-            <li><a href="#">MYPAGE</a></li>
-          </ul>
-        </div>
-      </div>
-      
+		<div class="intro_bg">
+			<div class="header">
+				<div class="searchArea">
+					<form>
+						<input type="search" placeholder="search"> <span>검색</span>
+					</form>
+				</div>
+				<ul class="nav">
+						<li><a href="${root }">HOME</a></li>
+					<c:choose>
+						<c:when test="${loginUserBean.userLogin == true }">
+							<li><a href="${root }user/modify">MYPAGE</a></li>
+							<li><a href="${root }user/logout">LOGOUT</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="${root }user/login">LOGIN</a></li>
+							<li><a href="${root }user/join">JOIN</a></li>
+						</c:otherwise>
+					</c:choose>
+				</ul>
+			</div>
+		</div>
 
-      <!-- intro end-->
+
+		<!-- intro end-->
       <ul class="amount">
         <li>	
           <div>
