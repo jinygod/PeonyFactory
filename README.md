@@ -21,7 +21,7 @@ Description
 Views
 ===========
 * 메인
-![image](https://user-images.githubusercontent.com/103230840/188063457-7678a5bd-7972-4541-8100-758fca1804fc.png)
+![image](https://user-images.githubusercontent.com/103230840/188064325-27ba08af-0d33-45d0-9f28-d52e8da592ba.png)
 ![image](https://user-images.githubusercontent.com/103230840/188063505-a847cc09-89bf-4afd-a603-c55a2e7e370c.png)
 * 항목별 목록
 ![image](https://user-images.githubusercontent.com/103230840/188063647-d4e5035f-ca26-4c61-9e5c-905c6ff85060.png)
