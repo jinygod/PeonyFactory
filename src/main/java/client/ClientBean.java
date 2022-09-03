@@ -1,11 +1,20 @@
 package client;
 
+import javax.validation.constraints.NotEmpty;
+
 public class ClientBean {
+	
+	@NotEmpty
 	private String client_idx;        
+	@NotEmpty
 	private String client_name;        
+	@NotEmpty
 	private String client_ceo;        
+	@NotEmpty
 	private String client_tel;        
+	@NotEmpty
 	private String client_zipcode;        
+	@NotEmpty
 	private String client_addr;
 	
 	public String getClient_idx() {

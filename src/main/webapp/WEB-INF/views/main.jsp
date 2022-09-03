@@ -1,3 +1,10 @@
+<!-- 
+
+수정사항 "업데이트" 표기 
+
+이미지 클릭시 페이지 이동으로 변경하였으나 이미지 위치 센터 조정이 필요
+ -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -71,15 +78,18 @@
 		<ul class="icons">
 			<c:forEach var='obj' items="${MenuList }">
 				<c:if test="${obj.menu_idx <= 3 }">
-					<li>
+					<li >
+					<a href="${root }menu/submenu?menu_idx=${obj.menu_idx}"><!-- 업데이트1 _ 이미지 클릭 페이지 이동  -->
 						<div class="icon_img">
 							<img src="image/main_icon${obj.menu_idx }.png">
 						</div>
 						<div class="contents1_bold">${obj.menu_title }</div>
 						<div class="contents2">${obj.menu_content }</div>
 						<div class="more">
-							<a href="${root }menu/submenu?menu_idx=${obj.menu_idx}">MORE</a>
+						MORE
+							<!-- <a href="${root }menu/submenu?menu_idx=${obj.menu_idx}">MORE-->
 						</div>
+					</a>
 					</li>
 				</c:if>
 			</c:forEach>
@@ -88,28 +98,32 @@
 			<c:forEach var='obj' items="${MenuList }">
 				<c:if test="${obj.menu_idx == 4 || obj.menu_idx == 5 }">
 					<li>
+						<a href="${root }menu/submenu?menu_idx=${obj.menu_idx}"><!-- 업데이트1 _ 이미지 클릭 페이지 이동  -->
 						<div class="icon_img">
 							<img src="image/main_icon${obj.menu_idx }.png">
 						</div>
 						<div class="contents1_bold">${obj.menu_title }</div>
 						<div class="contents2">${obj.menu_content }</div>
 						<div class="more">
-							<a href="${root }menu/submenu?menu_idx=${obj.menu_idx}">MORE</a>
+						MORE
 						</div>
+						</a>
 					</li>
 				</c:if>
 			</c:forEach>
 			<c:forEach var='obj' items="${MenuList }">
 			<c:if test="${obj.menu_idx == 6 }">
 				<li>
+					<a href="${root }menu/input?menu_idx=${obj.menu_idx}"><!-- 업데이트1 _ 이미지 클릭 페이지 이동  -->
 					<div class="icon_img">
 						<img src="image/main_icon${obj.menu_idx }.png">
 					</div>
 					<div class="contents1_bold">${obj.menu_title }</div>
 					<div class="contents2">${obj.menu_content }</div>
 					<div class="more">
-						<a href="${root }menu/input?menu_idx=${obj.menu_idx}">MORE</a>
+					MORE
 					</div>
+					</a>
 				</li>
 			</c:if>
 			</c:forEach>

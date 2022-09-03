@@ -1,21 +1,41 @@
 package order;
 
+import javax.validation.constraints.NotEmpty;
+
 public class OrderBean {
 	
+	// 주문번호 시퀀스
+	private int order_seq;
+	
+	@NotEmpty
 	private String order_idx;
+	@NotEmpty
 	private String order_status;
+	@NotEmpty
 	private String order_shipment;
+	@NotEmpty
 	private String client_idx;
+	@NotEmpty
 	private String product_idx;
+	@NotEmpty
 	private String product_modelno;
+	@NotEmpty
 	private String order_regdate;
+	@NotEmpty
 	private String order_deadline;
+	@NotEmpty
 	private String order_exdate;
+	@NotEmpty
 	private String order_cnt;
+	@NotEmpty
 	private String order_unit;
+	@NotEmpty
 	private String order_unit_price;
+	@NotEmpty
 	private String order_amt;
+	@NotEmpty
 	private String order_manager;
+	@NotEmpty
 	private String order_date;
 	
 	// orderwork
@@ -23,6 +43,14 @@ public class OrderBean {
 	private String orderwork_idx;
 	private String orderwork_date;
 	
+	
+	
+	public int getOrder_seq() {
+		return order_seq;
+	}
+	public void setOrder_seq(int order_seq) {
+		this.order_seq = order_seq;
+	}
 	public String getOrder_idx() {
 		return order_idx;
 	}

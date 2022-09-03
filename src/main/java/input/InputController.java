@@ -1,8 +1,16 @@
+/*
+ * 주문등록 인덱스가 
+ * */
 package input;
+
+import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,9 +55,17 @@ public class InputController {
 	// 기초정보등록 - 거래처등록
 	@PostMapping("/client_pro")
 
-	public String client_pro(@ModelAttribute("clientInfoBean") ClientBean clientInfoBean,
+	public String client_pro(@Valid @ModelAttribute("clientInfoBean") ClientBean clientInfoBean,BindingResult result,
 							   @RequestParam("menu_idx") String menu_idx,
 							   Model model) {
+		
+		if(clientInfoBean == null) {
+			return "input/client";
+		}
+		
+//		if(result.hasErrors()) {
+//			return "input/client";
+//		}
 		
 		clientService.addClientInfo(clientInfoBean);
 		model.addAttribute("menu_idx", menu_idx);
@@ -61,14 +77,19 @@ public class InputController {
 	public String input_product(@ModelAttribute("productInfoBean") ProductBean productInfoBean,
 								@RequestParam("menu_idx") String menu_idx,
 								Model model) {
+		
 		model.addAttribute("menu_idx", menu_idx);
 		return "input/product";
 	}
 	// 기초정보등록 - 품목등록
 	@PostMapping("/product_pro")
-	public String product_pro(@ModelAttribute("productInfoBean") ProductBean productInfoBean,
+	public String product_pro(@Valid @ModelAttribute("productInfoBean") ProductBean productInfoBean, BindingResult result,
 							   @RequestParam("menu_idx") String menu_idx,
 							   Model model) {
+
+		if(result.hasErrors()) {
+			return "input/product";
+		}
 		
 		productService.addProductInfo(productInfoBean);
 		model.addAttribute("menu_idx", menu_idx);
@@ -79,8 +100,26 @@ public class InputController {
 	@GetMapping("/order")
 	public String input_order(@ModelAttribute("orderInfoBean") OrderBean orderInfoBean,
 							  @RequestParam("menu_idx") String menu_idx,
+							  OrderBean orderBean, ClientBean clientBean,
+							  ProductBean productBean,
 							  Model model) {
+		// 주문등록으로 클릭했을때도 시퀀스생성후 주문번호 자동생성
+		Integer OrderSeq = orderService.getOrderSeq(orderBean);
+		// 거래처정보(거래처코드 select옵션용)
+		List<ClientBean> ClientList = orderService.getClientList(clientBean);
+		// 품목정보(품목코드 select옵션용)
+		List<ProductBean> ProductList = productService.getProductList(productBean);
 		
+		
+		System.out.println("order : " + orderInfoBean.getClient_idx());
+		System.out.println("order : " + orderInfoBean.getOrder_date());
+		System.out.println("order : " + orderInfoBean.getOrder_deadline());
+		System.out.println("order : " + orderInfoBean.getOrder_exdate());
+		System.out.println("order : " + orderInfoBean.getOrder_manager());
+		
+		model.addAttribute("ProductList", ProductList);
+		model.addAttribute("ClientList", ClientList);
+		model.addAttribute("OrderSeq", OrderSeq);
 		model.addAttribute("menu_idx", menu_idx);
 		return "input/order";
 	}
@@ -89,9 +128,19 @@ public class InputController {
 	public String order_pro(@ModelAttribute("orderInfoBean") OrderBean orderInfoBean,
 							   @RequestParam("menu_idx") String menu_idx,
 							   Model model) {
+//		if(result.hasErrors()) {
+//			return "input/order";
+//		}
 		
 		orderService.addOrderInfo(orderInfoBean);
 		model.addAttribute("menu_idx", menu_idx);
+		
+		System.out.println("order : " + orderInfoBean.getClient_idx());
+		System.out.println("order : " + orderInfoBean.getOrder_date());
+		System.out.println("order : " + orderInfoBean.getOrder_deadline());
+		System.out.println("order : " + orderInfoBean.getOrder_exdate());
+		System.out.println("order : " + orderInfoBean.getOrder_manager());
+		
 		return "input/order_success";
 	}
 	
@@ -106,9 +155,13 @@ public class InputController {
 	}
 	// 기초정보등록 - 공정등록	
 	@PostMapping("/process_pro")
-	public String process_pro(@ModelAttribute("processInfoBean") ProcessBean processInfoBean,
+	public String process_pro(@Valid @ModelAttribute("processInfoBean") ProcessBean processInfoBean, BindingResult result,
 							   @RequestParam("menu_idx") String menu_idx,
 							   Model model) {
+		
+		if(result.hasErrors()) {
+			return "input/process";
+		}
 		
 		processService.addProcessInfo(processInfoBean);
 		model.addAttribute("menu_idx", menu_idx);
