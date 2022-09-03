@@ -22,7 +22,7 @@
   <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
   	
   	<div class="container">
-	<form:form action="${root }order/order_approve?menu_idx=${menu_idx }" method="post" modelAttribute="approveOrderBean">
+	<form:form action="${root }produce/orderwork_insert?menu_idx=${menu_idx }" method="post" modelAttribute="approveOrderBean">
 		
 		<div class="table_arrange">
 		<div class="table_title">
@@ -56,7 +56,7 @@
 						<td><input type="text" id="order_idx" name="order_idx" class="form-control" value="${obj.order_idx }" style="background-color:white" readonly></td>
 						<td><input type="text" id="order_shipment" name="order_shipment" class="form-control" value="${obj.order_shipment }" style="background-color:white" readonly></td>
 						<td><input type="text" id="client_idx" name="client_idx" class="form-control" value="${obj.client_idx }" style="background-color:white" readonly></td>
-						<td><input type="text" id="product_modelno" name="product_modelno" class="form-control" value="${obj.product_modelno }" style="background-color:white" readonly></td>
+						<td><input type="text" id="product_idx" name="product_idx" class="form-control" value="${obj.product_idx }" style="background-color:white" readonly></td>
 						<td><input type="text" id="product_modelno" name="product_modelno" class="form-control" value="${obj.product_modelno }" style="background-color:white" readonly></td>
 						<td><input type="text" id="order_regdate" name="order_regdate" class="form-control" value="${obj.order_regdate }" style="background-color:white" readonly></td>
 						<td><input type="text" id="order_deadline" name="order_deadline" class="form-control" value="${obj.order_deadline }" style="background-color:white" readonly></td>

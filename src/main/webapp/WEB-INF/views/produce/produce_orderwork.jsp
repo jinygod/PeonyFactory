@@ -19,7 +19,7 @@
   <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
   
 	<div class="container">
-	<form:form action="${root }produce/orderwork_pro?menu_idx=${menu_idx }" method="post" modelAttribute="orderWorkBean">
+	<form:form action="${root }produce/produce_orderwork_pro?menu_idx=${menu_idx }" method="post" modelAttribute="orderWorkBean">
 		
 		<div class="table_arrange">
 		<div class="table_title">
@@ -40,10 +40,11 @@
 						<th><span class="input-group-text" id="basic-addon1" style="width:70px">단가</span></th>
 						<th><span class="input-group-text" id="basic-addon1" style="width:100px">금액</span></th>
 						<th><span class="input-group-text" id="basic-addon1">작업지시일</span></th>
+						<th><span class="input-group-text" id="basic-addon1">작업상태</span></th>
 					</tr>
 					<c:forEach var="obj" items="${OrderWorkList }">
 					<tr>
-						<td><input type="text" id="orderwork_idx" name="orderwork_idx" class="form-control" style="background:gray" readonly></td>
+						<td><input type="text" id="orderwork_idx" name="orderwork_idx" class="form-control" value="${obj.orderwork_idx }" style="background-color:white" readonly></td>
 								<td><select id="process_name" name="process_name" class="form-select">
 										<option style=font-color:lightgray>선택</option>
 										<c:forEach var="option" items="${ProcessList }">
@@ -60,6 +61,7 @@
 						<td><input type="text" id="order_unit_price" name="order_unit_price" class="form-control" value="${obj.order_unit_price }"></td>
 						<td><input type="text" id="order_amt" name="order_amt" class="form-control" value="${obj.order_amt }"></td>
 						<td><input type="text" id="orderwork_date" name="orderwork_date" class="form-control" value="${obj.orderwork_date }"></td>
+						<td><input type="text" id="orderwork_status" name="orderwork_status" class="form-control" value="${obj.orderwork_status }"></td>
 					</tr>
 					</c:forEach>
 				</table>

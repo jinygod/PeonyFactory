@@ -79,32 +79,4 @@
 		]]>
 	</select>
 	
-<!-- 	주문승인(미승인->승인) -->
-	<update id="approveOrder" parameterType="java.lang.String">
-		<![CDATA[
-			update order_table set order_status = '승인완료'
-			where order_idx=#{order_idx}
-		<foreach collection="sUser_type" item="type" separator=",">
-			</foreach>
-		]]>
-	</update>
-<!-- 	주문승인(미승인->거절) -->
-	<update id="refuseOrder" parameterType="java.lang.String">
-		<![CDATA[
-			update order_table set order_status = '거절'
-			where order_idx=#{order_idx}
-		]]>
-	</update>	
-<!-- 	주문승인(미승인->전체승인) -->
-	<update id="approveAllOrder" parameterType="order.OrderBean">
-		<![CDATA[
-			update order_table set order_status = '승인완료'
-		]]>
-	</update>
-<!-- 	주문승인(미승인->전체거절) -->
-	<update id="refuseAllOrder" parameterType="order.OrderBean">
-		<![CDATA[
-			update order_table set order_status = '거절'
-		]]>
-	</update>		
 </mapper>

@@ -78,7 +78,7 @@ public class OrderController {
 		
 		return "order/order_approve";
 	}
-	// 주문조회(승인완료)
+	// 주문조회(전체)
 	@GetMapping("/order_list")
 	public String order_list(OrderBean orderBean, MenuBean menuBean,
 							@RequestParam("menu_idx") String menu_idx,
@@ -91,36 +91,6 @@ public class OrderController {
 		model.addAttribute("menu_idx", menu_idx);
 		
 		return "order/order_list";
-	}
-	// 주문승인(승인&거절)
-	@PostMapping("/order_approve")
-	public String order_approve(@ModelAttribute("approveOrderBean") OrderBean approveOrderBean,
-								@RequestParam("order_approve") String order_approve,
-								@RequestParam("order_idx") String order_idx,
-								@RequestParam("menu_idx") String menu_idx,
-								Model model) {
-		
-		model.addAttribute("menu_idx", menu_idx);
-		model.addAttribute("order_idx", order_idx);
-		
-		System.out.println(order_idx);
-		System.out.println(order_approve);
-		
-		if(order_approve.equals("승인")) {
-			orderService.approveOrder(order_idx);
-			return "redirect:/order/order_approve";
-		} else if(order_approve.equals("거절")) {
-			orderService.refuseOrder(order_idx);
-			return "redirect:/order/order_approve";
-		} else if(order_approve.equals("전체승인")) {
-			orderService.approveAllOrder(approveOrderBean);
-			return "redirect:/order/order_approve";
-		} else if(order_approve.equals("전체거절")) {
-			orderService.refuseAllOrder(approveOrderBean);
-			return "redirect:/order/order_approve";
-		}
-		
-		return "redirect:/order/order_approve";
 	}
 	
 }
