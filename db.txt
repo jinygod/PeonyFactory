@@ -242,3 +242,8 @@ alter table pop_table add product_name varchar2(20);
 --where product_idx = 2004 or  product_idx = 2005 or  product_idx = 2006;
 
 alter table user_table add user_id varchar2(20) not null;
+
+create sequence order_seq
+start with 1
+increment by 1
+minvalue 1;
