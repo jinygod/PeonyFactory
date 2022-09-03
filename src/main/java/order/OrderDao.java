@@ -7,12 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import client.ClientBean;
+import menu.MenuBean;
 
 @Repository
 public class OrderDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
+	
+	// 메뉴정보(index)
+	public String getMenuInfo(MenuBean menuBean) {
+		return sqlSessionTemplate.selectOne("menu.getMenuInfo", menuBean);
+	}
+	
+	// 주문번호 자동시퀀스생성하여 보이기
+	public Integer getOrderSeq(OrderBean orderBean) {
+		return sqlSessionTemplate.selectOne("order.getOrderSeq", orderBean);
+	}
 	
 	// 주문등록
 	public void addOrderInfo(OrderBean orderInfoBean) {

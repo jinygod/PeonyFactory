@@ -2,6 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="order">
+
+	<!-- 주문번호생성(sequence) -->
+		<select id="getOrderSeq" resultType="java.lang.Integer">
+		<![CDATA[
+			select order_seq.nextval as order_seq from dual
+		]]>
+	</select>
+	
 <!-- 	주문등록 -->
 	<insert id="addOrderInfo" parameterType="order.OrderBean">
 		<![CDATA[

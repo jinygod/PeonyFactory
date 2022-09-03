@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import client.ClientBean;
+import menu.MenuBean;
 
 @Service
 public class OrderService {
@@ -13,6 +14,16 @@ public class OrderService {
 	@Autowired
 	private OrderDao orderDao;
 
+	// 메뉴정보 불러오기(menuservice로 보낼 예정)
+	public String getMenuInfo(MenuBean menuBean) {
+		return orderDao.getMenuInfo(menuBean);
+	}
+	
+	// 주문번호 시퀀스 생성(select)
+	public Integer getOrderSeq(OrderBean orderBean) {
+		return orderDao.getOrderSeq(orderBean);
+	}
+	
 	// 주문등록
 	public void addOrderInfo(OrderBean orderInfoBean) {
 		orderDao.addOrderInfo(orderInfoBean);

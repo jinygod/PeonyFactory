@@ -1,12 +1,20 @@
 package process;
 
+import javax.validation.constraints.NotEmpty;
+
 public class ProcessBean {
 	
+	@NotEmpty
 	public String process_idx;
+	@NotEmpty
 	public String process_seq;
+	@NotEmpty
 	public String process_name;
+	@NotEmpty
 	public String process_info;
+	@NotEmpty
 	public String process_time;
+	@NotEmpty
 	public String process_timeunit;
 	
 	// POP
