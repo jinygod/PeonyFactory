@@ -244,6 +244,11 @@ alter table pop_table add product_name varchar2(20);
 alter table user_table add user_id varchar2(20) not null;
 
 create sequence order_seq
+start with 100000
+increment by 1
+minvalue 1;
+
+create sequence user_seq
 start with 1
 increment by 1
 minvalue 1;

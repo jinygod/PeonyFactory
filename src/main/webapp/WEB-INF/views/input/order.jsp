@@ -70,7 +70,7 @@
 						<td><select id="client_idx" name="client_idx" class="form-select">
 										<option style=font-color:lightgray>선택</option>
 										<c:forEach var="option" items="${ClientList }">
-										<option id="client_idx" value="client_idx">${option.client_idx}(${option.client_name })</option>
+										<option id="client_idx" value="${option.client_idx }">${option.client_idx}(${option.client_name })</option>
 										</c:forEach>
 								</select></td>
 					</tr>
@@ -116,8 +116,6 @@
 						<td colspan=2 style="text-align:right"><form:errors path='order_deadline'  style='color:red'/></td>
 					</tr>
 					<tr>						
-						<td colspan=2 style="text-align:right"><form:errors path='order_exdate'  style='color:red'/></td>
-					</tr>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">수량</span></th>
 						<td><input type="text" id="cnt" name="order_cnt" class="form-control" onKeyDown="totalAmt()"></td>
@@ -128,6 +126,9 @@
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">단가</span></th>
 						<td><input type="text" id="price" name="order_unit_price" class="form-control" onKeyDown="totalAmt()" ></td>
+					</tr>
+					<tr>						
+						<td colspan=2 style="text-align:right"><form:errors path='order_unit_price'  style='color:red'/></td>
 					</tr>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">단위</span></th>
@@ -140,8 +141,8 @@
 						<th><span class="input-group-text" id="basic-addon1">생산예상기간(D)</span></th>
 						<td><input type="text" id="exdate" name="order_exdate" class="form-control" style="background-color:lightgray; color:gray"  readonly></td>
 					</tr>
-					<tr>						
-						<td colspan=2 style="text-align:right"><form:errors path='order_unit_price'  style='color:red'/></td>
+					<tr>
+					<td colspan=2 style="text-align:right"><form:errors path='order_exdate'  style='color:red'/></td>
 					</tr>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">합계</span></th>
