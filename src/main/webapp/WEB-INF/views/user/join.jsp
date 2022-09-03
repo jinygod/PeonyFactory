@@ -89,7 +89,7 @@
 							</div>
 							<div class="form-group">
 								<form:label path="user_tel">연락처</form:label>
-								<form:input path="user_tel" class='form-control' />
+								<form:input path="user_tel" class='form-control' placeholder="ex)01012345678"/>
 								<form:errors path='user_tel'  style='color:red'/>
 							</div>
 							<div class="form-group">

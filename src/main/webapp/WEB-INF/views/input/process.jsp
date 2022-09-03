@@ -28,25 +28,43 @@
 						<th><span class="input-group-text" id="basic-addon1">공정코드</span></th>
 						<td><input type="text" id="process_idx" name="process_idx" class="form-control" aria-label="Username" aria-describedby="basic-addon1"></td>
 					</tr>
+					<tr>						
+						<td colspan=2 style="text-align:right"><form:errors path='process_idx'  style='color:red'/></td>
+					</tr>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">공정순번</span></th>
 						<td><input type="text" id="process_seq" name="process_seq" class="form-control" aria-label="Username" aria-describedby="basic-addon1"></td>
+					</tr>
+					<tr>						
+						<td colspan=2 style="text-align:right"><form:errors path='process_seq'  style='color:red'/></td>
 					</tr>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">공정명</span></th>
 						<td><input type="text" id="process_name" name="process_name" class="form-control" aria-label="Username" aria-describedby="basic-addon1"></td>
 					</tr>
+					<tr>						
+						<td colspan=2 style="text-align:right"><form:errors path='process_name'  style='color:red'/></td>
+					</tr>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">공정내용</span></th>
 						<td><input type="text" id="process_info" name="process_info" class="form-control" aria-label="Username" aria-describedby="basic-addon1"></td>
+					</tr>
+					<tr>						
+						<td colspan=2 style="text-align:right"><form:errors path='process_info'  style='color:red'/></td>
 					</tr>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">작업소요시간</span></th>
 						<td><input type="text" id="process_time" name="process_time" class="form-control" aria-label="Username" aria-describedby="basic-addon1"></td>
 					</tr>
+					<tr>						
+						<td colspan=2 style="text-align:right"><form:errors path='process_time'  style='color:red'/></td>
+					</tr>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">소요시간단위</span></th>
 						<td><input type="text" id="process_timeunit" name="process_timeunit" class="form-control" aria-label="Username" aria-describedby="basic-addon1"></td>
+					</tr>
+					<tr>						
+						<td colspan=2 style="text-align:right"><form:errors path='process_timeunit'  style='color:red'/></td>
 					</tr>
 				</table>
 			</div>

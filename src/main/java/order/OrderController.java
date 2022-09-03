@@ -2,7 +2,10 @@ package order;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import client.ClientBean;
-import client.ClientService;
+import menu.MenuBean;
+import product.ProductBean;
+import product.ProductService;
+import user.UserBean;
 
 @Controller
 @RequestMapping("/order")
@@ -20,10 +26,30 @@ public class OrderController {
 	
 	@Autowired
 	private OrderService orderService;
+	
+	@Autowired
+	private ProductService productService;
+	
+	@Resource(name = "loginUserBean")
+	@Lazy
+	private UserBean loginUserBean;
+	
 	// 주문등록
 	@GetMapping("/order_reg")
-	public String order_reg(@RequestParam("menu_idx") String menu_idx,
-			Model model) {
+	public String order_reg(@RequestParam("menu_idx") String menu_idx, OrderBean orderBean,
+							ClientBean clientBean, ProductBean productBean,
+							Model model) {
+		
+		// 주문번호 시퀀스 자동입력용
+		Integer OrderSeq = orderService.getOrderSeq(orderBean);
+		// 거래처정보(거래처코드 select옵션용)
+		List<ClientBean> ClientList = orderService.getClientList(clientBean);
+		// 품목정보(품목코드 select옵션용)
+		List<ProductBean> ProductList = productService.getProductList(productBean);
+		
+		model.addAttribute("ProductList", ProductList);
+		model.addAttribute("ClientList", ClientList);
+		model.addAttribute("OrderSeq", OrderSeq);
 		model.addAttribute("menu_idx", menu_idx);
 		
 		return "input/order";
@@ -54,11 +80,13 @@ public class OrderController {
 	}
 	// 주문조회(승인완료)
 	@GetMapping("/order_list")
-	public String order_list(OrderBean orderBean,
+	public String order_list(OrderBean orderBean, MenuBean menuBean,
 							@RequestParam("menu_idx") String menu_idx,
 							Model model) {
-		
+
 		List<OrderBean> ApprovedOrderList = orderService.getApprovedOrderList(orderBean);
+//		String menu_idx = orderService.getMenuInfo(menuBean);
+		System.out.println("loginUserBean : " + loginUserBean.getUser_name());
 		model.addAttribute("ApprovedOrderList", ApprovedOrderList);
 		model.addAttribute("menu_idx", menu_idx);
 		

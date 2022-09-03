@@ -1,13 +1,22 @@
 package product;
 
+import javax.validation.constraints.NotEmpty;
+
 public class ProductBean {
 	
+	@NotEmpty
 	private String product_idx;
+	@NotEmpty
 	private String product_div;
+	@NotEmpty
 	private String product_modelno;
+	@NotEmpty
 	private String product_name;
+	@NotEmpty
 	private String product_size;  
+	@NotEmpty
 	private String product_unit; 
+	@NotEmpty
 	private String product_info;
 	
 	public String getProduct_idx() {

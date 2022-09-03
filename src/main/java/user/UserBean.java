@@ -1,5 +1,6 @@
 package user;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -22,7 +23,12 @@ public class UserBean {
 	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String user_pw2;
 	
+	
+	@Email
 	private String user_email;
+	
+	@Size(min=4, max=20)
+	@Pattern(regexp = "[0-9]*")
 	private String user_tel;
 	
 	

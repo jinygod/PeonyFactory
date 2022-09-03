@@ -11,10 +11,11 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/include/top_menu.jsp"/>
-		
+
 		<div class="table_arrange">
 				<ul class="icons">
 		<c:forEach var="obj" items="${SubMenuList }">
+				<input type='hidden' name = "menu_idx" value='${obj.menu_idx}' />
 					<li>
 						<div class="icon_img">
 							<img src="${root}image/main_icon${obj.submenu_idx }.png">
@@ -27,7 +28,6 @@
 					</c:forEach>
 					</ul>
 					</div>
-
 <%-- <c:import url="/WEB-INF/views/include/bottom_info.jsp"/> --%>
 </body>
 </html>

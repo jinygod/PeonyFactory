@@ -1,3 +1,12 @@
+<!--
+수정사항 업데이트 표기
+1. 취소 제거
+2. 삭제 추가
+3. 삭제 기능 구현 필요
+4. 수정기능 잠금 readonly
+
+ 체크박스 추가, 수정 클릭시 체크박스 체크된 것만 readonly 풀리고 수정가능하게
+-->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -34,21 +43,21 @@
 						<th><span class="input-group-text" id="basic-addon1" style="width:300px">품목정보</span></th>
 					</tr>
 					<c:forEach var="obj" items="${ProductList }">
-					<tr>
-						<td><input type="text" id="product_idx" name="product_idx" class="form-control" value="${obj.product_idx }"></td>
-						<td><input type="text" id="product_div" name="product_div" class="form-control" value="${obj.product_div }"></td>
-						<td><input type="text" id="product_modelno" name="product_modelno" class="form-control" value="${obj.product_modelno }"></td>
-						<td><input type="text" id="product_name" name="product_name" class="form-control" value="${obj.product_name }"></td>
-						<td><input type="text" id="product_size" name="product_size" class="form-control" value="${obj.product_size }"></td>
-						<td><input type="text" id="product_unit" name="product_unit" class="form-control" value="${obj.product_unit }"></td>
-						<td><input type="text" id="product_info" name="product_info" class="form-control" value="${obj.product_info }"></td>
+					<tr><!--  업데이트 _readonly 추가  -->
+						<td><input type="text" id="product_idx" name="product_idx" class="form-control" value="${obj.product_idx }" readonly style=background:white></td>
+						<td><input type="text" id="product_div" name="product_div" class="form-control" value="${obj.product_div }" readonly style=background:white></td>
+						<td><input type="text" id="product_modelno" name="product_modelno" class="form-control" value="${obj.product_modelno }" readonly style=background:white></td>
+						<td><input type="text" id="product_name" name="product_name" class="form-control" value="${obj.product_name }" readonly style=background:white></td>
+						<td><input type="text" id="product_size" name="product_size" class="form-control" value="${obj.product_size }" readonly style=background:white></td>
+						<td><input type="text" id="product_unit" name="product_unit" class="form-control" value="${obj.product_unit }" readonly style=background:white></td>
+						<td><input type="text" id="product_info" name="product_info" class="form-control" value="${obj.product_info }" readonly style=background:white></td>
 					</tr>
 					</c:forEach>
 				</table>
 			</div>
 		<div class="button-arrange">
 		<input type="submit" class="btn btn-primary" value="수정"/>
-		<a href = "${root }menu/submenu" class="btn btn-dark" >취소</a>
+		<a href = "${root }main" class="btn btn-danger" >삭제</a><!-- 업데이트 _ 취소 - 삭제로 변경 삭제 기능 구현 필요-->
 		</div>
 		</div>
 	</form:form>
