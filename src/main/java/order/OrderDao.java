@@ -32,20 +32,4 @@ public class OrderDao {
 		return sqlSessionTemplate.selectList("order.getApprovedOrderList", orderBean);
 	}
 	
-	// 주문승인(미승인->승인)
-	public void approveOrder(String order_idx) {
-		sqlSessionTemplate.update("order.approveOrder", order_idx);
-	}
-	// 주문승인(미승인->거절)
-	public void refuseOrder(String order_idx) {
-		sqlSessionTemplate.update("order.refuseOrder", order_idx);
-	}
-	// 주문승인(미승인->전체승인)
-	public void approveAllOrder(OrderBean approveOrderBean) {
-		sqlSessionTemplate.update("order.approveAllOrder", approveOrderBean);
-	}
-	// 주문승인(미승인->전체거절)
-	public void refuseAllOrder(OrderBean approveOrderBean) {
-		sqlSessionTemplate.update("order.refuseAllOrder", approveOrderBean);
-	}
 }
