@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+					    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="result">
+	<select id="getResultProcessList" resultType="produce.ProduceBean">
+		<![CDATA[
+			select substr(orderwork_date,5,2) as orderwork_date, 
+			trunc(avg(produce_cnt)) as produce_cnt, 
+			avg(produce_badcnt) as produce_badcnt,
+			trunc(avg(produce_badcnt)/avg(produce_cnt)*100) as produce_processrate, 
+			process_name
+			from produce_table
+			group by substr(orderwork_date,5,2), process_name
+			order by substr(orderwork_date,5,2)
+		]]>
+	</select>
+
+</mapper>
