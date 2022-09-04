@@ -31,8 +31,8 @@
 					<tr> 
 						<td><input type="text" id="orderwork_date" name="orderwork_date" class="form-control" value="${obj.orderwork_date }" style="background:white" readonly></td>
 						<td><input type="text" id="process_name" name="process_name" class="form-control" value="${obj.process_name }" style="background:white" readonly></td>
-						<td><input type="text" id="produce_cnt" name="produce_cnt" class="form-control" value="${obj.produce_cnt }" onKeyDown="processrateCalc()"></td>
-						<td><input type="text" id="produce_badcnt" name="produce_badcnt" class="form-control" value="${obj.produce_badcnt }" onKeyDown="processrateCalc()"></td>
+						<td><input type="text" id="produce_cnt" name="produce_cnt" class="form-control" value="${obj.produce_cnt }" ></td>
+						<td><input type="text" id="produce_badcnt" name="produce_badcnt" class="form-control" value="${obj.produce_badcnt }" ></td>
 						<td><input type="text" id="produce_processrate" name="produce_processrate" class="form-control" value="${obj.produce_processrate }" style="background:white" readonly></td>
 					</tr>
 					</c:forEach>
@@ -41,7 +41,7 @@
 
   <script type="text/javascript">
     var dom = document.getElementById('container');
-    var myChart = echarts.init(dom, null, {
+    var myChart = echarts.init(dom, 'dark', {
       renderer: 'canvas',
       useDirtyRect: false
     });
@@ -49,6 +49,7 @@
     
     var option;
 
+    
     option = {
   title: {
     text: '공정별 에러현황',
@@ -65,7 +66,7 @@
     type: 'category',
     name: 'month',
     splitLine: { show: false },
-    data: ['2022/07', '2022/08', '2022/09']
+    data: ['22/07', '22/08', '22/09']
   },
   grid: {
     left: '3%',
@@ -75,33 +76,29 @@
   },
   yAxis: {
     type: 'log',
-    name: 'rate',
+    name: 'y',
     minorSplitLine: {
-      show: false
+      show: true
     }
   },
-  
-		
-  	let produce_cnt = document.querySelector('#produce_processrate').value;	// 생산수량
-  	let produce_badcnt = document.querySelector('#produce_badcnt').value;	// 불량수량
-  	let produce_badcnt = document.querySelector('#produce_badcnt').value;	// 불량수량
-
-  
   series: [
     {
       name: '재단',
       type: 'line',
-      data: [] = produce_cnt;
+      data: [1, 3, 30]
     },
     {
       name: '재봉',
       type: 'line',
-      data: [1, 2, 4]
+      data: [35, 50, 4]
     },
     {
       name: '포장',
       type: 'line',
-      data: [1, 2, 4]
+      data: [
+        1 / 2,
+        1 / 4,
+        1 / 8,
       ]
     }
   ]
