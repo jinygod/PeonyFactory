@@ -79,17 +79,17 @@
 			<c:forEach var='obj' items="${MenuList }">
 				<c:if test="${obj.menu_idx <= 3 }">
 					<li >
-					<a href="${root }menu/submenu?menu_idx=${obj.menu_idx}"><!-- 업데이트1 _ 이미지 클릭 페이지 이동  -->
 						<div class="icon_img">
 							<img src="image/main_icon${obj.menu_idx }.png">
 						</div>
 						<div class="contents1_bold">${obj.menu_title }</div>
 						<div class="contents2">${obj.menu_content }</div>
 						<div class="more">
+					<a href="${root }menu/submenu?menu_idx=${obj.menu_idx}"><!-- 업데이트1 _ 이미지 클릭 페이지 이동  -->
 						MORE
 							<!-- <a href="${root }menu/submenu?menu_idx=${obj.menu_idx}">MORE-->
-						</div>
 					</a>
+						</div>
 					</li>
 				</c:if>
 			</c:forEach>
@@ -98,32 +98,32 @@
 			<c:forEach var='obj' items="${MenuList }">
 				<c:if test="${obj.menu_idx == 4 || obj.menu_idx == 5 }">
 					<li>
-						<a href="${root }menu/submenu?menu_idx=${obj.menu_idx}"><!-- 업데이트1 _ 이미지 클릭 페이지 이동  -->
 						<div class="icon_img">
 							<img src="image/main_icon${obj.menu_idx }.png">
 						</div>
 						<div class="contents1_bold">${obj.menu_title }</div>
 						<div class="contents2">${obj.menu_content }</div>
 						<div class="more">
+						<a href="${root }menu/submenu?menu_idx=${obj.menu_idx}"><!-- 업데이트1 _ 이미지 클릭 페이지 이동  -->
 						MORE
-						</div>
 						</a>
+						</div>
 					</li>
 				</c:if>
 			</c:forEach>
 			<c:forEach var='obj' items="${MenuList }">
 			<c:if test="${obj.menu_idx == 6 }">
 				<li>
-					<a href="${root }menu/input?menu_idx=${obj.menu_idx}"><!-- 업데이트1 _ 이미지 클릭 페이지 이동  -->
 					<div class="icon_img">
 						<img src="image/main_icon${obj.menu_idx }.png">
 					</div>
 					<div class="contents1_bold">${obj.menu_title }</div>
 					<div class="contents2">${obj.menu_content }</div>
 					<div class="more">
+					<a href="${root }menu/input?menu_idx=${obj.menu_idx}"><!-- 업데이트1 _ 이미지 클릭 페이지 이동  -->
 					MORE
-					</div>
 					</a>
+					</div>
 				</li>
 			</c:if>
 			</c:forEach>
@@ -139,15 +139,18 @@
 					<img src="image/coat1.jpg">
 				</div>
 				<div class="contents2">
-					<h2>이것이 옷이야, 날개야?</h2>
-					이것이 옷인지 날개인지 헷갈리시는 분들도 있을거에요. <br> 왜냐면 이것은 그냥 Pixabay에서
-					옷이라고 검색했더니 나온 이미지인데 <br> 옷 같은 아무것이나 검색이 된것 같아요. <br>
-					<br> 총알오징어는, 사실 어떤 특정한 품종을 가진 게 아니랍니다. <br> 우리가 사먹지 말아야
-					한다는 것이죠. <br> 불과 약 5년전만 해도 시장에 가면 냉동오징어 한마리에 천원이면 샀는데, <br>
-					이젠 두마리에 7~8천원씩 하니, 더이상 서민음식이 아니게 된거죠. <br>
-					<br> 얼마전에는 가격을 비교해 보았더니 마른오징어를 기준으로 <br> 같은 그람수에 같은 가격이
-					나올 정도로 천정부지로 오징어값이 치솟았답니다. <br> 그런 오징어, 못생겼다고 놀리지 말고 <br>
-					이제 소중하게 대해주어야 하지 않을까요?<br>
+					<h3>안녕하십니까?</h3>
+					<h3>피오니팩토리 대표 이경은입니다.</h3><br/>
+					저희 피오니팩토리는 각종 의류 샘플과<br/>
+					패턴제작이 가능하며,<br/>
+					대한민국 중심지인 경기도에서<br/>
+					봉제공장을 같이 운영하고 있습니다.<br/><br/>
+					샘플 제작과 패턴, 동시에 생산도 가능하며,<br/>
+					대량생산도 가능합니다.<br/><br/>
+					또한 넓은 공장부지를 가지고 있어,<br/>
+					어떠한 의류 표장도 가능하며,<br/>
+					빠레트 작업도 가능합니다.<br/><br/>
+					감사합니다.
 				</div>
 			</div>
 		</div>
@@ -165,14 +168,17 @@
 			</ul>
 		</div>
 		</div>
-
-	<div class="footer">
-		<div class="footer-first">LOGO</div>
-		<div class="footer-last">
-			Co. Team division3 <br> Addr. 경기도 성남시 중원구 성남동 3219번지 KR 아트팰리스 4호
-			5층 <br> 031-751-3688 <br> COPYRIGHT 2022. Team division3.
-			ALL RIGHT RESERVED.
-		</div>
-	</div>
 </body>
+<footer>
+	<c:import url="/WEB-INF/views/include/bottom_info.jsp"/>
+</footer>
+<!-- 	<div class="footer"> -->
+<!-- 		<div class="footer-first">LOGO</div> -->
+<!-- 		<div class="footer-last"> -->
+<!-- 			Co. Team division3 <br> Addr. 경기도 성남시 중원구 성남동 3219번지 KR 아트팰리스 4호 -->
+<!-- 			5층 <br> 031-751-3688 <br> COPYRIGHT 2022. Team division3. -->
+<!-- 			ALL RIGHT RESERVED. -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+
 </html>

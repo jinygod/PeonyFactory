@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-  
+ <div class="wrapper">
   <c:import url="/WEB-INF/views/include/top_menu.jsp"/>
   <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
 		
@@ -58,11 +58,15 @@
 		<div class="button-arrange">
 		<input type="submit" class="btn btn-primary" value="수정"/>
 		<a href = "${root }main" class="btn btn-danger" >삭제</a><!-- 업데이트 _ 취소 - 삭제로 변경 삭제 기능 구현 필요-->
+		<input type="button" class="btn btn-dark" value="뒤로가기" onclick="history.back();"/>
 		</div>
 		</div>
 	</form:form>
+</div>
 
-<%-- <c:import url="/WEB-INF/views/include/bottom_info.jsp"/> --%>
+<footer>
+	<c:import url="/WEB-INF/views/include/bottom_info.jsp"/>
+</footer>
   
   </body>
   

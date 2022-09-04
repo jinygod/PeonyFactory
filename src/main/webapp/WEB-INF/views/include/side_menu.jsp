@@ -11,6 +11,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="${root }style.css">
   </head>
+<style>
+ 	@media(max-width:1300px){ 
+ 	.side_menu{ 
+ 		background: white;
+		height: 100vh;
+		width: 300px;
+		margin: 0px;
+ 	} 
+ }  
+</style>
 <body>
 	<!-- 	menu_idx를 파라미터 값으로 받아와서 if문 사용, menu_idx == 1 -> 품목관리(menu_title)에 해당하는 -->
 	<!-- 	subMenu_title(품목등록, 품목조회)이 side_menu에 li로 출력 -->

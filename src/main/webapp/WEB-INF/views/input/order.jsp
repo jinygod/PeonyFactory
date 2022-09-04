@@ -22,17 +22,52 @@
 		amt.value = tot;
 		exdate.value = exdateval;
 	}
-			
 
+	function jbSubmit() {
+		var order_info = document.order_info;
+	  
+		if(!order_info.order_cnt.value || !order_info.order_unit_price.value){
+    		order_info.order_cnt.focus();
+    		order_info.order_unit_price.focus();
+    		alert('입력되지 않은 정보가 있습니다. 모든 입력 칸에 정보를 입력했는지 확인해주세요.');
+    		return false;
+		}
+		if(order_info.client_idx.value == "선택"){
+    		order_info.client_idx.focus();
+    		alert('거래처코드를 정하지 않았습니다. 선택란을 눌러 거래처코드를 지정해주세요.');
+    		return false;
+		}
+		if(order_info.product_idx.value == "선택"){
+    		order_info.product_idx.focus();
+    		alert('품목코드를 정하지 않았습니다. 선택란을 눌러 품목코드를 지정해주세요.');
+    		return false;
+		}
+		if(order_info.product_modelno.value == "선택"){
+    		order_info.product_modelno.focus();
+    		alert('모델번호를 정하지 않았습니다. 선택란을 눌러 모델번호를 지정해주세요.');
+    		return false;
+		}
+		if(!order_info.order_regdate.value){
+    		order_info.order_regdate.focus();
+    		alert('주문등록일 날짜를 정하지 않았습니다. 주문등록일자 지정해주세요.');
+    		return false;
+		}
+		if(!order_info.order_deadline.value){
+    		order_info.order_deadline.focus();
+    		alert('납기요청일 날짜를 정하지 않았습니다. 납기요청일 지정해주세요.');
+    		return false;
+		}
+	}
 	
 </script>
 
   </head>
 <body>
-<c:import url="/WEB-INF/views/include/top_menu.jsp"/>
-<c:import url="/WEB-INF/views/include/side_menu.jsp"/>
+<div class="wrapper">
+	<c:import url="/WEB-INF/views/include/top_menu.jsp"/>
+	<c:import url="/WEB-INF/views/include/side_menu.jsp"/>
 		
-	<form:form action="${root }input/order_pro?menu_idx=${menu_idx }" method="post" modelAttribute="orderInfoBean">
+	<form:form action="${root }input/order_pro?menu_idx=${menu_idx }" name="order_info" method="post" modelAttribute="orderInfoBean" onsubmit="return jbSubmit();">
 		
 		<div class="table_arrange">
 		<div class="table_title">
@@ -44,9 +79,6 @@
 						<th><span class="input-group-text" id="basic-addon1">주문번호</span></th>
 						<td><input type="text" id="order_idx" name="order_idx" class="form-control" value="${OrderSeq } " style="background-color:lightgray; color:gray" readonly></td>
 					</tr>
-					<tr>						
-						<td colspan=2 style="text-align:right"><form:errors path='order_idx'  style='color:red'/></td>
-					</tr>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">주문상태</span></th>
 						<td><input type="text" id="order_status" name="order_status" class="form-control" value="미승인" style="background-color:lightgray; color:gray" readonly></td>
@@ -55,15 +87,9 @@
 						<th><span class="input-group-text" id="basic-addon1">출하상태</span></th>
 						<td><input type="text" id="order_shipment" name="order_shipment" class="form-control" value="출하전" style="background-color:lightgray; color:gray" readonly></td>
 					</tr>
-					<tr>						
-						<td colspan=2 style="text-align:right"><form:errors path='order_shipment' style='color:red'/></td>
-					</tr>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">담당자</span></th>
 						<td><input type="text" id="order_manager" name="order_manager" class="form-control" value="${loginUserBean.user_name }" style="background-color:lightgray; color:gray" readonly></td>
-					</tr>
-					<tr>						
-						<td colspan=2 style="text-align:right"><form:errors path='order_manager' style='color:red'/></td>
 					</tr>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">거래처코드</span></th>
@@ -74,9 +100,6 @@
 										</c:forEach>
 								</select></td>
 					</tr>
-					<tr>						
-						<td colspan=2 style="text-align:right"><form:errors path='client_idx'  style='color:red'/></td>
-					</tr>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">품목코드</span></th>
 						<td><select id="product_idx" name="product_idx" class="form-select">
@@ -85,9 +108,6 @@
 										<option id="product_idx" value="${option.product_idx }">${option.product_idx}(${option.product_name}-${option.product_size })</option>
 										</c:forEach>
 								</select></td>
-					</tr>
-					<tr>						
-						<td colspan=2 style="text-align:right"><form:errors path='product_idx'  style='color:red'/></td>
 					</tr>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">모델번호</span></th>
@@ -98,68 +118,48 @@
 						</c:forEach>
 						</select></td>
 					</tr>
-					<tr>						
-						<td colspan=2 style="text-align:right"><form:errors path='product_modelno'  style='color:red'/></td>
-					</tr>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">주문등록일</span></th>
 						<td><input type="date" max="9999-12-31" id="order_regdate" name="order_regdate" class="form-control"></td>
-					</tr>
-					<tr>						
-						<td colspan=2 style="text-align:right"><form:errors path='order_regdate'  style='color:red'/></td>
 					</tr>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">납기요청일</span></th>
 						<td><input type="date" max="9999-12-31" id="order_deadline" name="order_deadline" class="form-control"></td>
 					</tr>
 					<tr>						
-						<td colspan=2 style="text-align:right"><form:errors path='order_deadline'  style='color:red'/></td>
-					</tr>
-					<tr>						
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">수량</span></th>
 						<td><input type="text" id="cnt" name="order_cnt" class="form-control" onKeyDown="totalAmt()"></td>
-					</tr>
-					<tr>						
-						<td colspan=2 style="text-align:right"><form:errors path='order_cnt'  style='color:red'/></td>
 					</tr>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">단가</span></th>
 						<td><input type="text" id="price" name="order_unit_price" class="form-control" onKeyDown="totalAmt()" ></td>
 					</tr>
-					<tr>						
-						<td colspan=2 style="text-align:right"><form:errors path='order_unit_price'  style='color:red'/></td>
-					</tr>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">단위</span></th>
 						<td><input type="text" id="order_unit" name="order_unit" class="form-control" value="box" style="background-color:lightgray; color:gray" readonly></td>
-					</tr>
-					<tr>						
-						<td colspan=2 style="text-align:right"><form:errors path='order_unit'  style='color:red'/></td>
 					</tr>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">생산예상기간(D)</span></th>
 						<td><input type="text" id="exdate" name="order_exdate" class="form-control" style="background-color:lightgray; color:gray"  readonly></td>
 					</tr>
 					<tr>
-					<td colspan=2 style="text-align:right"><form:errors path='order_exdate'  style='color:red'/></td>
-					</tr>
-					<tr>
 						<th><span class="input-group-text" id="basic-addon1">합계</span></th>
 						<td><input type="text" id="amt" name="order_amt" class="form-control" style="background-color:lightgray; color:gray"  readonly></td>
-					</tr>
-					<tr>						
-						<td colspan=2 style="text-align:right"><form:errors path='order_amt'  style='color:red'/></td>
 					</tr>
 				</table>
 			</div>
 		<div class="button-arrange">
 		<input type="submit" class="btn btn-primary" value="등록"/>
-		<a href = "${root }menu/input" class="btn btn-dark" >취소</a>
+		<input type="button" class="btn btn-dark" value="취소" onclick="history.back();"/>
 		</div>
 		</div>
 	</form:form>
+</div>
+	
+<footer>
+	<c:import url="/WEB-INF/views/include/bottom_info.jsp"/>
+</footer>
 
-<%-- <c:import url="/WEB-INF/views/include/bottom_info.jsp"/> --%>
 </body>
 </html>

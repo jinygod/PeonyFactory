@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-  
+  <div class="wrapper">
   <c:import url="/WEB-INF/views/include/top_menu.jsp"/>
   <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
   
@@ -53,13 +53,16 @@
 		<div class="button-arrange">
 		<input type="submit" class="btn btn-primary" value="수정"/>
 
-		<a href = "${root}main" class="btn btn-dark" >뒤로가기</a>
+		<input type="button" class="btn btn-dark" value="뒤로가기" onclick="history.back();"/>
 		</div>
 		</div>
 	</form:form>
+</div>
+  
+</body>
+  
+<footer>
+	<c:import url="/WEB-INF/views/include/bottom_info.jsp"/>
+</footer>
 
-<%-- <c:import url="/WEB-INF/views/include/bottom_info.jsp"/> --%>
-  
-  </body>
-  
    <!--  input 안에 : aria-label="Username" aria-describedby="basic-addon1" -->
