@@ -55,7 +55,8 @@
 					</c:forEach>
 				</table>
 			</div>
-						<div class="d-none d-md-block">
+			
+			<div class="d-none d-md-block">
 				<ul class="pagination justify-content-center">
 					<c:choose>
 					<c:when test="${pageBean.prevPage <= 0 }">

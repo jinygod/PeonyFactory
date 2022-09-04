@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import order.OrderService;
+import process.PageBean;
 import process.ProcessBean;
 import process.ProcessService;
 
@@ -37,13 +37,14 @@ public class ProduceController {
 		model.addAttribute("order_idx", order_idx);
 		
 		if(order_approve.equals("승인")) {
-			produceService.approveOrder(order_idx);
+			produceService.approveOrder(approveOrderBean);
 			produceService.addOrderworkInfo(approveOrderBean);
 			return "redirect:/order/order_approve";
 		} else if(order_approve.equals("거절")) {
 			produceService.refuseOrder(order_idx);
 			return "redirect:/order/order_approve";
 		} else if(order_approve.equals("전체승인")) {
+//			produceService.addOrderchkInfo(approveOrderBean);
 			produceService.approveAllOrder(approveOrderBean);
 			produceService.addOrderworkInfo(approveOrderBean);
 			return "redirect:/order/order_approve";
@@ -87,14 +88,32 @@ public class ProduceController {
 	}
 	
 	@GetMapping("/produce_status")
-	public String produce_status(ProduceBean produceBean,
+	public String produce_status(@ModelAttribute("produceStatusBean")ProduceBean produceStatusBean,
+								 ProduceBean produceBean,
 							 	 @RequestParam("menu_idx") String menu_idx,
+							 	@RequestParam(value = "page", defaultValue = "1") int page,
 								 Model model) {
 		
-		List<ProduceBean> ProduceStatusList = produceService.getProducestatusList(produceBean);
+		List<ProduceBean> ProduceStatusList = produceService.getProducestatusList(produceBean, page);
 		model.addAttribute("menu_idx", menu_idx);
 		model.addAttribute("ProduceStatusList", ProduceStatusList);
 		
+		PageBean pageBean = produceService.getContentCnt(page);
+		model.addAttribute("pageBean", pageBean);
+		
+		model.addAttribute("page", page);
+		
 		return "produce/produce_status";
+	}
+	
+	@PostMapping("/produce_status_pro")
+	public String produce_status_pro(@ModelAttribute("produceStatusBean")ProduceBean produceStatusBean,
+								 	 @RequestParam("menu_idx") String menu_idx,
+									 Model model) {
+
+		produceService.updateProduceStatus(produceStatusBean);
+		model.addAttribute("menu_idx", menu_idx);	
+		
+		return "redirect:/produce/produce_status";
 	}
 }

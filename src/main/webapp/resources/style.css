@@ -277,10 +277,11 @@ h1 {
 
 /* table */
 .table_arrange {
-	position: absolute;
-	top:50%;
-	left:50%;
-	transform: translate(-50%,-50%);
+/* 	position: absolute; */
+/* 	top:50%; */
+/* 	left:50%; */
+/* 	transform: translate(-50%,-50%); */
+	transform: translate(130px,-850px);
 }
 
 .table_title{
@@ -313,10 +314,9 @@ h1 {
 	 color: #fff;
 }
 
-.container {
-	transform: translate(150px,-750px);
-	background: lime;
-}
+/* .container { */
+/* 	transform: translate(130px,-850px); */
+/* } */
 
 .login_button {
 	

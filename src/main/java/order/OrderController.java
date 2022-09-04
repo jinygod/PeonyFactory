@@ -86,7 +86,6 @@ public class OrderController {
 
 		List<OrderBean> ApprovedOrderList = orderService.getApprovedOrderList(orderBean);
 //		String menu_idx = orderService.getMenuInfo(menuBean);
-		System.out.println("loginUserBean : " + loginUserBean.getUser_name());
 		model.addAttribute("ApprovedOrderList", ApprovedOrderList);
 		model.addAttribute("menu_idx", menu_idx);
 		
