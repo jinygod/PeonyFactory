@@ -8,12 +8,20 @@
   <head>
 	<meta charset="UTF-8">
 	<title>주문승인</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="${root}style.css">
     <script>
     function button() {
     location.href='${root }order/order_approve?order_idx=${obj.order_idx}&menu_idx=${menu_idx }'
     }
+    
+    function gogogo() {
+    	var tmp = $('[name=order_check]').is(':checked');
+    	
+    	order_check.value = tmp;
+    }
+    
     </script>
   </head>
   <body>
@@ -32,6 +40,7 @@
 			<div class="input-group mb-3">
 				<table>
 					<tr>
+<!-- 						<th><span class="input-group-text" id="basic-addon1">체크</span></th> -->
 						<th><span class="input-group-text" id="basic-addon1">주문번호</span></th>
 						<th><span class="input-group-text" id="basic-addon1">출하상태</span></th>
 						<th><span class="input-group-text" id="basic-addon1">거래처코드</span></th>
@@ -53,6 +62,7 @@
 					</tr>
 					<c:forEach var="obj" items="${UnapprovedOrderList }" varStatus="status">
 					<tr>
+<!-- 						<td><input type="checkbox" id="order_check" name="order_check" value="Y" onClick="gogogo()"></td> -->
 						<td><input type="text" id="order_idx" name="order_idx" class="form-control" value="${obj.order_idx }" style="background-color:white" readonly></td>
 						<td><input type="text" id="order_shipment" name="order_shipment" class="form-control" value="${obj.order_shipment }" style="background-color:white" readonly></td>
 						<td><input type="text" id="client_idx" name="client_idx" class="form-control" value="${obj.client_idx }" style="background-color:white" readonly></td>

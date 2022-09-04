@@ -16,24 +16,31 @@
     <script>
     
     	function processrateCalc() {
-
-    	let order_cnt = document.querySelector('#order_cnt').value;	// 주문수량
-    	let produce_cnt = document.querySelector('#produce_cnt').value;	// 생산수량
-    	let produce_losscnt = document.querySelector('#produce_losscnt').value;	// 손실수량
-    	let produce_badcnt = document.querySelector('#produce_badcnt').value;	// 불량수량
-    	
-    	var produce_totalCnt = produce_cnt + produce_losscnt + produce_badcnt;
-    	
-    	if(produce_cnt >= 0 && produce_losscnt >= 0 && produce_badcnt >= 0) {
-    		produce_processrate.value = (produce_cnt / order_cnt) * 100;
-    	} else {
-    		document.querySelector('#produce_cnt').value= "";
-    		document.querySelector('#produce_losscnt').value= "";
-    		document.querySelector('#produce_badcnt').value= "";
-    		alert('입력 수량을 확인하세요');
+			
+    		let order_cnt = document.querySelector('#order_cnt').value;	// 주문수량
+	    	let produce_cnt = document.querySelector('#produce_cnt').value;	// 생산수량
+	    	let produce_losscnt = document.querySelector('#produce_losscnt').value;	// 손실수량
+	    	let produce_badcnt = document.querySelector('#produce_badcnt').value;	// 불량수량
+	    	
+	    	if(produce_cnt >= 0 && produce_losscnt >= 0 && produce_badcnt >= 0) {
+	    		 produce_processrate.value = Math.floor((produce_cnt / order_cnt) * 100) +'%';
+	    	} else {
+	    		document.querySelector('#produce_cnt').value= "";
+	    		document.querySelector('#produce_losscnt').value= "";
+	    		document.querySelector('#produce_badcnt').value= "";
+	    		alert('입력 수량을 확인하세요');
+	    	}
     	}
     	
-    	}
+    	  function chkRate() {
+    		  let order_cnt = Number(document.querySelector('#order_cnt').value);	// 주문수량
+  	    	  let produce_cnt = document.querySelector('#produce_cnt').value;	// 생산수량
+    		  
+    		  if(order_cnt > produce_cnt) {
+	    	    alert('입력 수량을 확인하세요');
+	    	    return false;
+    		  }
+    	  }
     	
     </script>
     
@@ -44,9 +51,9 @@
   <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
   
 	<div class="container">
-	<form:form action="${root }produce/produce_status_pro?menu_idx=${menu_idx }" method="post" modelAttribute="produceStatusBean">
+	<div class="table_arrange">
+	<form:form action="${root }produce/produce_status_pro?menu_idx=${menu_idx }" method="post" modelAttribute="produceStatusBean" onsubmit="return chkRate();">
 		
-		<div class="table_arrange">
 		<div class="table_title">
 		<h1>생산현황조회</h1>
 		</div>
@@ -69,9 +76,10 @@
 						<th><span class="input-group-text" id="basic-addon1">손실수량</span></th>
 						<th><span class="input-group-text" id="basic-addon1">불량수량</span></th>
 						<th><span class="input-group-text" id="basic-addon1">생산율</span></th>
+						<th><span class="input-group-text" id="basic-addon1">생산상태</span></th>
 					</tr>
 					<c:forEach var="obj" items="${ProduceStatusList }">
-					<tr>
+					<tr> 
 						<td><input type="text" id="orderwork_idx" name="orderwork_idx" class="form-control" value="${obj.orderwork_idx }" style="background:white" readonly></td>
 						<td><input type="text" id="process_name" name="process_name" class="form-control" value="${obj.process_name }" style="background:white" readonly></td>
 						<td><input type="text" id="orderwork_date" name="orderwork_date" class="form-control" value="${obj.orderwork_date }" style="background:white" readonly></td>
@@ -84,23 +92,72 @@
 						<td><input type="text" id="order_unit" name="order_unit" class="form-control" value="${obj.order_unit }" style="background:white" readonly></td>
 						<td><input type="text" id="order_unit_price" name="order_unit_price" class="form-control" value="${obj.order_unit_price }" style="background:white" readonly></td>
 						<td><input type="text" id="order_amt" name="order_amt" class="form-control" value="${obj.order_amt }" style="background:white" readonly></td>
-						<td><input type="text" id="produce_cnt" name="produce_cnt" class="form-control" value="" onKeyDown="processrateCalc()"></td>
-						<td><input type="text" id="produce_losscnt" name="produce_losscnt" class="form-control" onKeyDown="processrateCalc()"></td>
-						<td><input type="text" id="produce_badcnt" name="produce_badcnt" class="form-control" onKeyDown="processrateCalc()"></td>
-						<td><input type="text" id="produce_processrate" name="produce_processrate" class="form-control" style="background:white" readonly></td>
+						<td><input type="text" id="produce_cnt" name="produce_cnt" class="form-control" value="${obj.produce_cnt }" onKeyDown="processrateCalc()"></td>
+						<td><input type="text" id="produce_losscnt" name="produce_losscnt" class="form-control" value="${obj.produce_losscnt }" onKeyDown="processrateCalc()"></td>
+						<td><input type="text" id="produce_badcnt" name="produce_badcnt" class="form-control" value="${obj.produce_badcnt }" onKeyDown="processrateCalc()"></td>
+						<td><input type="text" id="produce_processrate" name="produce_processrate" class="form-control" value="${obj.produce_processrate }" style="background:white" readonly></td>
+						<td><input type="text" id="orderwork_status" name="orderwork_status" class="form-control" value="${obj.orderwork_status }"style="background:white" readonly></td>
 					</tr>
 					</c:forEach>
 				</table>
 			</div>
+			
+			<div class="d-none d-md-block">
+				<ul class="pagination justify-content-center">
+					<c:choose>
+					<c:when test="${pageBean.prevPage <= 0 }">
+					<li class="page-item disabled">
+						<a href="#" class="page-link">이전</a>
+					</li>
+					</c:when>
+					<c:otherwise>
+					<li class="page-item">
+						<a href="${root }produce/produce_status?menu_idx=${menu_idx }&page=${pageBean.prevPage}" class="page-link">이전</a>
+					</li>
+					</c:otherwise>
+					</c:choose>
+					
+					
+					<c:forEach var='idx' begin="${pageBean.min }" end='${pageBean.max }'>
+					<c:choose>
+					<c:when test="${idx == pageBean.currentPage }">
+					<li class="page-item active">
+						<a href="${root }produce/produce_status?menu_idx=${menu_idx }&page=${idx}" class="page-link">${idx }</a>
+					</li>
+					</c:when>
+					<c:otherwise>
+					<li class="page-item">
+						<a href="${root }produce/produce_status?menu_idx=${menu_idx }&page=${idx}" class="page-link">${idx }</a>
+					</li>
+					</c:otherwise>
+					</c:choose>
+					
+					</c:forEach>
+					
+					<c:choose>
+					<c:when test="${pageBean.max >= pageBean.pageCnt }">
+					<li class="page-item disabled">
+						<a href="#" class="page-link">다음</a>
+					</li>
+					</c:when>
+					<c:otherwise>
+					<li class="page-item">
+						<a href="${root }produce/produce_status?menu_idx=${menu_idx }&page=${pageBean.nextPage}" class="page-link">다음</a>
+					</li>
+					</c:otherwise>
+					</c:choose>
+					
+				</ul>
+			</div>
+			
 		<div class="button-arrange">
-		<input type="submit" class="btn btn-primary" value="작업요청"/>
+		<input type="submit" class="btn btn-primary" value="입력완료"/>
 		<input type="button" class="btn btn-dark" value="뒤로가기" onclick="history.back();"/>
 		</div>
-		</div>
 	</form:form>
+		</div>
 	</div>
 <%-- <c:import url="/WEB-INF/views/include/bottom_info.jsp"/> --%>
   
   </body>
-  
-   <!--  input 안에 : aria-label="Username" aria-describedby="basic-addon1" -->
+</html>

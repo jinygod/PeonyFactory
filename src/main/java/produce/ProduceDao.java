@@ -2,11 +2,10 @@ package produce;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import order.OrderBean;
 
 @Repository
 public class ProduceDao {
@@ -18,9 +17,13 @@ public class ProduceDao {
 		sqlSessionTemplate.insert("produce.addOrderworkInfo", approveOrderBean);
 	}
 	
+	public void addOrderchkInfo(ProduceBean approveOrderBean) {
+		sqlSessionTemplate.insert("produce.addOrderchkInfo", approveOrderBean);
+	}
+	
 	// 주문승인(미승인->승인)
-	public void approveOrder(String order_idx) {
-		sqlSessionTemplate.update("produce.approveOrder", order_idx);
+	public void approveOrder(ProduceBean approveOrderBean) {
+		sqlSessionTemplate.update("produce.approveOrder", approveOrderBean);
 	}
 	// 주문승인(미승인->거절)
 	public void refuseOrder(String order_idx) {
@@ -47,7 +50,14 @@ public class ProduceDao {
 		sqlSessionTemplate.update("produce.updateOrderworkStatus", orderwork_idx);
 	}
 	// 생산현황조회
-	public List<ProduceBean> getProducestatusList(ProduceBean produceBean) {
-		return sqlSessionTemplate.selectList("produce.getProducestatusList");
+	public List<ProduceBean> getProducestatusList(ProduceBean produceBean, RowBounds rowBounds) {
+		return sqlSessionTemplate.selectList("produce.getProducestatusList", produceBean, rowBounds);
+	}
+	// produce_table에서 입력완료 -> 수량 및 생산상태 update
+	public void updateProduceStatus(ProduceBean produceStatusBean) {
+		sqlSessionTemplate.update("produce.updateProduceStatus", produceStatusBean);
+	}
+	public int getContentCnt() {
+		return sqlSessionTemplate.selectOne("produce.getContentCnt");
 	}
 }

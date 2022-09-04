@@ -20,15 +20,13 @@ public class ProduceBean {
 	private String orderwork_date;
 	private String orderwork_status;
 	
+	private String order_check;
+	
 	// 생산수량, 진행률
 	private int produce_cnt;
-	private int produce_rate;
-	
-	// 생산수량, 생산진행률 초깃값
-	public ProduceBean() {
-		this.produce_cnt = 0;
-		this.produce_rate = 0;
-	}
+	private int produce_losscnt;
+	private int produce_badcnt;
+	private String produce_processrate;
 	
 	public String getOrder_idx() {
 		return order_idx;
@@ -136,12 +134,34 @@ public class ProduceBean {
 		this.produce_cnt = produce_cnt;
 	}
 	
-	public int getProduce_rate() {
-		return produce_rate;
-	}
-	public void setProduce_rate(int produce_rate) {
-		this.produce_rate = produce_rate;
+	public int getProduce_losscnt() {
+		return produce_losscnt;
 	}
 
+	public void setProduce_losscnt(int produce_losscnt) {
+		this.produce_losscnt = produce_losscnt;
+	}
+
+	public int getProduce_badcnt() {
+		return produce_badcnt;
+	}
+
+	public void setProduce_badcnt(int produce_badcnt) {
+		this.produce_badcnt = produce_badcnt;
+	}
+
+	public String getProduce_processrate() {
+		return produce_processrate;
+	}
+	public void setProduce_processrate(String produce_processrate) {
+		this.produce_processrate = produce_processrate;
+	}
+	public String getOrder_check() {
+		return order_check;
+	}
+
+	public void setOrder_check(String order_check) {
+		this.order_check = order_check;
+	}
 	
 }

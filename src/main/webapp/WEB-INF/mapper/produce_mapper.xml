@@ -35,18 +35,15 @@
 		]]>
 	</insert>
 	
-	<!-- 	주문승인(미승인->승인) -->
-	<update id="approveOrder" parameterType="java.lang.String">
+	<update id="approveOrder" parameterType="produce.ProduceBean">
 		<![CDATA[
 			update order_table set order_status = '승인완료'
-			where order_idx=#{order_idx}
 		]]>
 	</update>
 <!-- 	주문승인(미승인->거절) -->
 	<update id="refuseOrder" parameterType="java.lang.String">
 		<![CDATA[
 			update order_table set order_status = '거절'
-			where order_idx=#{order_idx}
 		]]>
 	</update>	
 <!-- 	주문승인(미승인->전체승인) -->
@@ -85,9 +82,9 @@
 		<insert id="addProduceInfo" parameterType="produce.ProduceBean">
 			<![CDATA[
 				insert into produce_table (produce_idx, orderwork_idx, process_name, orderwork_date, product_idx, product_modelno,
-										   order_regdate, order_deadline, order_exdate, order_cnt, order_unit, order_unit_price, order_amt)
+										   order_regdate, order_deadline, order_exdate, order_cnt, order_unit, order_unit_price, order_amt, orderwork_status)
 							       values (produce_seq.nextval, #{orderwork_idx}, #{process_name}, #{orderwork_date}, #{product_idx}, #{product_modelno}, 
-							               #{order_regdate}, #{order_deadline}, #{order_exdate}, #{order_cnt}, #{order_unit}, #{order_unit_price}, #{order_amt})
+							               #{order_regdate}, #{order_deadline}, #{order_exdate}, #{order_cnt}, #{order_unit}, #{order_unit_price}, #{order_amt}, '생산진행')
 			]]>
 		</insert>
 		
@@ -95,7 +92,6 @@
 	<update id="updateOrderworkStatus" parameterType="produce.ProduceBean">
 		<![CDATA[
 			update orderwork_table set orderwork_status = '생산진행'
-			where orderwork_idx=#{orderwork_idx}
 		]]>
 	</update>
 	
@@ -114,9 +110,26 @@
 				   order_unit,
 				   order_unit_price,
 				   order_amt,
+				   produce_cnt,
+				   produce_losscnt,
+				   produce_badcnt,
+				   produce_processrate,
 				   orderwork_status
-			from produce_table
+				from produce_table
 		]]>
 	</select>
+<!-- 	produce_table 작업상태 '생산진행' -> '생산완료'-->
+	<update id="updateProduceStatus" parameterType="produce.ProduceBean">
+		<![CDATA[
+			update produce_table set produce_cnt = #{produce_cnt}, produce_losscnt=#{produce_losscnt}, produce_badcnt=#{produce_badcnt}, 
+									 produce_processrate=#{produce_processrate}, orderwork_status = '생산완료'
+		]]>
+	</update>
 	
+	<select id="getContentCnt" resultType="java.lang.Integer">
+		<![CDATA[
+			select count(*) from produce_table
+		]]>
+	</select>
+
 </mapper>
