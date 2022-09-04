@@ -25,6 +25,7 @@
     </script>
   </head>
   <body>
+  <div class="wrapper">
   
   <c:import url="/WEB-INF/views/include/top_menu.jsp"/>
   <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
@@ -86,13 +87,16 @@
 		<div class="button-arrange">
 		<input type="submit" name="order_approve" class="btn btn-primary" value="전체승인"/>
 		<input type="submit" name="order_approve" class="btn btn-danger" value="전체거절"/>
-		<a href = "${root }menu/input" class="btn btn-dark" >취소</a>
+		<input type="button" class="btn btn-dark" value="취소" onclick="history.back();"/>
 		</div>
 		</div>
 	</form:form>
 	</div>
-
-<%-- <c:import url="/WEB-INF/views/include/bottom_info.jsp"/> --%>
+</div>	
+	
+<footer>
+	<c:import url="/WEB-INF/views/include/bottom_info.jsp"/>
+</footer>
   
   </body>
   

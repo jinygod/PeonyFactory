@@ -45,7 +45,7 @@
 	
 </script>
 <body>
-
+<div class="wrapper">
 	<c:import url="/WEB-INF/views/include/top_menu.jsp" />
 
 				<div class="table_arrange">
@@ -103,8 +103,11 @@
 					</div>
 					</div>
 				</div>
+</div>
 
-<%-- 	<c:import url="/WEB-INF/views/include/bottom_info.jsp" /> --%>
+<footer>
+	<c:import url="/WEB-INF/views/include/bottom_info.jsp" />
+</footer>
 
 </body>
 </html>

@@ -152,7 +152,7 @@
 			
 		<div class="button-arrange">
 		<input type="submit" class="btn btn-primary" value="입력완료"/>
-		<a href = "${root}menu/submenu" class="btn btn-dark" >뒤로가기</a>
+		<input type="button" class="btn btn-dark" value="뒤로가기" onclick="history.back();"/>
 		</div>
 	</form:form>
 		</div>

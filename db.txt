@@ -175,3 +175,4 @@ create sequence order_seq
 start with 100000
 increment by 1
 minvalue 1;
+

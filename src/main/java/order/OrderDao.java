@@ -2,6 +2,7 @@ package order;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -39,8 +40,13 @@ public class OrderDao {
 		return sqlSessionTemplate.selectList("order.getUnapprovedOrderList", orderBean);
 	}
 	// 주문조회(승인완료)
-	public List<OrderBean> getApprovedOrderList(OrderBean orderBean) {
-		return sqlSessionTemplate.selectList("order.getApprovedOrderList", orderBean);
+	public List<OrderBean> getApprovedOrderList(OrderBean orderBean, RowBounds rowBounds) {
+		return sqlSessionTemplate.selectList("order.getApprovedOrderList", orderBean, rowBounds);
+	}
+	
+	// 페이징처리
+	public int getContentCnt() {
+		return sqlSessionTemplate.selectOne("order.getContentCnt");
 	}
 	
 }

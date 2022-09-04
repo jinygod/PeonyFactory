@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import client.ClientBean;
 import menu.MenuBean;
+import process.PageBean;
 import product.ProductBean;
 import product.ProductService;
 import user.UserBean;
@@ -82,12 +83,18 @@ public class OrderController {
 	@GetMapping("/order_list")
 	public String order_list(OrderBean orderBean, MenuBean menuBean,
 							@RequestParam("menu_idx") String menu_idx,
+							@RequestParam(value = "page", defaultValue = "1") int page,
 							Model model) {
 
-		List<OrderBean> ApprovedOrderList = orderService.getApprovedOrderList(orderBean);
+		List<OrderBean> ApprovedOrderList = orderService.getApprovedOrderList(orderBean, page);
 //		String menu_idx = orderService.getMenuInfo(menuBean);
 		model.addAttribute("ApprovedOrderList", ApprovedOrderList);
 		model.addAttribute("menu_idx", menu_idx);
+		
+		PageBean pageBean = orderService.getContentCnt(page);
+		model.addAttribute("pageBean", pageBean);
+		
+		model.addAttribute("page", page);
 		
 		return "order/order_list";
 	}
