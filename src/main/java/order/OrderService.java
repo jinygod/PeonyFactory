@@ -2,14 +2,23 @@ package order;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import client.ClientBean;
 import menu.MenuBean;
+import process.PageBean;
 
 @Service
 public class OrderService {
+	
+	@Value("${page.listcnt}")
+	private int page_listcnt;
+	
+	@Value("${page.paginationcnt}")
+	private int page_paginationcnt;
 	
 	@Autowired
 	private OrderDao orderDao;
@@ -36,9 +45,23 @@ public class OrderService {
 	public List<OrderBean> getUnapprovedOrderList(OrderBean orderBean){
 		return orderDao.getUnapprovedOrderList(orderBean);
 	}
+	
 	// 주문조회(승인완료)
-	public List<OrderBean> getApprovedOrderList(OrderBean orderBean){
-		return orderDao.getApprovedOrderList(orderBean);
+	public List<OrderBean> getApprovedOrderList(OrderBean orderBean, int page){
+		
+		int start = (page - 1) * page_listcnt;
+		RowBounds rowBounds = new RowBounds(start, page_listcnt);
+		
+		return orderDao.getApprovedOrderList(orderBean, rowBounds);
+	}
+	
+	public PageBean getContentCnt(int currentPage) {
+		
+		int content_cnt = orderDao.getContentCnt();
+		
+		PageBean pageBean = new PageBean(content_cnt, currentPage, page_listcnt, page_paginationcnt);
+		
+		return pageBean;
 	}
 	
 }

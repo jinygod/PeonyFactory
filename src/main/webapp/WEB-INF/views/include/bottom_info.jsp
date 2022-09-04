@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="${root }style.css">
   </head>
-<body>
 		<div class="footer">
 			<div class="footer-first">LOGO</div>
 			<div class="footer-last">
@@ -16,5 +15,4 @@
 				division3. ALL RIGHT RESERVED.
 			</div>
 		</div>
-</body>
 	

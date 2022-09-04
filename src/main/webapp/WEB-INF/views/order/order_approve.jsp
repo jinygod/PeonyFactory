@@ -17,6 +17,7 @@
     </script>
   </head>
   <body>
+  <div class="wrapper">
   
   <c:import url="/WEB-INF/views/include/top_menu.jsp"/>
   <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
@@ -51,7 +52,6 @@
 						
 					</tr>
 					<c:forEach var="obj" items="${UnapprovedOrderList }" varStatus="status">
-						<input type="hidden" id="order_hidden" value= "${status.current }">
 					<tr>
 						<td><input type="text" id="order_idx" name="order_idx" class="form-control" value="${obj.order_idx }" style="background-color:white" readonly></td>
 						<td><input type="text" id="order_shipment" name="order_shipment" class="form-control" value="${obj.order_shipment }" style="background-color:white" readonly></td>
@@ -68,8 +68,8 @@
 						<td><input type="text" id="order_manager" name="order_manager" class="form-control" value="${obj.order_manager }" style="background-color:white" readonly></td>
 						<td><input type="text" id="order_date" name="order_date" class="form-control" value="${obj.order_date }" style="background-color:white" readonly></td>
 						<td><input type="text" id="order_status" name="order_status" class="form-control" value="${obj.order_status }" style="background-color:white" readonly></td>
-						<td><input type="submit" id=order_hidden name="order_approve" class="btn btn-primary" value="승인"></td>
-						<td><input type="submit" id="order_hidden" name="order_approve" class="btn btn-danger" value="거절"></td>
+						<td><input type="submit" id=order_approve name="order_approve" class="btn btn-primary" value="승인"></td>
+						<td><input type="submit" id="order_approve" name="order_approve" class="btn btn-danger" value="거절"></td>
 					</tr>
 					</c:forEach>
 				</table>
@@ -77,13 +77,16 @@
 		<div class="button-arrange">
 		<input type="submit" name="order_approve" class="btn btn-primary" value="전체승인"/>
 		<input type="submit" name="order_approve" class="btn btn-danger" value="전체거절"/>
-		<a href = "${root }menu/input" class="btn btn-dark" >취소</a>
+		<input type="button" class="btn btn-dark" value="취소" onclick="history.back();"/>
 		</div>
 		</div>
 	</form:form>
 	</div>
-
-<%-- <c:import url="/WEB-INF/views/include/bottom_info.jsp"/> --%>
+</div>	
+	
+<footer>
+	<c:import url="/WEB-INF/views/include/bottom_info.jsp"/>
+</footer>
   
   </body>
   

@@ -110,13 +110,6 @@ public class InputController {
 		// 품목정보(품목코드 select옵션용)
 		List<ProductBean> ProductList = productService.getProductList(productBean);
 		
-		
-		System.out.println("order : " + orderInfoBean.getClient_idx());
-		System.out.println("order : " + orderInfoBean.getOrder_date());
-		System.out.println("order : " + orderInfoBean.getOrder_deadline());
-		System.out.println("order : " + orderInfoBean.getOrder_exdate());
-		System.out.println("order : " + orderInfoBean.getOrder_manager());
-		
 		model.addAttribute("ProductList", ProductList);
 		model.addAttribute("ClientList", ClientList);
 		model.addAttribute("OrderSeq", OrderSeq);
@@ -136,10 +129,6 @@ public class InputController {
 		model.addAttribute("menu_idx", menu_idx);
 		
 		System.out.println("order : " + orderInfoBean.getClient_idx());
-		System.out.println("order : " + orderInfoBean.getOrder_date());
-		System.out.println("order : " + orderInfoBean.getOrder_deadline());
-		System.out.println("order : " + orderInfoBean.getOrder_exdate());
-		System.out.println("order : " + orderInfoBean.getOrder_manager());
 		
 		return "input/order_success";
 	}

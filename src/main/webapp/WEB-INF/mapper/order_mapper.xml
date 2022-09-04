@@ -79,4 +79,10 @@
 		]]>
 	</select>
 	
+	<!-- 페이징처리 -->
+	<select id="getContentCnt" resultType="java.lang.Integer">
+		<![CDATA[
+			select count(*) from order_table
+		]]>
+	</select>
 </mapper>
