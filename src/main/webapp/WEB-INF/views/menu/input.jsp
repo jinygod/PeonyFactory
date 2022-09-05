@@ -48,7 +48,7 @@
 						<div class="icon_img">
 							<img src="${root}image/main_icon4.png">
 						</div>
-						<div class="contents1_bold">공정목록</div>
+						<div class="contents1_bold">공정등록</div>
 						<div class="reg_button">
 							<a href="${root }input/process?menu_idx=${menu_idx}">등록</a>
 						</div>
