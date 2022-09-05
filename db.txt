@@ -1,7 +1,10 @@
+CREATE TABLE
+
 -- 회원 테이블
 CREATE TABLE user_table (
     user_idx number constraint USER_PK primary key,
     user_name varchar2(20) not null,
+    user_id varchar2(20) not null,
     user_pw varchar2(20) not null,
     user_email varchar2(20) not null,
     user_tel varchar2(20)  not null
@@ -11,7 +14,7 @@ CREATE TABLE user_table (
 CREATE TABLE product_table (
     product_idx number constraint product_PK primary key,
     product_div varchar2(20) not null,
-    product_modelno varchar2(20) not null,
+    product_modelno number not null,
     product_name varchar2(50) not null,
     product_size varchar2(20) not null,
     product_unit varchar2(20) not null,
@@ -32,6 +35,7 @@ CREATE TABLE process_table (
 CREATE TABLE pop_table (
     product_idx number not null,
     process_idx number not null,
+    product_name varchar2(20),
     pop_info varchar2(2000) not null,
     pop_version varchar2(20) not null,
     pop_processtime varchar2(20) not null,
@@ -88,19 +92,87 @@ CREATE TABLE perform_table(
     perform_date varchar2(20) not null,
     constraint perform_order_fk foreign key (order_idx) references order_table (order_idx),
     constraint perform_product_fk foreign key (product_idx) references product_table (product_idx)
-    
     );
 
+-- 메뉴테이블
 CREATE TABLE menu_table(
     menu_idx number constraint menu_pk primary key,
+    menu_eng varchar2(20),
     menu_title varchar2(30) not null,
     menu_content varchar2(200) not null
     );
+	
+-- 서브메뉴테이블
+create table submenu_table(
+    menu_idx number not null,
+    menu_title varchar2(20) not null,
+    menu_eng varchar2(20),
+    submenu_idx number constraint submenu_pk primary key,
+    submenu_title varchar2(30) not null,
+    submenu_eng varchar2(20) not null,
+    constraint submenu_menu_fk foreign key (menu_idx) references menu_table (menu_idx));
+	
+-- 작업지시서테이블
+create table orderwork_table(
+    orderwork_idx number constraint orderwork_pk primary key,
+    process_name varchar2(20) not null default '재단',
+    product_idx number not null,
+	product_modelno number not null, 
+	order_regdate varchar2(20) not null,
+	order_deadline varchar2(20) not null,
+	order_exdate varchar2(20) not null,
+	order_cnt number not null,
+	order_unit varchar2(20) not null,
+	order_unit_price number not null,
+	order_amt number not null,
+    orderwork_date varchar2(20) not null,
+	orderwork_status varchar2(20) not null,
+    constraint orderwork_product_fk foreign key (product_idx) references  product_table (product_idx)
+    );
+	
+create table produce_table (
+produce_idx number constraint produce_pk primary key,
+orderwork_idx number not null,
+process_name varchar2(20) not null,
+orderwork_date varchar2(20) not null,
+product_idx number not null,
+product_modelno number not null,
+order_regdate varchar2(20) not null,
+order_deadline varchar2(20) not null,
+order_exdate varchar2(20) not null,
+order_cnt number not null,
+order_unit varchar2(20) not null,
+order_unit_price number not null,
+order_amt number not null,
+produce_cnt number not null default '0',
+produce_losscnt number not null default '0',
+produce_badcnt number not null default '0',
+produce_processrate number not null default '0',
+orderwork_status varchar(20),
+constraint pruduce_orderwork_fk foreign key (orderwork_idx) references  orderwork_table (orderwork_idx),
+constraint pruduce_product_fk foreign key (product_idx) references  product_table (product_idx));
+	
+-- 유저 시퀀스
+create sequence user_seq
+start with 1
+increment by 1
+minvalue 1;
 
+-- 지시서 시퀀스
+create sequence orderwork_seq
+start with 1
+increment by 1
+minvalue 1;
 
-INSERT INTO menu_table values (1, '품목관리', '제품 조회부터 수정 및 관리가 가능한 메뉴입니다');
-INSERT INTO menu_table values (2, '주문관리', '주문 조회부터 수정 및 관리가 가능한 메뉴입니다');
-INSERT INTO menu_table values (3, '생산관리', '생산 조회부터 수정 및 관리가 가능한 메뉴입니다');
-INSERT INTO menu_table values (4, '공정관리', '공정현황을 확인할 수 있는 메뉴입니다');
-INSERT INTO menu_table values (5, '실적관리', '생산실적을 다양한 보고서 형식으로 볼 수 있습니다');
-INSERT INTO menu_table values (6, '기초정보관리', '기초 데이터를 입력하는 메뉴입니다');
+-- 생산번호 시퀀스
+create sequence produce_seq
+start with 1
+increment by 1
+minvalue 1;
+
+-- 주문번호 시퀀스
+create sequence order_seq
+start with 100000
+increment by 1
+minvalue 1;
+

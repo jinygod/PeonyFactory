@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+					    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="process">
+	<insert id="addProcessInfo" parameterType="process.ProcessBean">
+		<![CDATA[
+			insert into process_table(
+				process_idx,
+				process_seq,
+				process_name,
+				process_info,
+				process_time,
+				process_timeunit)
+			values(
+				#{process_idx},
+				#{process_seq},
+				#{process_name},
+				#{process_info},
+				#{process_time},
+				#{process_timeunit})
+		]]>
+	</insert>
+	
+		<select id="getProcessList" resultType="process.ProcessBean">
+		<![CDATA[
+			select process_idx, process_seq, process_name, process_info, process_time, process_timeunit
+			from process_table
+		]]>
+	</select>
+	
+		<select id="getProcessInfo" resultType="process.ProcessBean">
+		<![CDATA[
+			select product_idx, product_name, process_idx, pop_info, pop_version, pop_processtime, pop_avglossrate, pop_avglosscnt,
+					pop_avgdefrate, pop_avgdefcnt
+			from pop_table
+		]]>
+	</select>
+	
+		<select id="getContentCnt" resultType="java.lang.Integer">
+		<![CDATA[
+			select count(*) from pop_table
+		]]>
+	</select>
+</mapper>

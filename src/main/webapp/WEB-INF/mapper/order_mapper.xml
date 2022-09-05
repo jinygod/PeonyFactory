@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+					    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="order">
+
+	<!-- 주문번호생성(sequence) -->
+		<select id="getOrderSeq" resultType="java.lang.Integer">
+		<![CDATA[
+			select order_seq.nextval as order_seq from dual
+		]]>
+	</select>
+	
+<!-- 	주문등록 -->
+	<insert id="addOrderInfo" parameterType="order.OrderBean">
+		<![CDATA[
+			insert into order_table(
+				order_idx,
+				order_status,
+				order_shipment,
+				client_idx,
+				product_idx,
+				product_modelno,
+				order_regdate,
+				order_deadline,
+				order_exdate,
+				order_cnt,
+				order_unit,
+				order_unit_price,
+				order_amt,
+				order_manager,
+				order_date)
+			values(
+				#{order_idx},
+				#{order_status},
+				#{order_shipment},
+				#{client_idx},
+				#{product_idx},
+				#{product_modelno},
+				#{order_regdate},
+				#{order_deadline},
+				#{order_exdate},
+				#{order_cnt},
+				#{order_unit},
+				#{order_unit_price},
+				#{order_amt},
+				#{order_manager},
+				sysdate
+			)
+		]]>
+	</insert>
+
+<!-- 	거래처조회 -->			
+	<select id="getClientList" parameterType="client.ClientBean" resultType="client.ClientBean">
+		<![CDATA[
+			select client_idx, client_name, client_ceo, client_tel, client_zipcode, client_addr
+			from client_table
+		]]>
+	</select>
+	
+<!-- 	주문승인(미승인) -->	
+	<select id="getUnapprovedOrderList" resultType="order.OrderBean">
+		<![CDATA[
+			select order_idx, order_status, order_shipment, client_idx, product_idx, product_modelno, order_regdate,
+			order_deadline, order_exdate, order_cnt, order_unit, order_unit_price, order_amt, order_manager, order_date
+			from order_table
+			where order_status='미승인'
+			order by order_idx
+		]]>
+	</select>
+	
+<!-- 	주문조회(승인완료) -->
+	<select id="getApprovedOrderList" resultType="order.OrderBean">
+		<![CDATA[
+			select order_idx, order_status, order_shipment, client_idx, product_idx, product_modelno, order_regdate,
+			order_deadline, order_exdate, order_cnt, order_unit, order_unit_price, order_amt, order_manager, order_date
+			from order_table
+			where order_status='승인완료'
+			order by order_idx
+		]]>
+	</select>
+	
+	<!-- 페이징처리 -->
+	<select id="getContentCnt" resultType="java.lang.Integer">
+		<![CDATA[
+			select count(*) from order_table
+		]]>
+	</select>
+</mapper>

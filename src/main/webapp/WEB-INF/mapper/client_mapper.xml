@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+					    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="client">
+	<insert id="addClientInfo" parameterType="client.ClientBean">
+		<![CDATA[
+			insert into client_table(client_idx, client_name, client_ceo, client_tel, client_zipcode, client_addr)
+			values(#{client_idx}, #{client_name}, #{client_ceo}, #{client_tel}, #{client_zipcode}, #{client_addr})
+		]]>
+	</insert>
+	
+</mapper>

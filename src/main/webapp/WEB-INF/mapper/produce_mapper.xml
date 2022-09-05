@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+					    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="produce">
+	
+<!-- 	주문승인 -> orderwork_table에 insert  -->
+	<insert id="addOrderworkInfo" parameterType="produce.ProduceBean">
+		<![CDATA[
+			insert into orderwork_table(
+			orderwork_idx,
+			product_idx, 
+			product_modelno, 
+			order_regdate,
+			order_deadline,
+			order_exdate,
+			order_cnt,
+			order_unit,
+			order_unit_price,
+			order_amt,
+			orderwork_date,
+			orderwork_status)
+			values(
+			orderwork_seq.nextval,
+			#{product_idx}, 
+			#{product_modelno}, 
+			#{order_regdate},
+			#{order_deadline},
+			#{order_exdate},
+			#{order_cnt},
+			#{order_unit},
+			#{order_unit_price},
+			#{order_amt},
+			to_char(sysdate, 'YYYYMMDD'),
+			'주문승인')
+		]]>
+	</insert>
+	
+	<update id="approveOrder" parameterType="produce.ProduceBean">
+		<![CDATA[
+			update order_table set order_status = '승인완료'
+		]]>
+	</update>
+<!-- 	주문승인(미승인->거절) -->
+	<update id="refuseOrder" parameterType="java.lang.String">
+		<![CDATA[
+			update order_table set order_status = '거절'
+		]]>
+	</update>	
+<!-- 	주문승인(미승인->전체승인) -->
+	<update id="approveAllOrder" parameterType="produce.ProduceBean">
+		<![CDATA[
+			update order_table set order_status = '승인완료'
+		]]>
+	</update>
+<!-- 	주문승인(미승인->전체거절) -->
+	<update id="refuseAllOrder" parameterType="produce.ProduceBean">
+		<![CDATA[
+			update order_table set order_status = '거절'
+		]]>
+	</update>
+	
+<!-- 	작업지시서 -->
+	<select id="getOrderworkList" resultType="produce.ProduceBean">
+		<![CDATA[
+			select orderwork_idx,
+				   product_idx, 
+				   product_modelno, 
+				   order_regdate,
+				   order_deadline,
+				   order_exdate,
+				   order_cnt,
+				   order_unit,
+				   order_unit_price,
+				   order_amt,
+				   orderwork_date,
+				   orderwork_status
+			from orderwork_table
+			where orderwork_status = '주문승인'
+		]]>
+	</select>
+<!-- 		작업지시서 작업요청 -> produce_table에 insert -->
+		<insert id="addProduceInfo" parameterType="produce.ProduceBean">
+			<![CDATA[
+				insert into produce_table (produce_idx, orderwork_idx, process_name, orderwork_date, product_idx, product_modelno,
+										   order_regdate, order_deadline, order_exdate, order_cnt, order_unit, order_unit_price, order_amt, orderwork_status)
+							       values (produce_seq.nextval, #{orderwork_idx}, #{process_name}, #{orderwork_date}, #{product_idx}, #{product_modelno}, 
+							               #{order_regdate}, #{order_deadline}, #{order_exdate}, #{order_cnt}, #{order_unit}, #{order_unit_price}, #{order_amt}, '생산진행')
+			]]>
+		</insert>
+		
+<!-- 	orderwork_table 작업상태 '주문승인' -> '생산진행'-->
+	<update id="updateOrderworkStatus" parameterType="produce.ProduceBean">
+		<![CDATA[
+			update orderwork_table set orderwork_status = '생산진행'
+		]]>
+	</update>
+	
+	<select id="getProducestatusList" resultType="produce.ProduceBean">
+		<![CDATA[
+			select produce_idx,
+				   orderwork_idx,
+				   process_name,
+				   orderwork_date,
+				   product_idx,
+				   product_modelno, 
+				   order_regdate,
+				   order_deadline,
+				   order_exdate,
+				   order_cnt,
+				   order_unit,
+				   order_unit_price,
+				   order_amt,
+				   produce_cnt,
+				   produce_losscnt,
+				   produce_badcnt,
+				   produce_processrate,
+				   orderwork_status
+				from produce_table
+		]]>
+	</select>
+<!-- 	produce_table 작업상태 '생산진행' -> '생산완료'-->
+	<update id="updateProduceStatus" parameterType="produce.ProduceBean">
+		<![CDATA[
+			update produce_table set produce_cnt = #{produce_cnt}, produce_losscnt=#{produce_losscnt}, produce_badcnt=#{produce_badcnt}, 
+									 produce_processrate=#{produce_processrate}, orderwork_status = '생산완료'
+		]]>
+	</update>
+	
+	<select id="getContentCnt" resultType="java.lang.Integer">
+		<![CDATA[
+			select count(*) from produce_table
+		]]>
+	</select>
+
+</mapper>
