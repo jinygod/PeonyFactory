@@ -15,9 +15,21 @@ public class ResultService {
 	
 
 	// 생산현황조회
-	public List<ProduceBean> getResultProcessList(ProduceBean produceBean) {
+	public List<ProduceBean> getResultProcess07List(ProduceBean produceBean) {
 		
-		return resultDao.getResultProcessList(produceBean);
+		return resultDao.getResultProcess07List(produceBean);
+	}
+	
+	// 생산현황조회
+	public List<ProduceBean> getResultProcess08List(ProduceBean produceBean) {
+		
+		return resultDao.getResultProcess08List(produceBean);
+	}
+	
+	// 생산현황조회
+	public List<ProduceBean> getResultProcess09List(ProduceBean produceBean) {
+		
+		return resultDao.getResultProcess09List(produceBean);
 	}
 
 }

@@ -2,16 +2,44 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="result">
-	<select id="getResultProcessList" resultType="produce.ProduceBean">
+
+	<select id="getResultProcess07_01List" resultType="produce.ProduceBean">
 		<![CDATA[
-			select substr(orderwork_date,5,2) as orderwork_date, 
-			trunc(avg(produce_cnt)) as produce_cnt, 
-			avg(produce_badcnt) as produce_badcnt,
-			trunc(avg(produce_badcnt)/avg(produce_cnt)*100) as produce_processrate, 
-			process_name
+			select sum(produce_losscnt+produce_badcnt) 
 			from produce_table
-			group by substr(orderwork_date,5,2), process_name
-			order by substr(orderwork_date,5,2)
+			where substr(orderwork_date,5,2) = '07' and process_name = '재단';
+		]]>
+	</select>
+	
+	<select id="getResultProcess07_02List" resultType="produce.ProduceBean">
+		<![CDATA[
+			select sum(produce_losscnt+produce_badcnt) 
+			from produce_table
+			where substr(orderwork_date,5,2) = '07' and process_name = '재봉';
+		]]>
+	</select>
+	
+	<select id="getResultProcess07_03List" resultType="produce.ProduceBean">
+		<![CDATA[
+			select sum(produce_losscnt+produce_badcnt) 
+			from produce_table
+			where substr(orderwork_date,5,2) = '07' and process_name = '포장';
+		]]>
+	</select>
+	
+	<select id="getResultProcess08List" resultType="produce.ProduceBean">
+		<![CDATA[
+			select sum(produce_losscnt+produce_badcnt) 
+			from produce_table
+			where substr(orderwork_date,5,2) = '08';
+		]]>
+	</select>
+	
+	<select id="getResultProcess09List" resultType="produce.ProduceBean">
+		<![CDATA[
+			select sum(produce_losscnt+produce_badcnt) 
+			from produce_table
+			where substr(orderwork_date,5,2) = '09';
 		]]>
 	</select>
 
