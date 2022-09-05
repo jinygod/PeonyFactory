@@ -65,26 +65,31 @@
         <div class="contents1">우리는 재규어처럼 재빠르게, 남들과는 다르게 옷을 뽑아냅니다.</div>
 
 
+		<c:forEach var='obj' items="${MenuList }">
+		${obj.menu_title }
+		<c:if test="${obj.menu_idx == 1 }">
+		<c:out value="${obj.menu_title }" default="검색 결과가 없습니다." />
+		</c:if>
+		</c:forEach>
 
-		<c:choose>
-			<c:when test="${MenuList.length } < 7">
-				<c:forEach var='obj' items="${MenuList }">
-					<ul class="icons">
-						<li>
-							<div class="icon_img">
-								<img src="image/main_icon${obj.menu_idx }.png">
-							</div>
-							<div class="contents1_bold">${obj.menu_title }</div>
-							<div class="contents2">${obj.menu_content }</div>
-							<div class="more">MORE</div>
-						</li>
-					</ul>
-				</c:forEach>
-			</c:when>
-			<c:otherwise>
 
-			</c:otherwise>
-		</c:choose>
+<%-- 		<c:forEach var='obj' items="${MenuList }"> --%>
+<%-- 			<c:if test="${obj.menu_title eq '품목관리' }"> --%>
+<!-- 				<ul class="icons"> -->
+<!-- 					<li> -->
+<!-- 						<div class="icon_img"> -->
+<%-- 							<img src="image/main_icon${obj.menu_idx }.png"> --%>
+<!-- 						</div> -->
+<!-- 						<div class="contents1_bold"> -->
+<%-- 							<c:out value="${obj.menu_title }" /> --%>
+<!-- 						</div> -->
+<%-- 						<div class="contents2">${obj.menu_content }</div> --%>
+<!-- 						<div class="more">MORE</div> -->
+<!-- 					</li> -->
+<!-- 				</ul> -->
+<%-- 			</c:if> --%>
+<%-- 		</c:forEach> --%>
+		ㅋㅋ
 		<!-- 		 	<li> -->
 <!--             <div class="icon_img"> -->
 <!--               <img src="image/order_icon.png"> -->
