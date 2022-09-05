@@ -94,6 +94,7 @@ h1 {
 
 .nav > li > a {
   color: #fff;
+  text-decoration:none;
 }
 .nav_top > li > a {
   color: #fff;
