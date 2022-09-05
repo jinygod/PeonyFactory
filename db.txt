@@ -1,4 +1,4 @@
-CREATE TABLE
+-- CREATE TABLE
 
 -- 회원 테이블
 CREATE TABLE user_table (
