@@ -19,13 +19,13 @@
   
   
 	<div class="container">
+		<div class="table_arrange">
 	<form:form action="${root }order/modify" method="post" modelAttribute="modifyOrderBean">
 		
-		<div style=background:white;margin:0px>
+<!-- 		<div style=background:white;margin:0px> -->
 		<div class="table_title">
 		<h1>주문조회</h1>
 		</div>
-		<div class="table_arrange">
 			<div class="input-group mb-3">
 				<table>
 					<tr>
@@ -117,9 +117,9 @@
 		<input type="submit" class="btn btn-primary" value="수정"/>
 		<input type="button" class="btn btn-dark" value="뒤로가기" onclick="history.back();"/>
 		</div>
-		</div>
-	</div>
 	</form:form>
+		</div>
+<!-- 	</div> -->
 	</div>
 </div>
 

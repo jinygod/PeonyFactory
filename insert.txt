@@ -1,4 +1,4 @@
-INSERT
+--INSERT
 
 -- 메뉴테이블 데이터
 INSERT INTO menu_table(menu_idx, menu_title, menu_eng, menu_content) values (1, '품목관리', 'product', '제품 조회부터 수정 및 관리가 가능한 메뉴입니다');
