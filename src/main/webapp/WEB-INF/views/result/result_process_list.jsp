@@ -2,7 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 <c:set var='root' value="${pageContext.request.contextPath}/"/>
+
+<c:set var="chartData08" value="${ResultProcess08List}" />
+<c:set var="chartLen"  value="${fn:length(chartData08)}" />
+
 <!DOCTYPE html>
 <html lang="en" style="height: 100%">
 <head>
@@ -49,6 +54,10 @@
     
     var option;
 
+    var chartdata08 = new Array();
+    <c:forEach var="item" items="${chartData08}">
+    	chartdata08.push("${item}")
+    </c:forEach>
     
     option = {
   title: {
@@ -85,7 +94,8 @@
     {
       name: '재단',
       type: 'line',
-      data: [1, 3, 30]
+      // data: [1, 3, 30]
+      data: chartdata08
     },
     {
       name: '재봉',
