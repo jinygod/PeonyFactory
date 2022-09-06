@@ -89,7 +89,7 @@
     	})();
     	option = {
     	  title: {
-    	    text: '생산실적'
+    	    text: '실시간생산실적'
     	  },
     	  tooltip: {
     	    trigger: 'axis',

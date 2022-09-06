@@ -103,9 +103,9 @@ public class OrderController {
 			
 		String[] ajaxMsg = request.getParameterValues("valueArr");
 		int size = ajaxMsg.length;
-//		for(int i=0; i<size; i++) {
-//			service.approve(ajaxMsg[i]);
-//		}
+		for(int i=0; i<size; i++) {
+			service.approve(ajaxMsg[i]);
+		}
 		return "redirect:order/order_list";
 		
 	
