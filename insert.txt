@@ -20,9 +20,9 @@ insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_t
 insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng) values(4,'공정관리', 'process', 9,'공정등록','process_reg');
 insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng) values(4,'공정관리', 'process', 10,'공정조회','process_list');
 insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng) values(4,'공정관리', 'process', 11,'품목별공정정보','process_info');
-insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng) values(5,'실적관리', 'result', 12,'품목별생산실적조회','result_product_list');
-insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng) values(5,'실적관리', 'result', 13,'공정별생산실적조회','result_process_list');
-insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng) values(5,'실적관리', 'result', 14,'에러현황조회','result_error');
+insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng) values(5,'실적관리', 'result', 12,'생산실적조회','result_total_produce');
+insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng) values(5,'실적관리', 'result', 13,'공정별불량률조회','result_process_error');
+insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng) values(5,'실적관리', 'result', 14,'품목별생산량조회','result_product_total');
 insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng) values(5,'실적관리', 'result', 15,'실적보고서','result_report');
 
 -- 품목테이블 데이터

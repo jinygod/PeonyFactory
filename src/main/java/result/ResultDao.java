@@ -6,17 +6,25 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import produce.ProduceBean;
-
 @Repository
 public class ResultDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	// 
-	public List<ProduceBean> getResultProcessList(ProduceBean produceBean) {
-		return sqlSessionTemplate.selectList("result.getResultProcessList", produceBean);
+	public ResultBean getResultProcessList(ResultBean resultBean) {
+		return sqlSessionTemplate.selectOne("result.getResultProcessList", resultBean);
 	}
 	
+	public List<ResultBean> getResultProcessSummary(ResultBean resultBean) {
+		return sqlSessionTemplate.selectList("result.getResultProcessSummary", resultBean);
+	}
+	
+	public ResultBean getResultProductTotalCnt(ResultBean resultBean) {
+		return sqlSessionTemplate.selectOne("result.getResultProductTotalCnt", resultBean);
+	}
+	
+	public List<ResultBean> getResultProductTotalSummary(ResultBean resultBean) {
+		return sqlSessionTemplate.selectList("result.getResultProductTotalSummary", resultBean);
+	}
 }
