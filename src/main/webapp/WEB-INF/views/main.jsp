@@ -1,10 +1,3 @@
-<!-- 
-
-수정사항 "업데이트" 표기 
-
-이미지 클릭시 페이지 이동으로 변경하였으나 이미지 위치 센터 조정이 필요
- -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -127,7 +120,6 @@
 				</li>
 			</c:if>
 			</c:forEach>
-
 		</ul>
 	</div>
 	
@@ -172,13 +164,5 @@
 <footer>
 	<c:import url="/WEB-INF/views/include/bottom_info.jsp"/>
 </footer>
-<!-- 	<div class="footer"> -->
-<!-- 		<div class="footer-first">LOGO</div> -->
-<!-- 		<div class="footer-last"> -->
-<!-- 			Co. Team division3 <br> Addr. 경기도 성남시 중원구 성남동 3219번지 KR 아트팰리스 4호 -->
-<!-- 			5층 <br> 031-751-3688 <br> COPYRIGHT 2022. Team division3. -->
-<!-- 			ALL RIGHT RESERVED. -->
-<!-- 		</div> -->
-<!-- 	</div> -->
 
 </html>

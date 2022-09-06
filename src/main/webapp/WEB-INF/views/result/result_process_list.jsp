@@ -5,8 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 <c:set var='root' value="${pageContext.request.contextPath}/"/>
 
-<c:set var="chartData08" value="${ResultProcess08List}" />
-<c:set var="chartLen"  value="${fn:length(chartData08)}" />
+<c:set var="chartData" value="${ResultProcessList}" />
+<c:set var="chartLen"  value="${fn:length(chartData)}" />
 
 <!DOCTYPE html>
 <html lang="en" style="height: 100%">
@@ -54,10 +54,10 @@
     
     var option;
 
-    var chartdata08 = new Array();
-    <c:forEach var="item" items="${chartData08}">
-    	chartdata08.push("${item}")
-    </c:forEach>
+//     var chartdata = new Array();
+//     <c:forEach var="item" items="${chartData}">
+//     	chartdata.push("${item.produce_processrate}")
+//     </c:forEach>
     
     option = {
   title: {
@@ -94,22 +94,17 @@
     {
       name: '재단',
       type: 'line',
-      // data: [1, 3, 30]
-      data: chartdata08
+      data: [15, 22, 9]
     },
     {
       name: '재봉',
       type: 'line',
-      data: [35, 50, 4]
+      data: [5, 4, 20]
     },
     {
       name: '포장',
       type: 'line',
-      data: [
-        1 / 2,
-        1 / 4,
-        1 / 8,
-      ]
+      data: [8, 7, 9]
     }
   ]
 };

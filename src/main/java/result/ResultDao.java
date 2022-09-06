@@ -14,19 +14,9 @@ public class ResultDao {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	// 07월 불량+손실수량 합계 select
-	public List<ProduceBean> getResultProcess07List(ProduceBean produceBean) {
-		return sqlSessionTemplate.selectList("result.getResultProcess07List", produceBean);
-	}
-	
-	// 08월 불량+손실수량 합계 select
-	public List<ProduceBean> getResultProcess08List(ProduceBean produceBean) {
-		return sqlSessionTemplate.selectList("result.getResultProcess08List", produceBean);
-	}
-	
-	// 09월 불량+손실수량 합계 select
-	public List<ProduceBean> getResultProcess09List(ProduceBean produceBean) {
-		return sqlSessionTemplate.selectList("result.getResultProcess09List", produceBean);
+	// 
+	public List<ProduceBean> getResultProcessList(ProduceBean produceBean) {
+		return sqlSessionTemplate.selectList("result.getResultProcessList", produceBean);
 	}
 	
 }

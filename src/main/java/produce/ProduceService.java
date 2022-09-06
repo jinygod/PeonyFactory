@@ -31,13 +31,13 @@ public class ProduceService {
 	}
 	
 	// 주문승인(미승인->승인)
-	public void approveOrder(ProduceBean approveProduceBean) {
-		produceDao.approveOrder(approveProduceBean);
+	public void approveOrder(String order_idx) {
+		produceDao.approveOrder(order_idx);
 	}
 
 	// 주문승인(미승인->거절)
-	public void refuseOrder(String produce_idx) {
-		produceDao.refuseOrder(produce_idx);
+	public void refuseOrder(String order_idx) {
+		produceDao.refuseOrder(order_idx);
 	}
 
 	// 주문승인(미승인->전체승인)
