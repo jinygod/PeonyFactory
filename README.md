@@ -25,6 +25,8 @@ Views
 ![image](https://user-images.githubusercontent.com/103230840/188063505-a847cc09-89bf-4afd-a603-c55a2e7e370c.png)
 * 항목별 목록
 ![image](https://user-images.githubusercontent.com/103230840/188063647-d4e5035f-ca26-4c61-9e5c-905c6ff85060.png)
+* 실제 DB 연동하여 구현한 Chart (Echarts)
+![image](https://user-images.githubusercontent.com/103230840/188654789-754a0c02-4377-4c05-88d7-784eeb53e136.png)
 
 스케쥴 및 유즈케이스
 ===========
