@@ -6,27 +6,25 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import produce.ProduceBean;
-
 @Repository
 public class ResultDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	// 07월 불량+손실수량 합계 select
-	public List<ProduceBean> getResultProcess07List(ProduceBean produceBean) {
-		return sqlSessionTemplate.selectList("result.getResultProcess07List", produceBean);
+	public ResultBean getResultProcessList(ResultBean resultBean) {
+		return sqlSessionTemplate.selectOne("result.getResultProcessList", resultBean);
 	}
 	
-	// 08월 불량+손실수량 합계 select
-	public List<ProduceBean> getResultProcess08List(ProduceBean produceBean) {
-		return sqlSessionTemplate.selectList("result.getResultProcess08List", produceBean);
+	public List<ResultBean> getResultProcessSummary(ResultBean resultBean) {
+		return sqlSessionTemplate.selectList("result.getResultProcessSummary", resultBean);
 	}
 	
-	// 09월 불량+손실수량 합계 select
-	public List<ProduceBean> getResultProcess09List(ProduceBean produceBean) {
-		return sqlSessionTemplate.selectList("result.getResultProcess09List", produceBean);
+	public ResultBean getResultProductTotalCnt(ResultBean resultBean) {
+		return sqlSessionTemplate.selectOne("result.getResultProductTotalCnt", resultBean);
 	}
 	
+	public List<ResultBean> getResultProductTotalSummary(ResultBean resultBean) {
+		return sqlSessionTemplate.selectList("result.getResultProductTotalSummary", resultBean);
+	}
 }

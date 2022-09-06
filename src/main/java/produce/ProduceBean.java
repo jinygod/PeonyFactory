@@ -28,6 +28,7 @@ public class ProduceBean {
 	private int produce_badcnt;
 	private String produce_processrate;
 	
+	
 	public String getOrder_idx() {
 		return order_idx;
 	}
@@ -163,5 +164,6 @@ public class ProduceBean {
 	public void setOrder_check(String order_check) {
 		this.order_check = order_check;
 	}
+	
 	
 }

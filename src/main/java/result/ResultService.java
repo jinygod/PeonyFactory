@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import produce.ProduceBean;
-
 @Service
 public class ResultService {
 
@@ -15,21 +13,26 @@ public class ResultService {
 	
 
 	// 생산현황조회
-	public List<ProduceBean> getResultProcess07List(ProduceBean produceBean) {
+	public ResultBean getResultProcessList(ResultBean resultBean) {
 		
-		return resultDao.getResultProcess07List(produceBean);
+		return resultDao.getResultProcessList(resultBean);
 	}
 	
-	// 생산현황조회
-	public List<ProduceBean> getResultProcess08List(ProduceBean produceBean) {
+	// 에러현황테이블
+	public List<ResultBean> getResultProcessSummary(ResultBean resultBean) {
 		
-		return resultDao.getResultProcess08List(produceBean);
+		return resultDao.getResultProcessSummary(resultBean);
 	}
 	
-	// 생산현황조회
-	public List<ProduceBean> getResultProcess09List(ProduceBean produceBean) {
+	// 품목별 총 생산량 조회
+	public ResultBean getResultProductTotalCnt(ResultBean resultBean) {
 		
-		return resultDao.getResultProcess09List(produceBean);
+		return resultDao.getResultProductTotalCnt(resultBean);
 	}
-
+	
+	// 품목별 생산량 관련 테이블
+	public List<ResultBean> getResultProductTotalSummary(ResultBean resultBean) {
+		
+		return resultDao.getResultProductTotalSummary(resultBean);
+	}
 }

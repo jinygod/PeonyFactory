@@ -10,6 +10,7 @@
 	<meta charset="UTF-8">
 	<title>주문승인</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="${root}style.css">
 <script type="text/javascript">
@@ -19,59 +20,59 @@
 	}
 	
 	$(function(){
-		var chkObj = document.getElementsByName("RowCheck");
-		var rowCnt = chkObj.length;
-		
-		$("input[name='allCehck']").click(function(){
-			var chk_listArr = ${"input[name='RowCheck']");
-			for (var i=0; i<chk_listArr.length; i++){
-				chk_listArr[i].chekced = this.checked;
-			}
-		});
-		$("input[name='RowCheck']").click(function(){
-			if($("input[name='RowCheck']:checked").length == rowCnt){
-				$("input[name='allCheck']")[0].checked = true;
-			}
-			else{
-				$("input[name='allCheck']")[0].checked = false;
-			}
-			});
-		});
-		
-		function checkbox(){
-			var url = "approve"	
-			var valueArr = new Array();
-			var list = $("input[name='RowCheck']");
-			for(var i = 0; i < list.length; i++){
-				if(list[i].checked){ // 선택되어있으면 배열에 값을 저장함
-					valueArr.push(list[i].value);
-				}
-			}
-			if(valueArr.length == 0){
-				alert("하나 이상 선택해주세요");
-			}
-			else{
-				var chk = confirm("정말 승인하시겠습니까?");
-				$.ajax({
-					url : url,
-					type : 'POST'
-					traditional : true,
-					data : {
-						valueArr : valueArr
-					},
-					success: function(jdata){
-						if(jdata = 1){
-							alert("승인 완료");
-							location.replace("list")
-						}
-						else{
-							alert("승인 실패");
-						}
-					}
-				});
-			}
-		}
-	}
+	    var chkObj = document.getElementsByName("RowCheck");
+	    var rowCnt = chkObj.length;
+	    
+	    $("input[name='allCheck']").click(function(){
+	        var chk_listArr = $("input[name='RowCheck']");
+	        for (var i=0; i<chk_listArr.length; i++){
+	            chk_listArr[i].chekced = this.checked;
+	        }
+	    });
+	    $("input[name='RowCheck']").click(function(){
+	        if($("input[name='RowCheck']:checked").length == rowCnt){
+	            $("input[name='allCheck']")[0].checked = true;
+	        }
+	        else{
+	            $("input[name='allCheck']")[0].checked = false;
+	        }
+	        });
+	    });
+	    
+	    function approve(){
+	        var url = "approve"	
+	        var valueArr = new Array();
+	        var list = $("input[name='RowCheck']");
+	        for(var i = 0; i < list.length; i++){
+	            if(list[i].checked){ // 선택되어있으면 배열에 값을 저장함
+	                valueArr.push(list[i].value);
+	            }
+	        }
+	        if(valueArr.length == 0){
+	            alert("하나 이상 선택해주세요");
+	        }
+	        else{
+	            var chk = confirm("정말 승인하시겠습니까?");
+	            $.ajax({
+	                url : url,
+	                type : 'POST'
+	                traditional : true,
+	                data : {
+	                    valueArr : valueArr
+	                },
+	                success: function(jdata){
+	                    if(jdata = 1){
+	                        alert("승인 완료");
+	                        location.replace("list")
+	                    }
+	                    else{
+	                        alert("승인 실패");
+	                    }
+	                }
+	            });
+	        }
+	    }
+
 </script>
 </head>
   <body>
@@ -112,7 +113,7 @@
 					</tr>
 					<c:forEach var="obj" items="${UnapprovedOrderList }" varStatus="status">
 					<tr>
-						<td><input name ="RowCheck" type="checkbox" value="${obj.order_idx }"/></td>
+						<td><input name ="RowCheck" type="checkbox" id="RowCheck" value="${obj.order_idx }"/></td>
 						<td><input type="text" id="order_idx" name="order_idx" class="form-control" value="${obj.order_idx }" style="background-color:white" readonly></td>
 						<td><input type="text" id="order_shipment" name="order_shipment" class="form-control" value="${obj.order_shipment }" style="background-color:white" readonly></td>
 						<td><input type="text" id="client_idx" name="client_idx" class="form-control" value="${obj.client_idx }" style="background-color:white" readonly></td>

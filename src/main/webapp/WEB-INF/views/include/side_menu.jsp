@@ -54,9 +54,9 @@
 		</c:if>
 		<c:if test="${menu_idx == 5 }">
 			<ul>
-				<li class="nav-item"><a href="${root }result/result_product_list?menu_idx=${menu_idx}">품목별생산실적조회</a></li>
-				<li class="nav-item"><a href="${root }result/result_process_list?menu_idx=${menu_idx}">공정별생산실적조회</a></li>
-				<li class="nav-item"><a href="${root }result/error?menu_idx=${menu_idx}">에러현황조회</a></li>
+				<li class="nav-item"><a href="${root }result/result_total_produce?menu_idx=${menu_idx}">생산실적조회</a></li>
+				<li class="nav-item"><a href="${root }result/result_process_error?menu_idx=${menu_idx}">공정별불량률조회</a></li>
+				<li class="nav-item"><a href="${root }result/result_product_total?menu_idx=${menu_idx}">품목별생산량조회</a></li>
 				<li class="nav-item"><a href="${root }result/report?menu_idx=${menu_idx}">실적보고서</a></li>
 			</ul>
 		</c:if>

@@ -20,9 +20,9 @@ insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_t
 insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng) values(4,'공정관리', 'process', 9,'공정등록','process_reg');
 insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng) values(4,'공정관리', 'process', 10,'공정조회','process_list');
 insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng) values(4,'공정관리', 'process', 11,'품목별공정정보','process_info');
-insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng) values(5,'실적관리', 'result', 12,'품목별생산실적조회','result_product_list');
-insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng) values(5,'실적관리', 'result', 13,'공정별생산실적조회','result_process_list');
-insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng) values(5,'실적관리', 'result', 14,'에러현황조회','result_error');
+insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng) values(5,'실적관리', 'result', 12,'생산실적조회','result_total_produce');
+insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng) values(5,'실적관리', 'result', 13,'공정별불량률조회','result_process_error');
+insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng) values(5,'실적관리', 'result', 14,'품목별생산량조회','result_product_total');
 insert into submenu_table(menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng) values(5,'실적관리', 'result', 15,'실적보고서','result_report');
 
 -- 품목테이블 데이터
@@ -117,3 +117,196 @@ insert into pop_table values(2005,3001, 'slacks','포장','version02','30',5,3,2
 insert into pop_table values(2006,1001, 'slacks','재단','version02','30',6,5,4,5);
 insert into pop_table values(2006,2001, 'slacks','재봉','version02','30',6,1,1,6);
 insert into pop_table values(2006,3001, 'slacks','포장','version02','30',9,2,6,3);
+
+-- 작업지시서 데이터
+insert into orderwork_table values(51,'재단',1001,1001,'20220701','20220801','31',53,'BOX',495000,26235000,'20220701','생산완료');
+
+insert into orderwork_table values(52,'재봉',1002,1001,'20220703','20220803','31',72,'BOX',220000,15840000,'20220703','생산완료');
+
+insert into orderwork_table values(53,'포장',1003,1001,'20220705','20220805','31',90,'BOX',576000,51840000,'20220705','생산완료');
+
+insert into orderwork_table values(54,'재단',1004,1002,'20220707','20220808','31',4,'BOX',558000,2232000,'20220707','생산완료');
+
+insert into orderwork_table values(55,'재봉',1005,1002,'20220709','20220809','31',68,'BOX',691000,46988000,'20220709','생산완료');
+
+insert into orderwork_table values(56,'포장',1006,1002,'20220711','20220811','31',59,'BOX',380000,22420000,'20220711','생산완료');
+
+insert into orderwork_table values(57,'재단',2001,2001,'20220713','20220813','31',83,'BOX',652000,54116000,'20220713','생산완료');
+
+insert into orderwork_table values(58,'재봉',2002,2001,'20220715','20220815','31',74,'BOX',320000,23680000,'20220715','생산완료');
+
+insert into orderwork_table values(59,'포장',2003,2001,'20220717','20220817','31',49,'BOX',207000,10143000,'20220717','생산완료');
+
+insert into orderwork_table values(60,'재단',2004,2002,'20220719','20220819','31',38,'BOX',94000,3572000,'20220719','생산완료');
+
+insert into orderwork_table values(61,'재봉',2005,2002,'20220721','20220821','31',91,'BOX',229000,20839000,'20220721','생산완료');
+
+insert into orderwork_table values(62,'포장',2006,2002,'20220723','20220823','31',46,'BOX',166000,7636000,'20220723','생산완료');
+
+insert into orderwork_table values(63,'재단',1001,1001,'20220725','20220825','31',13,'BOX',4000,52000,'20220725','생산완료');
+
+insert into orderwork_table values(64,'재봉',1002,1001,'20220727','20220827','31',74,'BOX',233000,17242000,'20220727','생산완료');
+
+insert into orderwork_table values(65,'포장',1003,1001,'20220729','20220829','31',77,'BOX',781000,60137000,'20220729','생산완료');
+
+insert into orderwork_table values(66,'재단',1004,1002,'20220731','20220831','31',39,'BOX',337000,13143000,'20220731','생산완료');
+
+insert into orderwork_table values(67,'재봉',1005,1002,'20220801','20220901','31',83,'BOX',280000,23240000,'20220801','생산완료');
+
+insert into orderwork_table values(68,'포장',1006,1002,'20220803','20220903','31',65,'BOX',406000,26390000,'20220803','생산완료');
+
+insert into orderwork_table values(69,'재단',2001,2001,'20220805','20220905','31',35,'BOX',323000,11305000,'20220805','생산완료');
+
+insert into orderwork_table values(70,'재봉',2002,2001,'20220807','20220907','31',64,'BOX',104000,6656000,'20220807','생산완료');
+
+insert into orderwork_table values(71,'포장',2003,2001,'20220809','20220909','31',81,'BOX',757000,61317000,'20220809','생산완료');
+
+insert into orderwork_table values(72,'재단',2004,2002,'20220811','20220911','31',13,'BOX',838000,10894000,'20220811','생산완료');
+
+insert into orderwork_table values(73,'재봉',2005,2002,'20220813','20220913','31',78,'BOX',320000,24960000,'20220813','생산완료');
+
+insert into orderwork_table values(74,'포장',2006,2002,'20220815','20220915','31',44,'BOX',187000,8228000,'20220815','생산완료');
+
+insert into orderwork_table values(75,'재단',1001,1001,'20220817','20220917','31',31,'BOX',921000,28551000,'20220817','생산완료');
+
+insert into orderwork_table values(76,'재봉',1002,1001,'20220819','20220919','31',39,'BOX',153000,5967000,'20220819','생산완료');
+
+insert into orderwork_table values(77,'포장',1003,1001,'20220821','20220921','31',26,'BOX',71000,1846000,'20220821','생산완료');
+
+insert into orderwork_table values(78,'재단',1004,1002,'20220823','20220923','31',7,'BOX',267000,1869000,'20220823','생산완료');
+
+insert into orderwork_table values(79,'재봉',1005,1002,'20220825','20220925','31',66,'BOX',665000,43890000,'20220825','생산완료');
+
+insert into orderwork_table values(80,'포장',1006,1002,'20220827','20220927','31',13,'BOX',330000,4290000,'20220827','생산완료');
+
+insert into orderwork_table values(81,'재단',2001,2001,'20220829','20220929','31',49,'BOX',216000,10584000,'20220829','생산완료');
+
+insert into orderwork_table values(82,'재봉',2002,2001,'20220831','20220931','31',46,'BOX',331000,15226000,'20220831','생산완료');
+
+insert into orderwork_table values(83,'포장',2003,2001,'20220902','20221002','30',67,'BOX',25000,1675000,'20220902','생산완료');
+
+insert into orderwork_table values(84,'재단',2004,2002,'20220904','20221004','30',66,'BOX',804000,53064000,'20220904','생산완료');
+
+insert into orderwork_table values(85,'재봉',2005,2002,'20220906','20221006','30',9,'BOX',69000,621000,'20220906','생산완료');
+
+insert into orderwork_table values(86,'포장',2006,2002,'20220908','20221008','30',33,'BOX',208000,6864000,'20220908','생산완료');
+
+insert into orderwork_table values(87,'재단',1001,1001,'20220910','20221010','30',80,'BOX',633000,50640000,'20220910','생산완료');
+
+insert into orderwork_table values(88,'재봉',1002,1001,'20220912','20221012','30',9,'BOX',43000,387000,'20220912','생산완료');
+
+insert into orderwork_table values(89,'포장',1003,1001,'20220914','20221014','30',89,'BOX',944000,84016000,'20220914','생산완료');
+
+insert into orderwork_table values(90,'재단',1004,1002,'20220916','20221016','30',55,'BOX',928000,51040000,'20220916','생산완료');
+
+insert into orderwork_table values(91,'재봉',1005,1002,'20220918','20221018','30',5,'BOX',431000,2155000,'20220918','생산완료');
+
+insert into orderwork_table values(92,'포장',1006,1002,'20220920','20221020','30',67,'BOX',806000,54002000,'20220920','생산완료');
+
+insert into orderwork_table values(93,'재단',2001,2001,'20220922','20221022','30',85,'BOX',492000,41820000,'20220922','생산완료');
+
+insert into orderwork_table values(94,'재봉',2002,2001,'20220924','20221024','30',91,'BOX',636000,57876000,'20220924','생산완료');
+
+insert into orderwork_table values(95,'포장',2003,2001,'20220926','20221026','30',54,'BOX',720000,38880000,'20220926','생산완료');
+
+insert into orderwork_table values(96,'재단',2004,2002,'20220928','20221028','30',71,'BOX',737000,52327000,'20220928','생산완료');
+
+insert into orderwork_table values(97,'재봉',2005,2002,'20220930','20221030','30',14,'BOX',227000,3178000,'20220930','생산완료');
+
+ 
+
+ 
+-- 생산테이블 데이터
+insert into produce_table values(17,51,'재단','20220701',1001,1001,'20220701','20220801','31',53,'BOX',495000,26235000,54,6,5,'101%','생산완료');
+
+insert into produce_table values(18,52,'재봉','20220703',1002,1001,'20220703','20220803','31',72,'BOX',220000,15840000,78,5,8,'108%','생산완료');
+
+insert into produce_table values(19,53,'포장','20220705',1003,1001,'20220705','20220805','31',90,'BOX',576000,51840000,96,5,7,'106%','생산완료');
+
+insert into produce_table values(20,54,'재단','20220707',1004,1002,'20220707','20220808','31',4,'BOX',558000,2232000,7,8,7,'175%','생산완료');
+
+insert into produce_table values(21,55,'재봉','20220709',1005,1002,'20220709','20220809','31',68,'BOX',691000,46988000,69,3,5,'101%','생산완료');
+
+insert into produce_table values(22,56,'포장','20220711',1006,1002,'20220711','20220811','31',59,'BOX',380000,22420000,68,4,0,'115%','생산완료');
+
+insert into produce_table values(23,57,'재단','20220713',2001,2001,'20220713','20220813','31',83,'BOX',652000,54116000,92,1,6,'110%','생산완료');
+
+insert into produce_table values(24,58,'재봉','20220715',2002,2001,'20220715','20220815','31',74,'BOX',320000,23680000,75,2,1,'101%','생산완료');
+
+insert into produce_table values(25,59,'포장','20220717',2003,2001,'20220717','20220817','31',49,'BOX',207000,10143000,55,2,9,'112%','생산완료');
+
+insert into produce_table values(26,60,'재단','20220719',2004,2002,'20220719','20220819','31',38,'BOX',94000,3572000,39,8,5,'102%','생산완료');
+
+insert into produce_table values(27,61,'재봉','20220721',2005,2002,'20220721','20220821','31',91,'BOX',229000,20839000,95,7,4,'104%','생산완료');
+
+insert into produce_table values(28,62,'포장','20220723',2006,2002,'20220723','20220823','31',46,'BOX',166000,7636000,46,2,4,'100%','생산완료');
+
+insert into produce_table values(29,63,'재단','20220725',1001,1001,'20220725','20220825','31',13,'BOX',4000,52000,16,7,9,'123%','생산완료');
+
+insert into produce_table values(30,64,'재봉','20220727',1002,1001,'20220727','20220827','31',74,'BOX',233000,17242000,76,9,4,'102%','생산완료');
+
+insert into produce_table values(31,65,'포장','20220729',1003,1001,'20220729','20220829','31',77,'BOX',781000,60137000,77,5,8,'100%','생산완료');
+
+insert into produce_table values(32,66,'재단','20220731',1004,1002,'20220731','20220831','31',39,'BOX',337000,13143000,48,3,7,'123%','생산완료');
+
+insert into produce_table values(33,67,'재봉','20220801',1005,1002,'20220801','20220901','31',83,'BOX',280000,23240000,84,6,4,'101%','생산완료');
+
+insert into produce_table values(34,68,'포장','20220803',1006,1002,'20220803','20220903','31',65,'BOX',406000,26390000,70,9,0,'107%','생산완료');
+
+insert into produce_table values(35,69,'재단','20220805',2001,2001,'20220805','20220905','31',35,'BOX',323000,11305000,44,0,9,'125%','생산완료');
+
+insert into produce_table values(36,70,'재봉','20220807',2002,2001,'20220807','20220907','31',64,'BOX',104000,6656000,73,4,4,'114%','생산완료');
+
+insert into produce_table values(37,71,'포장','20220809',2003,2001,'20220809','20220909','31',81,'BOX',757000,61317000,89,6,6,'109%','생산완료');
+
+insert into produce_table values(38,72,'재단','20220811',2004,2002,'20220811','20220911','31',13,'BOX',838000,10894000,18,6,9,'138%','생산완료');
+
+insert into produce_table values(39,73,'재봉','20220813',2005,2002,'20220813','20220913','31',78,'BOX',320000,24960000,83,0,5,'106%','생산완료');
+
+insert into produce_table values(40,74,'포장','20220815',2006,2002,'20220815','20220915','31',44,'BOX',187000,8228000,49,0,8,'111%','생산완료');
+
+insert into produce_table values(41,75,'재단','20220817',1001,1001,'20220817','20220917','31',31,'BOX',921000,28551000,31,5,9,'100%','생산완료');
+
+insert into produce_table values(42,76,'재봉','20220819',1002,1001,'20220819','20220919','31',39,'BOX',153000,5967000,42,7,5,'107%','생산완료');
+
+insert into produce_table values(43,77,'포장','20220821',1003,1001,'20220821','20220921','31',26,'BOX',71000,1846000,33,5,2,'126%','생산완료');
+
+insert into produce_table values(44,78,'재단','20220823',1004,1002,'20220823','20220923','31',7,'BOX',267000,1869000,10,5,2,'142%','생산완료');
+
+insert into produce_table values(45,79,'재봉','20220825',1005,1002,'20220825','20220925','31',66,'BOX',665000,43890000,75,5,0,'113%','생산완료');
+
+insert into produce_table values(46,80,'포장','20220827',1006,1002,'20220827','20220927','31',13,'BOX',330000,4290000,13,6,2,'100%','생산완료');
+
+insert into produce_table values(47,81,'재단','20220829',2001,2001,'20220829','20220929','31',49,'BOX',216000,10584000,58,0,7,'118%','생산완료');
+
+insert into produce_table values(48,82,'재봉','20220831',2002,2001,'20220831','20220931','31',46,'BOX',331000,15226000,47,1,0,'102%','생산완료');
+
+insert into produce_table values(49,83,'포장','20220902',2003,2001,'20220902','20221002','30',67,'BOX',25000,1675000,70,5,6,'104%','생산완료');
+
+insert into produce_table values(50,84,'재단','20220904',2004,2002,'20220904','20221004','30',66,'BOX',804000,53064000,66,7,7,'100%','생산완료');
+
+insert into produce_table values(51,85,'재봉','20220906',2005,2002,'20220906','20221006','30',9,'BOX',69000,621000,13,3,7,'144%','생산완료');
+
+insert into produce_table values(52,86,'포장','20220908',2006,2002,'20220908','20221008','30',33,'BOX',208000,6864000,40,5,3,'121%','생산완료');
+
+insert into produce_table values(53,87,'재단','20220910',1001,1001,'20220910','20221010','30',80,'BOX',633000,50640000,86,9,5,'107%','생산완료');
+
+insert into produce_table values(54,88,'재봉','20220912',1002,1001,'20220912','20221012','30',9,'BOX',43000,387000,15,8,8,'166%','생산완료');
+
+insert into produce_table values(55,89,'포장','20220914',1003,1001,'20220914','20221014','30',89,'BOX',944000,84016000,91,4,7,'102%','생산완료');
+
+insert into produce_table values(56,90,'재단','20220916',1004,1002,'20220916','20221016','30',55,'BOX',928000,51040000,55,0,8,'100%','생산완료');
+
+insert into produce_table values(57,91,'재봉','20220918',1005,1002,'20220918','20221018','30',5,'BOX',431000,2155000,7,8,8,'140%','생산완료');
+
+insert into produce_table values(58,92,'포장','20220920',1006,1002,'20220920','20221020','30',67,'BOX',806000,54002000,71,2,8,'105%','생산완료');
+
+insert into produce_table values(59,93,'재단','20220922',2001,2001,'20220922','20221022','30',85,'BOX',492000,41820000,86,2,7,'101%','생산완료');
+
+insert into produce_table values(60,94,'재봉','20220924',2002,2001,'20220924','20221024','30',91,'BOX',636000,57876000,100,9,5,'109%','생산완료');
+
+insert into produce_table values(61,95,'포장','20220926',2003,2001,'20220926','20221026','30',54,'BOX',720000,38880000,58,4,8,'107%','생산완료');
+
+insert into produce_table values(62,96,'재단','20220928',2004,2002,'20220928','20221028','30',71,'BOX',737000,52327000,72,3,8,'101%','생산완료');
+
+insert into produce_table values(63,97,'재봉','20220930',2005,2002,'20220930','20221030','30',14,'BOX',227000,3178000,18,5,4,'128%','생산완료');

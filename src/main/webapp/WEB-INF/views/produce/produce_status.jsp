@@ -7,6 +7,7 @@
 <html>
   <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width-device-width", initial-scale="1">
 	<title>생산현황조회</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
@@ -50,7 +51,7 @@
   <c:import url="/WEB-INF/views/include/top_menu.jsp"/>
   <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
   
-	<div class="container">
+<!-- 	<div class="container"> -->
 	<div class="table_arrange">
 	<form:form action="${root }produce/produce_status_pro?menu_idx=${menu_idx }" method="post" modelAttribute="produceStatusBean" onsubmit="return chkRate();">
 		
@@ -156,7 +157,7 @@
 		</div>
 	</form:form>
 		</div>
-	</div>
+<!-- 	</div> -->
 <%-- <c:import url="/WEB-INF/views/include/bottom_info.jsp"/> --%>
   
   </body>

@@ -3,14 +3,13 @@ package order;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -99,4 +98,16 @@ public class OrderController {
 		return "order/order_list";
 	}
 	
+	@RequestMapping(value="/approve")
+	public String approve(HttpServletRequest request) {
+			
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+//		for(int i=0; i<size; i++) {
+//			service.approve(ajaxMsg[i]);
+//		}
+		return "redirect:order/order_list";
+		
+	
+}
 }

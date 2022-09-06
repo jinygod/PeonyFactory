@@ -1,9 +1,4 @@
-<!-- 
-수정사항 업데이트 표기 
 
-거래처는 삭제하면 안됨 삭제기능 구현 검토 불필요
-
- -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

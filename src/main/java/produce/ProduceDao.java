@@ -22,8 +22,8 @@ public class ProduceDao {
 	}
 	
 	// 주문승인(미승인->승인)
-	public void approveOrder(ProduceBean approveOrderBean) {
-		sqlSessionTemplate.update("produce.approveOrder", approveOrderBean);
+	public void approveOrder(String order_idx) {
+		sqlSessionTemplate.update("produce.approveOrder", order_idx);
 	}
 	// 주문승인(미승인->거절)
 	public void refuseOrder(String order_idx) {

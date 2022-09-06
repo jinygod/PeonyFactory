@@ -19,7 +19,7 @@
   
   
 	<div class="container">
-		<div class="table_arrange">
+		<div class="table_arrange_orderlist">
 	<form:form action="${root }order/modify" method="post" modelAttribute="modifyOrderBean">
 		
 <!-- 		<div style=background:white;margin:0px> -->

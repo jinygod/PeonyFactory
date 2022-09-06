@@ -1,3 +1,4 @@
+
 -- CREATE TABLE
 
 -- 회원 테이블
@@ -115,7 +116,7 @@ create table submenu_table(
 -- 작업지시서테이블
 create table orderwork_table(
     orderwork_idx number constraint orderwork_pk primary key,
-    process_name varchar2(20) not null default '재단',
+    process_name varchar2(20) default '재단' not null,
     product_idx number not null,
 	product_modelno number not null, 
 	order_regdate varchar2(20) not null,
@@ -144,29 +145,29 @@ order_cnt number not null,
 order_unit varchar2(20) not null,
 order_unit_price number not null,
 order_amt number not null,
-produce_cnt number not null default '0',
-produce_losscnt number not null default '0',
-produce_badcnt number not null default '0',
-produce_processrate number not null default '0',
+produce_cnt number default '0' not null,
+produce_losscnt number default '0'not null ,
+produce_badcnt number default '0' not null ,
+produce_processrate varchar2(20) not null,
 orderwork_status varchar(20),
 constraint pruduce_orderwork_fk foreign key (orderwork_idx) references  orderwork_table (orderwork_idx),
 constraint pruduce_product_fk foreign key (product_idx) references  product_table (product_idx));
 	
 -- 유저 시퀀스
 create sequence user_seq
-start with 1
+start with 1000
 increment by 1
 minvalue 1;
 
 -- 지시서 시퀀스
 create sequence orderwork_seq
-start with 1
+start with 100000
 increment by 1
 minvalue 1;
 
 -- 생산번호 시퀀스
 create sequence produce_seq
-start with 1
+start with 100000
 increment by 1
 minvalue 1;
 

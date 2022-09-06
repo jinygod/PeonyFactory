@@ -37,7 +37,7 @@ public class ProduceController {
 		model.addAttribute("order_idx", order_idx);
 		
 		if(order_approve.equals("승인")) {
-			produceService.approveOrder(approveOrderBean);
+			produceService.approveOrder(order_idx);
 			produceService.addOrderworkInfo(approveOrderBean);
 			return "redirect:/order/order_approve";
 		} else if(order_approve.equals("거절")) {
