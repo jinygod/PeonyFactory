@@ -13,8 +13,8 @@ public class ProduceDao {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	public void addOrderworkInfo(ProduceBean approveOrderBean) {
-		sqlSessionTemplate.insert("produce.addOrderworkInfo", approveOrderBean);
+	public void addOrderworkInfo(String order_idx) {
+		sqlSessionTemplate.insert("produce.addOrderworkInfo", order_idx);
 	}
 	
 	public void addOrderchkInfo(ProduceBean approveOrderBean) {

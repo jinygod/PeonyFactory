@@ -22,8 +22,8 @@ public class ProduceService {
 	@Autowired
 	private ProduceDao produceDao;
 	
-	public void addOrderworkInfo(ProduceBean approveOrderBean) {
-		produceDao.addOrderworkInfo(approveOrderBean);
+	public void addOrderworkInfo(String order_idx) {
+		produceDao.addOrderworkInfo(order_idx);
 	}
 	
 	public void addOrderchkInfo(ProduceBean approveOrderBean) {

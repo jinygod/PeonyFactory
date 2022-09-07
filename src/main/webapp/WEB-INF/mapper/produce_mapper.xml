@@ -4,34 +4,36 @@
 <mapper namespace="produce">
 	
 <!-- 	주문승인 -> orderwork_table에 insert  -->
-	<insert id="addOrderworkInfo" parameterType="produce.ProduceBean">
+	<insert id="addOrderworkInfo" parameterType="java.lang.String">
 		<![CDATA[
 			insert into orderwork_table(
-			orderwork_idx,
-			product_idx, 
-			product_modelno, 
-			order_regdate,
-			order_deadline,
-			order_exdate,
-			order_cnt,
-			order_unit,
-			order_unit_price,
-			order_amt,
-			orderwork_date,
-			orderwork_status)
-			values(
-			orderwork_seq.nextval,
-			#{product_idx}, 
-			#{product_modelno}, 
-			#{order_regdate},
-			#{order_deadline},
-			#{order_exdate},
-			#{order_cnt},
-			#{order_unit},
-			#{order_unit_price},
-			#{order_amt},
-			to_char(sysdate, 'YYYYMMDD'),
-			'주문승인')
+						orderwork_idx,
+						product_idx, 
+						product_modelno, 
+						order_regdate,
+						order_deadline,
+						order_exdate,
+						order_cnt,
+						order_unit,
+						order_unit_price,
+						order_amt,
+						orderwork_date,
+						orderwork_status)
+						(
+			select orderwork_seq.nextval,
+			            product_idx, 
+						product_modelno, 
+						order_regdate,
+						order_deadline,
+						order_exdate,
+						order_cnt,
+						order_unit,
+						order_unit_price,
+						order_amt,
+						to_char(sysdate, 'YYYYMMDD'),
+						'주문승인'
+						from order_table 
+						where order_idx= #{order_idx})
 		]]>
 	</insert>
 	
