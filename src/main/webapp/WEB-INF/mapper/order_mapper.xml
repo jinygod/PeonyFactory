@@ -68,6 +68,7 @@
 		]]>
 	</select>
 	
+	
 <!-- 	주문조회(승인완료) -->
 	<select id="getApprovedOrderList" resultType="order.OrderBean">
 		<![CDATA[

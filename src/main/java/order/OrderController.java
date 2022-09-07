@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import client.ClientBean;
 import menu.MenuBean;
 import process.PageBean;
+import produce.ProduceBean;
+import produce.ProduceService;
 import product.ProductBean;
 import product.ProductService;
 import user.UserBean;
@@ -29,6 +31,9 @@ public class OrderController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private ProduceService produceService;
 	
 	@Resource(name = "loginUserBean")
 	@Lazy
@@ -104,9 +109,11 @@ public class OrderController {
 		String[] ajaxMsg = request.getParameterValues("valueArr");
 		int size = ajaxMsg.length;
 		for(int i=0; i<size; i++) {
-			service.approve(ajaxMsg[i]);
+			produceService.approveOrder(ajaxMsg[i]);
+			produceService.addOrderworkInfo(ajaxMsg[i]);
 		}
-		return "redirect:order/order_list";
+		
+		return "redirect:order_approve";
 		
 	
 }

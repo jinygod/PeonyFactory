@@ -40,7 +40,7 @@
 	    });
 	    
 	    function approve(){
-	        var url = "approve"	
+	        var url = "approve";
 	        var valueArr = new Array();
 	        var list = $("input[name='RowCheck']");
 	        for(var i = 0; i < list.length; i++){
@@ -55,19 +55,13 @@
 	            var chk = confirm("정말 승인하시겠습니까?");
 	            $.ajax({
 	                url : url,
-	                type : 'POST'
+	                type : 'POST',
 	                traditional : true,
 	                data : {
 	                    valueArr : valueArr
 	                },
-	                success: function(jdata){
-	                    if(jdata = 1){
-	                        alert("승인 완료");
-	                        location.replace("list")
-	                    }
-	                    else{
-	                        alert("승인 실패");
-	                    }
+                    success: function(){
+                    	location.reload();
 	                }
 	            });
 	        }
@@ -107,8 +101,6 @@
 						<th><span class="input-group-text" id="basic-addon1">담당자</span></th>
 						<th><span class="input-group-text" id="basic-addon1" style="width:100px">등록일시</span></th>
 						<th><span class="input-group-text" id="basic-addon1">주문상태</span></th>
-						<th><span class="input-group-text" id="basic-addon1">승인</span></th>
-						<th><span class="input-group-text" id="basic-addon1">거절</span></th>
 						
 					</tr>
 					<c:forEach var="obj" items="${UnapprovedOrderList }" varStatus="status">
@@ -129,13 +121,13 @@
 						<td><input type="text" id="order_manager" name="order_manager" class="form-control" value="${obj.order_manager }" style="background-color:white" readonly></td>
 						<td><input type="text" id="order_date" name="order_date" class="form-control" value="${obj.order_date }" style="background-color:white" readonly></td>
 						<td><input type="text" id="order_status" name="order_status" class="form-control" value="${obj.order_status }" style="background-color:white" readonly></td>
-						<td><input type="button" value="승인" class="btn btn-primary" onClick="approve();"></td>
-						<td><input type="submit" id="order_approve" name="order_approve" class="btn btn-danger" value="거절"></td>
 					</tr>
 					</c:forEach>
 				</table>
 			</div>
 		<div class="button-arrange">
+		<input type="button" value="승인" class="btn btn-primary" onClick="approve();" >
+		<input type="submit" id="order_approve" name="order_approve" class="btn btn-danger" value="거절">
 		<input type="submit" name="order_approve" class="btn btn-primary" value="전체승인"/>
 		<input type="submit" name="order_approve" class="btn btn-danger" value="전체거절"/>
 		<input type="button" class="btn btn-dark" value="취소" onclick="history.back();"/>

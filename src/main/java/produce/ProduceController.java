@@ -38,7 +38,7 @@ public class ProduceController {
 		
 		if(order_approve.equals("승인")) {
 			produceService.approveOrder(order_idx);
-			produceService.addOrderworkInfo(approveOrderBean);
+//			produceService.addOrderworkInfo(approveOrderBean);
 			return "redirect:/order/order_approve";
 		} else if(order_approve.equals("거절")) {
 			produceService.refuseOrder(order_idx);
@@ -46,7 +46,7 @@ public class ProduceController {
 		} else if(order_approve.equals("전체승인")) {
 //			produceService.addOrderchkInfo(approveOrderBean);
 			produceService.approveAllOrder(approveOrderBean);
-			produceService.addOrderworkInfo(approveOrderBean);
+//			produceService.addOrderworkInfo(approveOrderBean);
 			return "redirect:/order/order_approve";
 		} else if(order_approve.equals("전체거절")) {
 			produceService.refuseAllOrder(approveOrderBean);
