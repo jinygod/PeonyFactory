@@ -31,37 +31,11 @@
 						order_unit_price,
 						order_amt,
 						to_char(sysdate, 'YYYYMMDD'),
-						'주문승인'
+						order_status
 						from order_table 
-						where order_idx= #{order_idx})
+						where order_idx= #{order_idx} and order_status='주문승인')
 		]]>
 	</insert>
-	
-	<update id="approveOrder" parameterType="java.lang.String">
-		<![CDATA[
-			update order_table set order_status = '승인완료'
-			where order_idx=#{order_idx}
-		]]>
-	</update>
-<!-- 	주문승인(미승인->거절) -->
-	<update id="refuseOrder" parameterType="java.lang.String">
-		<![CDATA[
-			update order_table set order_status = '거절'
-			where order_idx=#{order_idx}
-		]]>
-	</update>	
-<!-- 	주문승인(미승인->전체승인) -->
-	<update id="approveAllOrder" parameterType="produce.ProduceBean">
-		<![CDATA[
-			update order_table set order_status = '승인완료'
-		]]>
-	</update>
-<!-- 	주문승인(미승인->전체거절) -->
-	<update id="refuseAllOrder" parameterType="produce.ProduceBean">
-		<![CDATA[
-			update order_table set order_status = '거절'
-		]]>
-	</update>
 	
 <!-- 	작업지시서 -->
 	<select id="getOrderworkList" resultType="produce.ProduceBean">
@@ -83,19 +57,22 @@
 		]]>
 	</select>
 <!-- 		작업지시서 작업요청 -> produce_table에 insert -->
-		<insert id="addProduceInfo" parameterType="produce.ProduceBean">
+		<insert id="addProduceInfo" parameterType="java.lang.String">
 			<![CDATA[
 				insert into produce_table (produce_idx, orderwork_idx, process_name, orderwork_date, product_idx, product_modelno,
 										   order_regdate, order_deadline, order_exdate, order_cnt, order_unit, order_unit_price, order_amt, orderwork_status)
-							       values (produce_seq.nextval, #{orderwork_idx}, #{process_name}, #{orderwork_date}, #{product_idx}, #{product_modelno}, 
-							               #{order_regdate}, #{order_deadline}, #{order_exdate}, #{order_cnt}, #{order_unit}, #{order_unit_price}, #{order_amt}, '생산진행')
+										select produce_seq.nextval, orderwork_idx, process_name, orderwork_date, product_idx, product_modelno, 
+							               order_regdate, order_deadline, order_exdate, order_cnt, order_unit, order_unit_price, order_amt, orderwork_status
+										from orderwork_table
+										where orderwork_idx = #{orderwork_idx}
 			]]>
 		</insert>
 		
 <!-- 	orderwork_table 작업상태 '주문승인' -> '생산진행'-->
-	<update id="updateOrderworkStatus" parameterType="produce.ProduceBean">
+	<update id="updateOrderworkStatus" parameterType="java.lang.String">
 		<![CDATA[
 			update orderwork_table set orderwork_status = '생산진행'
+			where orderwork_idx=#{orderwork_idx}
 		]]>
 	</update>
 	
@@ -130,9 +107,15 @@
 		]]>
 	</update>
 	
-	<select id="getContentCnt" resultType="java.lang.Integer">
+	<select id="getProduceContentCnt" resultType="java.lang.Integer">
 		<![CDATA[
 			select count(*) from produce_table
+		]]>
+	</select>
+	
+	<select id="getOrderworkContentCnt" resultType="java.lang.Integer">
+		<![CDATA[
+			select count(*) from orderwork_table where orderwork_status = '주문승인'
 		]]>
 	</select>
 

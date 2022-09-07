@@ -36,17 +36,29 @@ public class OrderDao {
 		return sqlSessionTemplate.selectList("order.getClientList", clientBean);
 	}
 	// 주문승인(미승인)
-	public List<OrderBean> getUnapprovedOrderList(OrderBean orderBean) {
-		return sqlSessionTemplate.selectList("order.getUnapprovedOrderList", orderBean);
+	public List<OrderBean> getUnapprovedOrderList(OrderBean orderBean, RowBounds rowBounds) {
+		return sqlSessionTemplate.selectList("order.getUnapprovedOrderList", orderBean, rowBounds);
 	}
-	// 주문조회(승인완료)
-	public List<OrderBean> getApprovedOrderList(OrderBean orderBean, RowBounds rowBounds) {
-		return sqlSessionTemplate.selectList("order.getApprovedOrderList", orderBean, rowBounds);
+	// 주문승인(미승인->승인)
+	public void approveOrder(String order_idx) {
+		sqlSessionTemplate.update("order.approveOrder", order_idx);
+	}
+	// 주문승인(미승인->거절)
+	public void refuseOrder(String order_idx) {
+		sqlSessionTemplate.update("order.refuseOrder", order_idx);
+	}
+	// 주문조회
+	public List<OrderBean> getOrderList(OrderBean orderBean, RowBounds rowBounds) {
+		return sqlSessionTemplate.selectList("order.getOrderList", orderBean, rowBounds);
 	}
 	
 	// 페이징처리
-	public int getContentCnt() {
-		return sqlSessionTemplate.selectOne("order.getContentCnt");
+	public int getOrderListContentCnt() {
+		return sqlSessionTemplate.selectOne("order.getOrderListContentCnt");
+	}
+	// 페이징처리
+	public int getOrderApproveContentCnt() {
+		return sqlSessionTemplate.selectOne("order.getOrderApproveContentCnt");
 	}
 	
 }

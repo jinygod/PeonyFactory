@@ -61,29 +61,46 @@
 	<select id="getUnapprovedOrderList" resultType="order.OrderBean">
 		<![CDATA[
 			select order_idx, order_status, order_shipment, client_idx, product_idx, product_modelno, order_regdate,
-			order_deadline, order_exdate, order_cnt, order_unit, order_unit_price, order_amt, order_manager, order_date
+			order_deadline, order_exdate, order_cnt, order_unit, order_unit_price, order_amt, order_manager, order_date 
 			from order_table
 			where order_status='미승인'
 			order by order_idx
 		]]>
 	</select>
+<!-- 	주문승인(미승인->주문승인) -->	
+	<update id="approveOrder" parameterType="java.lang.String">
+		<![CDATA[
+			update order_table set order_status = '주문승인'
+			where order_idx=#{order_idx}
+		]]>
+	</update>
+<!-- 	주문승인(미승인->주문거절) -->
+	<update id="refuseOrder" parameterType="java.lang.String">
+		<![CDATA[
+			update order_table set order_status = '주문거절'
+			where order_idx=#{order_idx}
+		]]>
+	</update>	
 	
-	
-<!-- 	주문조회(승인완료) -->
-	<select id="getApprovedOrderList" resultType="order.OrderBean">
+<!-- 	주문조회 -->
+	<select id="getOrderList" resultType="order.OrderBean">
 		<![CDATA[
 			select order_idx, order_status, order_shipment, client_idx, product_idx, product_modelno, order_regdate,
 			order_deadline, order_exdate, order_cnt, order_unit, order_unit_price, order_amt, order_manager, order_date
 			from order_table
-			where order_status='승인완료'
 			order by order_idx
 		]]>
 	</select>
 	
 	<!-- 페이징처리 -->
-	<select id="getContentCnt" resultType="java.lang.Integer">
+	<select id="getOrderListContentCnt" resultType="java.lang.Integer">
 		<![CDATA[
 			select count(*) from order_table
+		]]>
+	</select>
+	<select id="getOrderApproveContentCnt" resultType="java.lang.Integer">
+		<![CDATA[
+			select count(*) from order_table where order_status='미승인'
 		]]>
 	</select>
 </mapper>

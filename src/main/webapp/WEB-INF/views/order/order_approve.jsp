@@ -15,58 +15,100 @@
     <link rel="stylesheet" type="text/css" href="${root}style.css">
 <script type="text/javascript">
 
+
 	function button() {
 		location.href = '${root }order/order_approve?order_idx=${obj.order_idx}&menu_idx=${menu_idx }'
 	}
-	
-	$(function(){
-	    var chkObj = document.getElementsByName("RowCheck");
-	    var rowCnt = chkObj.length;
-	    
-	    $("input[name='allCheck']").click(function(){
-	        var chk_listArr = $("input[name='RowCheck']");
-	        for (var i=0; i<chk_listArr.length; i++){
-	            chk_listArr[i].chekced = this.checked;
-	        }
-	    });
-	    $("input[name='RowCheck']").click(function(){
-	        if($("input[name='RowCheck']:checked").length == rowCnt){
-	            $("input[name='allCheck']")[0].checked = true;
-	        }
-	        else{
-	            $("input[name='allCheck']")[0].checked = false;
-	        }
-	        });
-	    });
-	    
-	    function approve(){
-	        var url = "approve";
-	        var valueArr = new Array();
-	        var list = $("input[name='RowCheck']");
-	        for(var i = 0; i < list.length; i++){
-	            if(list[i].checked){ // 선택되어있으면 배열에 값을 저장함
-	                valueArr.push(list[i].value);
-	            }
-	        }
-	        if(valueArr.length == 0){
-	            alert("하나 이상 선택해주세요");
-	        }
-	        else{
-	            var chk = confirm("정말 승인하시겠습니까?");
-	            $.ajax({
-	                url : url,
-	                type : 'POST',
-	                traditional : true,
-	                data : {
-	                    valueArr : valueArr
-	                },
-                    success: function(){
-                    	location.reload();
-	                }
-	            });
-	        }
-	    }
 
+	$(function() {
+		var chkObj = document.getElementsByName("RowCheck");
+		var rowCnt = chkObj.length;
+
+		$("input[name='allCheck']").click(function() {
+			var chk_listArr = $("input[name='RowCheck']");
+			for (var i = 0; i < chk_listArr.length; i++) {
+				chk_listArr[i].chekced = this.checked;
+				if ($("input[name='allCheck']")[0].checked) {
+					$("input[name='RowCheck']")[i].checked = true;
+				} else {
+					$("input[name='RowCheck']")[i].checked = false;
+				}
+			}
+		});
+
+		$("input[name='RowCheck']").click(function() {
+			if ($("input[name='RowCheck']:checked").length == rowCnt) {
+				$("input[name='allCheck']")[0].checked = true;
+			} else {
+				$("input[name='allCheck']")[0].checked = false;
+			}
+		});
+	});
+
+		
+	function approve() {
+		var url = "approve?menu_idx=${menu_idx}";
+		var valueArr = new Array();
+		var list = $("input[name='RowCheck']");
+		for (var i = 0; i < list.length; i++) {
+			if (list[i].checked) { // 선택되어있으면 배열에 값을 저장함
+				valueArr.push(list[i].value);
+			}
+		}
+		if (valueArr.length == 0) {
+			alert("하나 이상 선택해주세요");
+		} else {
+			var chk = confirm("정말 승인하시겠습니까?");
+			if(chk == true){
+			$.ajax({
+				url : url,
+				type : 'POST',
+				traditional : true,
+				data : {
+					valueArr : valueArr
+				},
+				success : function(){
+							alert("승인하였습니다.");
+							location.replace("order_approve?menu_idx=${menu_idx}")
+						  }
+					});
+					} else {
+							alert("승인을 취소하였습니다.");
+			}
+		}
+	}
+	function refuse() {
+		var url = "refuse?menu_idx=${menu_idx}";
+		var valueArr = new Array();
+		var list = $("input[name='RowCheck']");
+		for (var i = 0; i < list.length; i++) {
+			if (list[i].checked) { // 선택되어있으면 배열에 값을 저장함
+				valueArr.push(list[i].value);
+			}
+		}
+		if (valueArr.length == 0) {
+			alert("하나 이상 선택해주세요");
+		} else {
+			var chk = confirm("정말 거절하시겠습니까?");
+			if(chk == true){
+			$.ajax({
+				url : url,
+				type : 'POST',
+				traditional : true,
+				data : {
+					valueArr : valueArr
+				},
+				dataType : "text",
+				success : function() {
+						alert("거절되었습니다.");
+						location.replace("order_approve?menu_idx=${menu_idx}")
+					} 
+			});
+			} else {
+				alert("거절을 취소하였습니다.");
+			}
+		}
+	}
 </script>
 </head>
   <body>
@@ -76,8 +118,6 @@
   <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
   	
   	<div class="container">
-	<form:form action="${root }produce/orderwork_insert?menu_idx=${menu_idx }" method="post" modelAttribute="approveOrderBean">
-		
 		<div class="table_arrange">
 		<div class="table_title">
 		<h1>주문승인</h1>
@@ -85,7 +125,7 @@
 			<div class="input-group mb-3">
 				<table>
 					<tr>
-						<th><span class="input-group-text" id="basic-addon1"><input id="allCheck" type="checkbox" name="allCheck"/></span></th>
+						<th><span class="input-group-text" id="basic-addon1" style="height:38px"><input id="allCheck" type="checkbox" name="allCheck"/></span></th>
 						<th><span class="input-group-text" id="basic-addon1">주문번호</span></th>
 						<th><span class="input-group-text" id="basic-addon1">출하상태</span></th>
 						<th><span class="input-group-text" id="basic-addon1">거래처코드</span></th>
@@ -105,7 +145,7 @@
 					</tr>
 					<c:forEach var="obj" items="${UnapprovedOrderList }" varStatus="status">
 					<tr>
-						<td><input name ="RowCheck" type="checkbox" id="RowCheck" value="${obj.order_idx }"/></td>
+						<td><span class="input-group-text" id="basic-addon1" style="height:38px; background:white;"><input name ="RowCheck" type="checkbox" id="RowCheck" value="${obj.order_idx }"/></span></td>
 						<td><input type="text" id="order_idx" name="order_idx" class="form-control" value="${obj.order_idx }" style="background-color:white" readonly></td>
 						<td><input type="text" id="order_shipment" name="order_shipment" class="form-control" value="${obj.order_shipment }" style="background-color:white" readonly></td>
 						<td><input type="text" id="client_idx" name="client_idx" class="form-control" value="${obj.client_idx }" style="background-color:white" readonly></td>
@@ -125,15 +165,59 @@
 					</c:forEach>
 				</table>
 			</div>
+			<div class="d-none d-md-block">
+				<ul class="pagination justify-content-center">
+					<c:choose>
+					<c:when test="${pageBean.prevPage <= 0 }">
+					<li class="page-item disabled">
+						<a href="#" class="page-link">이전</a>
+					</li>
+					</c:when>
+					<c:otherwise>
+					<li class="page-item">
+						<a href="${root }order/order_approve?menu_idx=${menu_idx }&page=${pageBean.prevPage}" class="page-link">이전</a>
+					</li>
+					</c:otherwise>
+					</c:choose>
+					
+					
+					<c:forEach var='idx' begin="${pageBean.min }" end='${pageBean.max }'>
+					<c:choose>
+					<c:when test="${idx == pageBean.currentPage }">
+					<li class="page-item active">
+						<a href="${root }order/order_approve?menu_idx=${menu_idx }&page=${idx}" class="page-link">${idx }</a>
+					</li>
+					</c:when>
+					<c:otherwise>
+					<li class="page-item">
+						<a href="${root }order/order_approve?menu_idx=${menu_idx }&page=${idx}" class="page-link">${idx }</a>
+					</li>
+					</c:otherwise>
+					</c:choose>
+					
+					</c:forEach>
+					
+					<c:choose>
+					<c:when test="${pageBean.max >= pageBean.pageCnt }">
+					<li class="page-item disabled">
+						<a href="#" class="page-link">다음</a>
+					</li>
+					</c:when>
+					<c:otherwise>
+					<li class="page-item">
+						<a href="${root }order/order_approve?menu_idx=${menu_idx }&page=${pageBean.nextPage}" class="page-link">다음</a>
+					</li>
+					</c:otherwise>
+					</c:choose>
+					
+				</ul>
+			</div>
 		<div class="button-arrange">
 		<input type="button" value="승인" class="btn btn-primary" onClick="approve();" >
-		<input type="submit" id="order_approve" name="order_approve" class="btn btn-danger" value="거절">
-		<input type="submit" name="order_approve" class="btn btn-primary" value="전체승인"/>
-		<input type="submit" name="order_approve" class="btn btn-danger" value="전체거절"/>
+		<input type="button" value="거절" class="btn btn-danger" onClick="refuse();" >
 		<input type="button" class="btn btn-dark" value="취소" onclick="history.back();"/>
 		</div>
 		</div>
-	</form:form>
 	</div>
 </div>	
 	
@@ -142,5 +226,4 @@
 </footer>
   
   </body>
-  
-   <!--  input 안에 : aria-label="Username" aria-describedby="basic-addon1" -->
+ </html>

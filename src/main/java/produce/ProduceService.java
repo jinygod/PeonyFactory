@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import order.OrderBean;
 import process.PageBean;
 
 @Service
@@ -29,34 +28,15 @@ public class ProduceService {
 	public void addOrderchkInfo(ProduceBean approveOrderBean) {
 		produceDao.addOrderchkInfo(approveOrderBean);
 	}
-	
-	// 주문승인(미승인->승인)
-	public void approveOrder(String order_idx) {
-		produceDao.approveOrder(order_idx);
-	}
-
-	// 주문승인(미승인->거절)
-	public void refuseOrder(String order_idx) {
-		produceDao.refuseOrder(order_idx);
-	}
-
-	// 주문승인(미승인->전체승인)
-	public void approveAllOrder(ProduceBean approveProduceBean) {
-		produceDao.approveAllOrder(approveProduceBean);
-	}
-
-	// 주문승인(미승인->전체거절)
-	public void refuseAllOrder(ProduceBean approveProduceBean) {
-		produceDao.refuseAllOrder(approveProduceBean);
-	}
 	// 작업지시서
-	public List<ProduceBean> getOrderworkList(ProduceBean produceBean){
-		
-		return produceDao.getOrderworkList(produceBean);
+	public List<ProduceBean> getOrderworkList(ProduceBean produceBean, int page){
+		int start = (page - 1) * page_listcnt;
+		RowBounds rowBounds = new RowBounds(start, page_listcnt);
+		return produceDao.getOrderworkList(produceBean, rowBounds);
 	}
 	// produce_table insert
-	public void addProduceInfo(ProduceBean orderWorkBean) {
-		produceDao.addProduceInfo(orderWorkBean);
+	public void addProduceInfo(String orderwork_idx) {
+		produceDao.addProduceInfo(orderwork_idx);
 	}
 	// 작업지시서에서 작업요청 -> produce_table의 작업상태 '생산진행'으로 update
 	public void updateOrderworkStatus(String orderwork_idx) {
@@ -73,9 +53,17 @@ public class ProduceService {
 	public void updateProduceStatus(ProduceBean produceStatusBean) {
 		produceDao.updateProduceStatus(produceStatusBean);
 	}
-	public PageBean getContentCnt(int currentPage) {
+	public PageBean getProduceContentCnt(int currentPage) {
 		
-		int content_cnt = produceDao.getContentCnt();
+		int content_cnt = produceDao.getProduceContentCnt();
+		
+		PageBean pageBean = new PageBean(content_cnt, currentPage, page_listcnt, page_paginationcnt);
+		
+		return pageBean;
+	}
+	public PageBean getOrderworkContentCnt(int currentPage) {
+		
+		int content_cnt = produceDao.getOrderworkContentCnt();
 		
 		PageBean pageBean = new PageBean(content_cnt, currentPage, page_listcnt, page_paginationcnt);
 		
