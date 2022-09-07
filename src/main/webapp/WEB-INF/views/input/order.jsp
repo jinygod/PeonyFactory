@@ -14,14 +14,26 @@
     <script>
 
 	
-	function totalAmt() {
+    function totalAmt() {
 		let price = document.querySelector('#price').value;
 		let cnt  = document.querySelector('#cnt').value;
+		let date1 = new Date(document.querySelector('#order_regdate').value);
+		let date2 = new Date(document.querySelector('#order_deadline').value);
+		var difference_in_time = date2.getTime() - date1.getTime();
+		var exdateval = difference_in_time / (1000 * 3600 * 24); 
 		var tot = price * cnt;
-		var exdateval = cnt / 100;
 		amt.value = tot;
 		exdate.value = exdateval;
+		
+		var order_info = document.order_info;
+		
+		if(order_info.order_exdate.value < 0){
+			order_info.order_exdate.focus();
+    		alert('납기요청일은 주문요청일보다 전일 수 없습니다. 확인하여 다시 지정해주세요.');
+    		return false;
+		}
 	}
+
 
 	function jbSubmit() {
 		var order_info = document.order_info;
@@ -57,6 +69,7 @@
     		alert('납기요청일 날짜를 정하지 않았습니다. 납기요청일 지정해주세요.');
     		return false;
 		}
+	
 	}
 	
 </script>

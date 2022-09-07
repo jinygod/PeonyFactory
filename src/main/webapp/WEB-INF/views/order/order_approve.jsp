@@ -14,64 +14,155 @@
     <link rel="stylesheet" type="text/css" href="${root}style.css">
 <script type="text/javascript">
 
-	function button() {
-		location.href = '${root }order/order_approve?order_idx=${obj.order_idx}&menu_idx=${menu_idx }'
+// 	function button() {
+// 		location.href = '${root }order/order_approve?order_idx=${obj.order_idx}&menu_idx=${menu_idx }'
+// 	}
+	
+// 	$(function(){
+// 		var chkObj = document.getElementsByName("RowCheck");
+// 		var rowCnt = chkObj.length;
+		
+// 		$("input[name='allCehck']").click(function(){
+// 			var chk_listArr = $("input[name='RowCheck']");
+// 			for (var i=0; i<chk_listArr.length; i++){
+// 				chk_listArr[i].chekced = this.checked;
+// 			}
+// 		});
+// 		$("input[name='RowCheck']").click(function(){
+// 			if($("input[name='RowCheck']:checked").length == rowCnt){
+// 				$("input[name='allCheck']")[0].checked = true;
+// 			}
+// 			else{
+// 				$("input[name='allCheck']")[0].checked = false;
+// 			}
+// 			});
+// 		});
+		
+// 		function checkbox(){
+// 			var url = "approve"	
+// 			var valueArr = new Array();
+// 			var list = $("input[name='RowCheck']");
+// 			for(var i = 0; i < list.length; i++){
+// 				if(list[i].checked){ // 선택되어있으면 배열에 값을 저장함
+// 					valueArr.push(list[i].value);
+// 				}
+// 			}
+// 			if(valueArr.length == 0){
+// 				alert("하나 이상 선택해주세요");
+// 			}
+// 			else{
+// 				var chk = confirm("정말 승인하시겠습니까?");
+// 				$.ajax({
+// 					url : url,
+// 					type : 'POST'
+// 					traditional : true,
+// 					data : {
+// 						valueArr : valueArr
+// 					},
+// 					success: function(jdata){
+// 						if(jdata = 1){
+// 							alert("승인 완료");
+// 							location.replace("list")
+// 						}
+// 						else{
+// 							alert("승인 실패");
+// 						}
+// 					}
+// 				});
+// 			}
+// 		}
+	
+$(document).ready(function(){
+	
+	var Order = {
+			orderList : [],
+			init : function(){
+				//orderList 초기화
+				this.orderList = [];
+			},
+			getOrderList : function(obj){
+				return this.orderList;
+			},
+			getFindIndex : function(cd) {
+	            //배열 중복 검색
+	            var fIdx = -1;
+	            this.orderList.forEach(function(item, idx, ary) {
+	                if(item.code == cd) {
+	                    fIdx = idx;
+	                }
+	            });
+	            return fIdx;
+	        },
+	        addOrderList : function(obj) {
+	            var fIdx = this.getFindIndex(obj.code);
+	            if(fIdx == -1) {
+	                this.orderList.push(obj);
+	            } else {
+	                this.orderList[fIdx] = obj;
+	            }
+	            this.render();
+	        },
+	        deleteOrderList : function(cd) {
+	            this.orderList.splice(this.getFindIndex(cd), 1);
+	            this.render();
+	        }
 	}
 	
-	$(function(){
-		var chkObj = document.getElementsByName("RowCheck");
-		var rowCnt = chkObj.length;
-		
-		$("input[name='allCehck']").click(function(){
-			var chk_listArr = ${"input[name='RowCheck']");
-			for (var i=0; i<chk_listArr.length; i++){
-				chk_listArr[i].chekced = this.checked;
-			}
-		});
-		$("input[name='RowCheck']").click(function(){
-			if($("input[name='RowCheck']:checked").length == rowCnt){
-				$("input[name='allCheck']")[0].checked = true;
-			}
-			else{
-				$("input[name='allCheck']")[0].checked = false;
-			}
-			});
-		});
-		
-		function checkbox(){
-			var url = "approve"	
-			var valueArr = new Array();
-			var list = $("input[name='RowCheck']");
-			for(var i = 0; i < list.length; i++){
-				if(list[i].checked){ // 선택되어있으면 배열에 값을 저장함
-					valueArr.push(list[i].value);
-				}
-			}
-			if(valueArr.length == 0){
-				alert("하나 이상 선택해주세요");
-			}
-			else{
-				var chk = confirm("정말 승인하시겠습니까?");
-				$.ajax({
-					url : url,
-					type : 'POST'
-					traditional : true,
-					data : {
-						valueArr : valueArr
-					},
-					success: function(jdata){
-						if(jdata = 1){
-							alert("승인 완료");
-							location.replace("list")
-						}
-						else{
-							alert("승인 실패");
-						}
-					}
-				});
-			}
-		}
-	}
+	$('#btn-delete').on('click', function() {
+
+        var chkList = $('input[name="RowCheck"]:checked');        
+        var cd;
+
+        // chcekd 된 product row 삭제
+        // order row 삭제
+        for(var i = chkList.length-1; i > -1; i--) {
+            cd = chkList.eq(i).closest('tr').find('td:eq(1)').text();            
+            chkList.eq(i).closest('tr').remove();
+            cart.deleteOrderList(cd);
+        }     
+    });
+	
+	$('#btn-approve').on('click', function() {
+
+        var chkList = $('input[name="RowCheck"]:checked');        
+        var cd;
+
+        // chcekd 된 product row 승인
+        // order row 삭제
+        for(var i = chkList.length-1; i > -1; i--) {
+            cd = chkList.eq(i).closest('tr').find('td:eq(1)').text();            
+            chkList.eq(i).closest('tr').remove();
+            cart.deleteOrderList(cd);
+        }     
+    });
+	
+	
+	
+}); //end documnet ready
+
+$.fn.serializeObject = function() {
+    "use strict";
+    
+    var result = {};
+    var extend = function(i, element) {
+        var node = result[element.name];
+
+        if ('undefined' !== typeof node && node !== null) {
+            if ($.isArray(node)) {
+                node.push(element.value);
+            } else {
+                result[element.name] = [ node, element.value ];
+            }
+        } else {
+            result[element.name] = element.value;
+        }
+    };
+
+    $.each(this.serializeArray(), extend);
+    return result;
+};
+
+
 </script>
 </head>
   <body>
@@ -90,7 +181,7 @@
 			<div class="input-group mb-3">
 				<table>
 					<tr>
-						<th><span class="input-group-text" id="basic-addon1"><input id="allCheck" type="checkbox" name="allCheck"/></span></th>
+						<th><span class="input-group-text" id="basic-addon1">선택</span></th>
 						<th><span class="input-group-text" id="basic-addon1">주문번호</span></th>
 						<th><span class="input-group-text" id="basic-addon1">출하상태</span></th>
 						<th><span class="input-group-text" id="basic-addon1">거래처코드</span></th>
@@ -112,7 +203,7 @@
 					</tr>
 					<c:forEach var="obj" items="${UnapprovedOrderList }" varStatus="status">
 					<tr>
-						<td><input name ="RowCheck" type="checkbox" value="${obj.order_idx }"/></td>
+						<td><input name ="RowCheck" type="checkbox" class="chack" value="${obj.order_idx }"/></td>
 						<td><input type="text" id="order_idx" name="order_idx" class="form-control" value="${obj.order_idx }" style="background-color:white" readonly></td>
 						<td><input type="text" id="order_shipment" name="order_shipment" class="form-control" value="${obj.order_shipment }" style="background-color:white" readonly></td>
 						<td><input type="text" id="client_idx" name="client_idx" class="form-control" value="${obj.client_idx }" style="background-color:white" readonly></td>
@@ -135,8 +226,8 @@
 				</table>
 			</div>
 		<div class="button-arrange">
-		<input type="submit" name="order_approve" class="btn btn-primary" value="전체승인"/>
-		<input type="submit" name="order_approve" class="btn btn-danger" value="전체거절"/>
+		<input type="submit" name="order_approve" id="btn-approve" class="btn btn-primary" value="전체승인"/>
+		<input type="submit" name="order_approve" id="btn-delete" class="btn btn-danger" value="전체거절"/>
 		<input type="button" class="btn btn-dark" value="취소" onclick="history.back();"/>
 		</div>
 		</div>
