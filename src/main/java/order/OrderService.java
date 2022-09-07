@@ -42,22 +42,37 @@ public class OrderService {
 		return orderDao.getClientList(clientBean);
 	}
 	// 주문승인(미승인)
-	public List<OrderBean> getUnapprovedOrderList(OrderBean orderBean){
-		return orderDao.getUnapprovedOrderList(orderBean);
-	}
-	
-	// 주문조회(승인완료)
-	public List<OrderBean> getApprovedOrderList(OrderBean orderBean, int page){
-		
+	public List<OrderBean> getUnapprovedOrderList(OrderBean orderBean, int page){
 		int start = (page - 1) * page_listcnt;
 		RowBounds rowBounds = new RowBounds(start, page_listcnt);
-		
-		return orderDao.getApprovedOrderList(orderBean, rowBounds);
+		return orderDao.getUnapprovedOrderList(orderBean, rowBounds);
+	}
+	// 주문승인(미승인->승인)
+	public void approveOrder(String order_idx) {
+		orderDao.approveOrder(order_idx);
+	}
+	// 주문승인(미승인->거절)
+	public void refuseOrder(String order_idx) {
+		orderDao.refuseOrder(order_idx);
+	}
+	// 주문조회
+	public List<OrderBean> getOrderList(OrderBean orderBean, int page){
+		int start = (page - 1) * page_listcnt;
+		RowBounds rowBounds = new RowBounds(start, page_listcnt);
+		return orderDao.getOrderList(orderBean, rowBounds);
 	}
 	
-	public PageBean getContentCnt(int currentPage) {
+	public PageBean getOrderListContentCnt(int currentPage) {
 		
-		int content_cnt = orderDao.getContentCnt();
+		int content_cnt = orderDao.getOrderListContentCnt();
+		
+		PageBean pageBean = new PageBean(content_cnt, currentPage, page_listcnt, page_paginationcnt);
+		
+		return pageBean;
+	}
+	public PageBean getOrderApproveContentCnt(int currentPage) {
+		
+		int content_cnt = orderDao.getOrderApproveContentCnt();
 		
 		PageBean pageBean = new PageBean(content_cnt, currentPage, page_listcnt, page_paginationcnt);
 		

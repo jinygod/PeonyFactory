@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import client.ClientBean;
 import menu.MenuBean;
 import process.PageBean;
-import produce.ProduceBean;
 import produce.ProduceService;
 import product.ProductBean;
 import product.ProductService;
@@ -75,11 +74,16 @@ public class OrderController {
 	@GetMapping("/order_approve")
 	public String order_approve(OrderBean orderBean,
 								@RequestParam("menu_idx") String menu_idx,
+								@RequestParam(value = "page", defaultValue = "1") int page,
 								Model model) {
 		
-		List<OrderBean> UnapprovedOrderList = orderService.getUnapprovedOrderList(orderBean);
+		List<OrderBean> UnapprovedOrderList = orderService.getUnapprovedOrderList(orderBean, page);
 		model.addAttribute("UnapprovedOrderList", UnapprovedOrderList);
 		model.addAttribute("menu_idx", menu_idx);
+		
+		PageBean pageBean = orderService.getOrderApproveContentCnt(page);
+		model.addAttribute("pageBean", pageBean);
+		model.addAttribute("page", page);
 		
 		return "order/order_approve";
 	}
@@ -90,31 +94,42 @@ public class OrderController {
 							@RequestParam(value = "page", defaultValue = "1") int page,
 							Model model) {
 
-		List<OrderBean> ApprovedOrderList = orderService.getApprovedOrderList(orderBean, page);
-//		String menu_idx = orderService.getMenuInfo(menuBean);
-		model.addAttribute("ApprovedOrderList", ApprovedOrderList);
+		List<OrderBean> OrderList = orderService.getOrderList(orderBean, page);
+		model.addAttribute("OrderList", OrderList);
 		model.addAttribute("menu_idx", menu_idx);
 		
-		PageBean pageBean = orderService.getContentCnt(page);
+		PageBean pageBean = orderService.getOrderListContentCnt(page);
 		model.addAttribute("pageBean", pageBean);
-		
 		model.addAttribute("page", page);
 		
 		return "order/order_list";
 	}
 	
 	@RequestMapping(value="/approve")
-	public String approve(HttpServletRequest request) {
+	public String approve(HttpServletRequest request,
+						  @RequestParam("menu_idx") String menu_idx, Model model) {
 			
 		String[] ajaxMsg = request.getParameterValues("valueArr");
 		int size = ajaxMsg.length;
 		for(int i=0; i<size; i++) {
-			produceService.approveOrder(ajaxMsg[i]);
+			orderService.approveOrder(ajaxMsg[i]);
 			produceService.addOrderworkInfo(ajaxMsg[i]);
 		}
 		
+		model.addAttribute("menu_idx", menu_idx);
 		return "redirect:order_approve";
+	}
+	@RequestMapping(value="/refuse")
+	public String refuse(HttpServletRequest request,
+						 @RequestParam("menu_idx") String menu_idx, Model model) {
 		
-	
-}
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for(int i=0; i<size; i++) {
+			orderService.refuseOrder(ajaxMsg[i]);
+		}
+		
+		model.addAttribute("menu_idx", menu_idx);
+		return "redirect:order_approve";
+	}
 }

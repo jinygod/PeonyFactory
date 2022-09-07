@@ -23,10 +23,11 @@
 		]]>
 	</insert>
 	
-		<select id="getProductList" resultType="product.ProductBean">
+	<select id="getProductList" resultType="product.ProductBean">
 		<![CDATA[
 			select product_idx, product_div, product_modelno, product_name, product_size, product_unit, product_info
 			from product_table
 		]]>
 	</select>
+	
 </mapper>

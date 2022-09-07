@@ -22,7 +22,6 @@
 		<div class="table_arrange_orderlist">
 	<form:form action="${root }order/modify" method="post" modelAttribute="modifyOrderBean">
 		
-<!-- 		<div style=background:white;margin:0px> -->
 		<div class="table_title">
 		<h1>주문조회</h1>
 		</div>
@@ -45,7 +44,7 @@
 						<th><span class="input-group-text" id="basic-addon1" style="width:100px">등록일시</span></th>
 						<th><span class="input-group-text" id="basic-addon1">주문상태</span></th>
 					</tr>
-					<c:forEach var="obj" items="${ApprovedOrderList }">
+					<c:forEach var="obj" items="${OrderList }">
 					<tr>
 						<td><input type="text" id="order_idx" name="order_idx" class="form-control" value="${obj.order_idx }" readonly style=background:white></td>
 						<td><input type="text" id="order_shipment" name="order_shipment" class="form-control" value="${obj.order_shipment }" readonly style=background:white></td>
@@ -119,7 +118,6 @@
 		</div>
 	</form:form>
 		</div>
-<!-- 	</div> -->
 	</div>
 </div>
 
@@ -128,5 +126,4 @@
 </footer>
   
 </body>
-  
-   <!--  input 안에 : aria-label="Username" aria-describedby="basic-addon1" -->
+</html>

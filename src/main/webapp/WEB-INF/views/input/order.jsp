@@ -150,7 +150,7 @@
 				</table>
 			</div>
 		<div class="button-arrange">
-		<input type="submit" class="btn btn-primary" value="등록"/>
+		<input type="submit" class="btn btn-primary" value="등록" onmouseover="totalAmt()"/>
 		<input type="button" class="btn btn-dark" value="취소" onclick="history.back();"/>
 		</div>
 		</div>
