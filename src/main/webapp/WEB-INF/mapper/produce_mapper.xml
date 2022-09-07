@@ -52,12 +52,14 @@
 	<update id="approveAllOrder" parameterType="produce.ProduceBean">
 		<![CDATA[
 			update order_table set order_status = '승인완료'
+			where order_idx=#{order_idx}
 		]]>
 	</update>
 <!-- 	주문승인(미승인->전체거절) -->
 	<update id="refuseAllOrder" parameterType="produce.ProduceBean">
 		<![CDATA[
 			update order_table set order_status = '거절'
+			where order_idx=#{order_idx}
 		]]>
 	</update>
 	

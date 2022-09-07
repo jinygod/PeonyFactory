@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="${root}style.css">
 <script type="text/javascript">
-
+//!!1!!
 	function button() {
 		location.href = '${root }order/order_approve?order_idx=${obj.order_idx}&menu_idx=${menu_idx }'
 	}
@@ -73,6 +73,101 @@
 	        }
 	    }
 
+
+//!!2!!
+// $(document).ready(function(){
+	
+// 	var Order = {
+// 			orderList : [],
+// 			init : function(){
+// 				//orderList 초기화
+// 				this.orderList = [];
+// 			},
+// 			getOrderList : function(obj){
+// 				return this.orderList;
+// 			},
+// 			getFindIndex : function(cd) {
+// 	            //배열 중복 검색
+// 	            var fIdx = -1;
+// 	            this.orderList.forEach(function(item, idx, ary) {
+// 	                if(item.code == cd) {
+// 	                    fIdx = idx;
+// 	                }
+// 	            });
+// 	            return fIdx;
+// 	        },
+// 	        addOrderList : function(obj) {
+// 	            var fIdx = this.getFindIndex(obj.code);
+// 	            if(fIdx == -1) {
+// 	                this.orderList.push(obj);
+// 	            } else {
+// 	                this.orderList[fIdx] = obj;
+// 	            }
+// 	            this.render();
+// 	        },
+// 	        deleteOrderList : function(cd) {
+// 	            this.orderList.splice(this.getFindIndex(cd), 1);
+// 	            this.render();
+// 	        }
+// 	}
+	
+// 	$('#btn-delete').on('click', function() {
+
+//         var chkList = $('input[name="RowCheck"]:checked');        
+//         var cd;
+
+//         // chcekd 된 product row 삭제
+//         // order row 삭제
+//         for(var i = chkList.length-1; i > -1; i--) {
+//             cd = chkList.eq(i).closest('tr').find('td:eq(1)').text();            
+//             chkList.eq(i).closest('tr').remove();
+//             cart.deleteOrderList(cd);
+//         }     
+//     });
+	
+// 	$('#btn-approve').on('click', function() {
+
+//         var chkList = $('input[name="RowCheck"]:checked');        
+//         var cd;
+
+//         // chceked 된 product row 승인
+//         // order row 삭제
+//         for(var i = chkList.length-1; i > -1; i--) {
+//             cd = chkList.eq(i).closest('tr').find('td:eq(1)').text();            
+//             chkList.eq(i).closest('tr').remove();
+//             cart.deleteOrderList(cd);
+//         }     
+//     });
+	
+	
+	
+// }); //end documnet ready
+
+// $.fn.serializeObject = function() {
+//     "use strict";
+    
+//     var result = {};
+//     var extend = function(i, element) {
+//         var node = result[element.name];
+
+//         if ('undefined' !== typeof node && node !== null) {
+//             if ($.isArray(node)) {
+//                 node.push(element.value);
+//             } else {
+//                 result[element.name] = [ node, element.value ];
+//             }
+//         } else {
+//             result[element.name] = element.value;
+//         }
+//     };
+
+//     $.each(this.serializeArray(), extend);
+//     return result;
+// };
+
+//!!3!!
+
+
 </script>
 </head>
   <body>
@@ -91,7 +186,7 @@
 			<div class="input-group mb-3">
 				<table>
 					<tr>
-						<th><span class="input-group-text" id="basic-addon1"><input id="allCheck" type="checkbox" name="allCheck"/></span></th>
+						<th><span class="input-group-text" id="basic-addon1"><input id="allCheck" type="checkbox" name="allCheck" onclick="fn_allCheck()"/></span></th>
 						<th><span class="input-group-text" id="basic-addon1">주문번호</span></th>
 						<th><span class="input-group-text" id="basic-addon1">출하상태</span></th>
 						<th><span class="input-group-text" id="basic-addon1">거래처코드</span></th>
