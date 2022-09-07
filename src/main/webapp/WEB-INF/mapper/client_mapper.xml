@@ -10,4 +10,10 @@
 		]]>
 	</insert>
 	
+	<delete id="deleteClient" parameterType="java.lang.String">
+			<![CDATA[
+				delete from client_table where client_idx = #{client_idx}
+			]]>
+	</delete>
+	
 </mapper>

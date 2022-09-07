@@ -30,4 +30,9 @@
 		]]>
 	</select>
 	
+	<delete id="deleteProduct" parameterType="java.lang.String">
+			<![CDATA[
+				delete from product_table where product_idx = #{product_idx}
+			]]>
+	</delete>
 </mapper>

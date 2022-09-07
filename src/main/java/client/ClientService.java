@@ -13,5 +13,8 @@ public class ClientService {
 		clientDao.addClientInfo(clientInfoBean);
 	}
 	
+	public void deleteClient(String client_idx) {
+		clientDao.deleteClient(client_idx);
+	}
 
 }

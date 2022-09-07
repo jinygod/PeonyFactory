@@ -25,4 +25,8 @@ public class ProductService {
 	public List<ProductBean> getProductList(ProductBean productBean){
 		return productDao.getProductList(productBean);
 	}
+	
+	public void deleteProduct(String product_idx) {
+		productDao.deleteProduct(product_idx);
+	}
 }

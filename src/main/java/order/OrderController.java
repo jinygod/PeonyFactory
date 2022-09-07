@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import client.ClientBean;
+import client.ClientService;
 import menu.MenuBean;
 import process.PageBean;
 import produce.ProduceService;
@@ -33,6 +34,9 @@ public class OrderController {
 	
 	@Autowired
 	private ProduceService produceService;
+	
+	@Autowired
+	private ClientService clientService;
 	
 	@Resource(name = "loginUserBean")
 	@Lazy
@@ -119,6 +123,7 @@ public class OrderController {
 		model.addAttribute("menu_idx", menu_idx);
 		return "redirect:order_approve";
 	}
+	
 	@RequestMapping(value="/refuse")
 	public String refuse(HttpServletRequest request,
 						 @RequestParam("menu_idx") String menu_idx, Model model) {
@@ -132,4 +137,20 @@ public class OrderController {
 		model.addAttribute("menu_idx", menu_idx);
 		return "redirect:order_approve";
 	}
+	
+	@RequestMapping(value="/deleteClient")
+	public String deleteClient(HttpServletRequest request,
+			@RequestParam("menu_idx") String menu_idx, Model model) {
+		
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for(int i=0; i<size; i++) {
+			clientService.deleteClient(ajaxMsg[i]);
+		}
+		
+		model.addAttribute("menu_idx", menu_idx);
+		return "redirect:client_list";
+	}
+	
+	
 }

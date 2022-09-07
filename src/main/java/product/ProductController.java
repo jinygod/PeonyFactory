@@ -20,12 +20,6 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-//	// 기초정보등록 - 품목등록
-//	@GetMapping("/product")
-//	public String input_product(@ModelAttribute("productInfoBean") ProductBean productInfoBean) {
-//		return "menu/input/product";
-//	}
-	
 	@GetMapping("/product_reg")
 	public String product_reg(@RequestParam("menu_idx") String menu_idx,
 							  Model model) {
@@ -43,6 +37,21 @@ public class ProductController {
 		model.addAttribute("menu_idx", menu_idx);
 		
 		return "product/product_list";
+	}
+	
+	@RequestMapping(value="/delete")
+	public String refuse(HttpServletRequest request,
+						 @RequestParam("menu_idx") String menu_idx, Model model) {
+		
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for(int i=0; i<size; i++) {
+			productService.deleteProduct(ajaxMsg[i]);
+		}
+		
+		model.addAttribute("menu_idx", menu_idx);
+		
+		return "redirect:product_list";
 	}
 	
 }

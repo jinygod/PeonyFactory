@@ -73,7 +73,7 @@ function request() {
 			data : {
 				valueArr : valueArr
 			},
-			success : function(jdata) {
+			success : function() {
 					alert("작업요청 하였습니다.");
 					location.replace("produce_orderwork?menu_idx=${menu_idx}")
 				} 
@@ -126,17 +126,17 @@ function request() {
 										<option id="process_name">${option.process_name}</option>
 										</c:forEach>
 								</select></td>
-						<td><input type="text" id="product_idx" name="product_idx" class="form-control" value="${obj.product_idx }"></td>
-						<td><input type="text" id="product_modelno" name="product_modelno" class="form-control" value="${obj.product_modelno }"></td>
-						<td><input type="text" id="order_regdate" name="order_regdate" class="form-control" value="${obj.order_regdate }"></td>
-						<td><input type="text" id="order_deadline" name="order_deadline" class="form-control" value="${obj.order_deadline }"></td>
-						<td><input type="text" id="order_exdate" name="order_exdate" class="form-control" value="${obj.order_exdate }"></td>
-						<td><input type="text" id="order_cnt" name="order_cnt" class="form-control" value="${obj.order_cnt }"></td>
-						<td><input type="text" id="order_unit" name="order_unit" class="form-control" value="${obj.order_unit }"></td>
-						<td><input type="text" id="order_unit_price" name="order_unit_price" class="form-control" value="${obj.order_unit_price }"></td>
-						<td><input type="text" id="order_amt" name="order_amt" class="form-control" value="${obj.order_amt }"></td>
-						<td><input type="text" id="orderwork_date" name="orderwork_date" class="form-control" value="${obj.orderwork_date }"></td>
-						<td><input type="text" id="orderwork_status" name="orderwork_status" class="form-control" value="${obj.orderwork_status }"></td>
+						<td><input type="text" id="product_idx" name="product_idx" class="form-control" value="${obj.product_idx }" style="background-color:white" readonly></td>
+						<td><input type="text" id="product_modelno" name="product_modelno" class="form-control" value="${obj.product_modelno }" style="background-color:white" readonly></td>
+						<td><input type="text" id="order_regdate" name="order_regdate" class="form-control" value="${obj.order_regdate }" style="background-color:white" readonly></td>
+						<td><input type="text" id="order_deadline" name="order_deadline" class="form-control" value="${obj.order_deadline }" style="background-color:white" readonly></td>
+						<td><input type="text" id="order_exdate" name="order_exdate" class="form-control" value="${obj.order_exdate }" style="background-color:white" readonly></td>
+						<td><input type="text" id="order_cnt" name="order_cnt" class="form-control" value="${obj.order_cnt }" style="background-color:white" readonly></td>
+						<td><input type="text" id="order_unit" name="order_unit" class="form-control" value="${obj.order_unit } " style="background-color:white" readonly></td>
+						<td><input type="text" id="order_unit_price" name="order_unit_price" class="form-control" value="${obj.order_unit_price }" style="background-color:white" readonly></td>
+						<td><input type="text" id="order_amt" name="order_amt" class="form-control" value="${obj.order_amt }" style="background-color:white" readonly></td>
+						<td><input type="text" id="orderwork_date" name="orderwork_date" class="form-control" value="${obj.orderwork_date }" style="background-color:white" readonly></td>
+						<td><input type="text" id="orderwork_status" name="orderwork_status" class="form-control" value="${obj.orderwork_status }" style="background-color:white" readonly	></td>
 					</tr>
 					</c:forEach>
 				</table>
