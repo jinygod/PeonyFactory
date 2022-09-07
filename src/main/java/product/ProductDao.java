@@ -19,4 +19,9 @@ public class ProductDao {
 	public List<ProductBean> getProductList(ProductBean productBean) {
 		return sqlSessionTemplate.selectList("product.getProductList");
 	}
+	
+	public void deleteProduct(String product_idx) {
+		sqlSessionTemplate.delete("product.deleteProduct", product_idx);
+	}
+	
 }

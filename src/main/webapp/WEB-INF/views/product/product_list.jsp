@@ -1,12 +1,3 @@
-<!--
-수정사항 업데이트 표기
-1. 취소 제거
-2. 삭제 추가
-3. 삭제 기능 구현 필요
-4. 수정기능 잠금 readonly
-
- 체크박스 추가, 수정 클릭시 체크박스 체크된 것만 readonly 풀리고 수정가능하게
--->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -17,8 +8,70 @@
   <head>
 	<meta charset="UTF-8">
 	<title>품목조회</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+
+	$(function() {
+		var chkObj = document.getElementsByName("RowCheck");
+		var rowCnt = chkObj.length;
+
+		$("input[name='allCheck']").click(function() {
+			var chk_listArr = $("input[name='RowCheck']");
+			for (var i = 0; i < chk_listArr.length; i++) {
+				chk_listArr[i].chekced = this.checked;
+				if ($("input[name='allCheck']")[0].checked) {
+					$("input[name='RowCheck']")[i].checked = true;
+				} else {
+					$("input[name='RowCheck']")[i].checked = false;
+				}
+			}
+		});
+
+		$("input[name='RowCheck']").click(function() {
+			if ($("input[name='RowCheck']:checked").length == rowCnt) {
+				$("input[name='allCheck']")[0].checked = true;
+			} else {
+				$("input[name='allCheck']")[0].checked = false;
+			}
+		});
+	});
+
+		
+	function deleteproduct() {
+		var url = "delete?menu_idx=${menu_idx}";
+		var valueArr = new Array();
+		var list = $("input[name='RowCheck']");
+		for (var i = 0; i < list.length; i++) {
+			if (list[i].checked) { // 선택되어있으면 배열에 값을 저장함
+				valueArr.push(list[i].value);
+			}
+		}
+		if (valueArr.length == 0) {
+			alert("하나 이상 선택해주세요");
+		} else {
+			var chk = confirm("정말 삭제하시겠습니까?");
+			if(chk == true){
+			$.ajax({
+				url : url,
+				type : 'POST',
+				traditional : true,
+				data : {
+					valueArr : valueArr
+				},
+				success : function(){
+							alert("삭제되었습니다.");
+							location.replace("product_list?menu_idx=${menu_idx}")
+						  }
+					});
+					} else {
+							alert("삭제를 취소하였습니다.");
+			}
+		}
+	}
+    </script>
   </head>
   <body>
  <div class="wrapper">
@@ -34,6 +87,7 @@
 			<div class="input-group mb-3">
 				<table>
 					<tr>
+						<th><span class="input-group-text" id="basic-addon1" style="height:38px"><input id="allCheck" type="checkbox" name="allCheck"/></span></th>
 						<th><span class="input-group-text" id="basic-addon1">품목코드</span></th>
 						<th><span class="input-group-text" id="basic-addon1">품목구분</span></th>
 						<th><span class="input-group-text" id="basic-addon1">모델번호</span></th>
@@ -44,6 +98,7 @@
 					</tr>
 					<c:forEach var="obj" items="${ProductList }">
 					<tr><!--  업데이트 _readonly 추가  -->
+						<td><span class="input-group-text" id="basic-addon1" style="height:38px; background:white;"><input name ="RowCheck" type="checkbox" id="RowCheck" value="${obj.product_idx }"/></span></td>
 						<td><input type="text" id="product_idx" name="product_idx" class="form-control" value="${obj.product_idx }" readonly style=background:white></td>
 						<td><input type="text" id="product_div" name="product_div" class="form-control" value="${obj.product_div }" readonly style=background:white></td>
 						<td><input type="text" id="product_modelno" name="product_modelno" class="form-control" value="${obj.product_modelno }" readonly style=background:white></td>
@@ -56,8 +111,7 @@
 				</table>
 			</div>
 		<div class="button-arrange">
-		<input type="submit" class="btn btn-primary" value="수정"/>
-		<a href = "${root }main" class="btn btn-danger" >삭제</a><!-- 업데이트 _ 취소 - 삭제로 변경 삭제 기능 구현 필요-->
+		<input type="button" value="삭제" class="btn btn-danger" onClick="deleteproduct();" >
 		<input type="button" class="btn btn-dark" value="뒤로가기" onclick="history.back();"/>
 		</div>
 		</div>

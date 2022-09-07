@@ -14,6 +14,9 @@ public class ClientDao {
 		sqlSessionTemplate.insert("client.addClientInfo", clientInfoBean);
 	}
 
+	public void deleteClient(String client_idx) {
+		sqlSessionTemplate.delete("client.deleteClient", client_idx);
+	}
 
 
 }
