@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var='root' value="${pageContext.request.contextPath}/"/>
+<c:set var="Result" value="${MainResult}" />
 <!doctype html>
 <html>
 <meta charset="UTF-8">
@@ -41,25 +42,25 @@
         <li>	
           <div>
             <div class="contents1">총 수주금액</div>
-            <div class="result">$128,021</div>
+            <div class="result">₩ ${Result.order_amt }</div>
           </div>
         </li>
         <li>
           <div>
             <div class="contents1">총 생산량</div>
-            <div class="result">93,234</div>
+            <div class="result">${Result.produce_cnt } BOX</div>
           </div>
         </li>
         <li>
           <div>
             <div class="contents1">불량률</div>
-            <div class="result">1.7%</div>
+            <div class="result">${Result.produce_badrate }%</div>
           </div>
         </li>
         <li>
             <div>
               <div class="contents1">목표 불량률</div>
-              <div class="result">0%</div>
+              <div class="result">0.2%</div>
             </div>
         </li>
       </ul>

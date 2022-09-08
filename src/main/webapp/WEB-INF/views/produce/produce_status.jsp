@@ -96,7 +96,7 @@
 						<td><input type="text" id="produce_cnt" name="produce_cnt" class="form-control" value="${obj.produce_cnt }" onKeyDown="processrateCalc()"></td>
 						<td><input type="text" id="produce_losscnt" name="produce_losscnt" class="form-control" value="${obj.produce_losscnt }" onKeyDown="processrateCalc()"></td>
 						<td><input type="text" id="produce_badcnt" name="produce_badcnt" class="form-control" value="${obj.produce_badcnt }" onKeyDown="processrateCalc()"></td>
-						<td><input type="text" id="produce_processrate" name="produce_processrate" class="form-control" value="${obj.produce_processrate }" style="background:white" readonly></td>
+						<td><input type="text" id="produce_processrate" name="produce_processrate" class="form-control" value="${obj.produce_processrate }%" style="background:white" readonly></td>
 						<td><input type="text" id="orderwork_status" name="orderwork_status" class="form-control" value="${obj.orderwork_status }"style="background:white" readonly></td>
 					</tr>
 					</c:forEach>
@@ -152,7 +152,6 @@
 			</div>
 			
 		<div class="button-arrange">
-		<input type="submit" class="btn btn-primary" value="입력완료"/>
 		<input type="button" class="btn btn-dark" value="뒤로가기" onclick="history.back();"/>
 		</div>
 	</form:form>

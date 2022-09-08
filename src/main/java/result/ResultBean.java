@@ -17,7 +17,7 @@ public class ResultBean {
 	private String process_name;
 	private String produce_badcnt;
 	private String produce_cnt;
-	private String produce_processrate;
+	private double produce_processrate;
 	private String orderwork_date;
 	private String product_name;
 	private String order_cnt;
@@ -113,11 +113,10 @@ public class ResultBean {
 		this.produce_cnt = produce_cnt;
 	}
 
-	
-	public String getProduce_processrate() {
+	public double getProduce_processrate() {
 		return produce_processrate;
 	}
-	public void setProduce_processrate(String produce_processrate) {
+	public void setProduce_processrate(double produce_processrate) {
 		this.produce_processrate = produce_processrate;
 	}
 	public String getOrderwork_date() {

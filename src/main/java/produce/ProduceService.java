@@ -38,6 +38,10 @@ public class ProduceService {
 	public void addProduceInfo(String orderwork_idx) {
 		produceDao.addProduceInfo(orderwork_idx);
 	}
+	// produce_table에 생산율 업데이트
+	public void updateProcessRate(String orderwork_idx) {
+		produceDao.updateProcessRate(orderwork_idx);
+	}
 	// 작업지시서에서 작업요청 -> produce_table의 작업상태 '생산진행'으로 update
 	public void updateOrderworkStatus(String orderwork_idx) {
 		produceDao.updateOrderworkStatus(orderwork_idx);

@@ -45,7 +45,6 @@
 				</table>
 			</div>
 		<div class="button-arrange">
-		<input type="submit" class="btn btn-primary" value="수정"/>
 		<input type="button" class="btn btn-dark" value="뒤로가기" onclick="history.back();"/>
 		</div>
 		</div>

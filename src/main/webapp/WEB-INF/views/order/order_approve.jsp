@@ -117,7 +117,6 @@
   <c:import url="/WEB-INF/views/include/top_menu.jsp"/>
   <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
   	
-  	<div class="container">
 		<div class="table_arrange">
 		<div class="table_title">
 		<h1>주문승인</h1>
@@ -219,7 +218,6 @@
 		</div>
 		</div>
 	</div>
-</div>	
 	
 <footer>
 	<c:import url="/WEB-INF/views/include/bottom_info.jsp"/>

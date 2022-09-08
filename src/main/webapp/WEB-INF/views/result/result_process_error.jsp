@@ -21,7 +21,7 @@
 		<div class="wrapper">
   <c:import url="/WEB-INF/views/include/top_menu.jsp"/>
   <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
-  <div id="container" style="height: 50%; width:1000px;  position:absolute; transform: translate(50%, -900px);" ></div>
+  <div id="container" style="height: 50%; width:1000px;  position:absolute; transform: translate(50%, -950px);" ></div>
   		
   		<div style="height: 50%; width:900px;  position:absolute; transform: translate(50%, -400px);">
 			<div class="input-group mb-3">

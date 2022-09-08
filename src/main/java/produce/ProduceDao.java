@@ -28,6 +28,10 @@ public class ProduceDao {
 	public void addProduceInfo(String orderwork_idx) {
 		sqlSessionTemplate.insert("produce.addProduceInfo", orderwork_idx);
 	}
+	// produce_table 생산율 계산 후 업데이트
+	public void updateProcessRate(String orderwork_idx) {
+		sqlSessionTemplate.update("produce.updateProcessRate", orderwork_idx);
+	}
 	// 작업지시서에서 작업요청 -> produce_table의 작업상태 '생산진행'으로 update
 	public void updateOrderworkStatus(String orderwork_idx) {
 		sqlSessionTemplate.update("produce.updateOrderworkStatus", orderwork_idx);

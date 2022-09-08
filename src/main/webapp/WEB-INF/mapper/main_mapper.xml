@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+					    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="main">
+	<select id="getMainResult" resultType="main.MainBean">
+		<![CDATA[
+			select to_char(sum(order_amt), 'FM999,999,999,999') order_amt , to_char(sum(produce_cnt), 'FM999,999,999,999') produce_cnt,
+			round((avg(produce_badcnt)/avg(produce_cnt))*100,2) produce_badrate
+			from produce_table
+		]]>
+	</select>
+	
+</mapper>
