@@ -30,4 +30,6 @@ Views
 
 스케쥴 및 유즈케이스
 ===========
+![image](https://user-images.githubusercontent.com/103230840/189007983-d8ddf2c5-f88e-4921-899f-33fbc59ef99f.png)
+
 ![image](https://user-images.githubusercontent.com/103230840/188064176-3779e28f-8eef-4dd4-ad46-309e6cc78919.png)
