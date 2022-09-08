@@ -18,8 +18,7 @@
   <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
   
   
-	<div class="container">
-		<div class="table_arrange_orderlist">
+		<div class="table_arrange">
 	<form:form action="${root }order/modify" method="post" modelAttribute="modifyOrderBean">
 		
 		<div class="table_title">
@@ -113,13 +112,11 @@
 				</ul>
 			</div>
 		<div class="button-arrange">
-		<input type="submit" class="btn btn-primary" value="수정"/>
 		<input type="button" class="btn btn-dark" value="뒤로가기" onclick="history.back();"/>
 		</div>
 	</form:form>
 		</div>
 	</div>
-</div>
 
 <footer>
 	<c:import url="/WEB-INF/views/include/bottom_info.jsp"/>

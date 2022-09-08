@@ -86,6 +86,7 @@ public class ProduceController {
 		for(int i=0; i<size; i++) {
 			produceService.updateOrderworkStatus(ajaxMsg[i]);
 			produceService.addProduceInfo(ajaxMsg[i]);
+			produceService.updateProcessRate(ajaxMsg[i]);
 		}
 		
 		model.addAttribute("menu_idx", menu_idx);

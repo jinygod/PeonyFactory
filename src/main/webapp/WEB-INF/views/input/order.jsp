@@ -32,6 +32,7 @@
     		alert('납기요청일은 주문요청일보다 전일 수 없습니다. 확인하여 다시 지정해주세요.');
     		return false;
 		}
+	}
 
 	function jbSubmit() {
 		var order_info = document.order_info;
@@ -147,7 +148,7 @@
 					</tr>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">단위</span></th>
-						<td><input type="text" id="order_unit" name="order_unit" class="form-control" value="box" style="background-color:lightgray; color:gray" readonly></td>
+						<td><input type="text" id="order_unit" name="order_unit" class="form-control" value="BOX" style="background-color:lightgray; color:gray" readonly></td>
 					</tr>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">생산예상기간(D)</span></th>

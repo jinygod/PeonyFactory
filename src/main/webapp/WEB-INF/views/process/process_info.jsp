@@ -27,10 +27,10 @@
 				<table>
 					<tr>
 						<th><span class="input-group-text" id="basic-addon1">품목코드</span></th>
-						<th><span class="input-group-text" id="basic-addon1"style="width:110px">품목명</span></th>
+						<th><span class="input-group-text" id="basic-addon1">품목명</span></th>
 						<th><span class="input-group-text" id="basic-addon1">공정코드</span></th>
 						<th><span class="input-group-text" id="basic-addon1">공정정보</span></th>
-						<th><span class="input-group-text" id="basic-addon1" style="width:100px">공정버전</span></th>
+						<th><span class="input-group-text" id="basic-addon1">공정버전</span></th>
 						<th><span class="input-group-text" id="basic-addon1">공정시간</span></th>
 						<th><span class="input-group-text" id="basic-addon1">소요시간단위</span></th>
 						<th><span class="input-group-text" id="basic-addon1">평균손실율</span></th>
@@ -41,10 +41,10 @@
 					<c:forEach var="obj" items="${ProcessInfo }">
 					<tr>
 						<td><input type="text" id="product_idx" name="product_idx" class="form-control" value="${obj.product_idx }"></td>
-						<td><input type="text" id="product_name" name="product_name" class="form-control" value="${obj.product_name }"></td>
+						<td><input type="text" id="product_name" name="product_name" class="form-control" value="${obj.product_name }" style="width:110px"></td>
 						<td><input type="text" id="process_idx" name="process_idx" class="form-control" value="${obj.process_idx }"></td>
 						<td><input type="text" id="pop_info" name="pop_info" class="form-control" value="${obj.pop_info }"></td>
-						<td><input type="text" id="pop_version" name="pop_version" class="form-control" value="${obj.pop_version }"></td>
+						<td><input type="text" id="pop_version" name="pop_version" class="form-control" value="${obj.pop_version }" style="width:110px"></td>
 						<td><input type="text" id="pop_processtime" name="pop_processtime" class="form-control" value="${obj.pop_processtime }"></td>
 						<td><input type="text" id="pop_processtime" name="pop_processtime" class="form-control" value="minute"></td>
 						<td><input type="text" id="pop_avglossrate" name="pop_avglossrate" class="form-control" value="${obj.pop_avglossrate } %"></td>
@@ -105,14 +105,11 @@
 			</div>
 			
 		<div class="button-arrange">
-		<input type="submit" class="btn btn-primary" value="수정"/>
 		<input type="button" class="btn btn-dark" value="뒤로가기" onclick="history.back();"/>
 		</div>
 		</div>
 	</form:form>
 
-<%-- <c:import url="/WEB-INF/views/include/bottom_info.jsp"/> --%>
   
   </body>
-  
-   <!--  input 안에 : aria-label="Username" aria-describedby="basic-addon1" -->
+</html>

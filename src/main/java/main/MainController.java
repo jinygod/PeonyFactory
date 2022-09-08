@@ -1,4 +1,4 @@
-package controller;
+package main;
 
 import java.util.List;
 
@@ -16,12 +16,17 @@ public class MainController {
 	@Autowired
 	private MenuService menuService;
 	
+	@Autowired
+	private MainService mainService;
+	
 	@GetMapping("/main")
-	public String main(Model model) {
+	public String main(MainBean mainBean, Model model) {
 		
 		List<MenuBean> MenuList = menuService.getMenuInfo();
+		MainBean MainResult = mainService.getMainResult(mainBean);
 		
 		model.addAttribute("MenuList", MenuList);
+		model.addAttribute("MainResult", MainResult);
 		
 		return "main";
 	}

@@ -56,18 +56,46 @@
 			where orderwork_status = '주문승인'
 		]]>
 	</select>
+	
+	<!-- 	orderwork_table 작업지시명 update-->
+	<update id="updateProcessName" parameterType="java.lang.String">
+		<![CDATA[
+			update orderwork_table set (select process_name from orderwork_table where orderwork_idx = #{orderwork_idx})
+			where orderwork_idx=#{orderwork_idx}
+		]]>
+	</update>
+	
 <!-- 		작업지시서 작업요청 -> produce_table에 insert -->
 		<insert id="addProduceInfo" parameterType="java.lang.String">
 			<![CDATA[
 				insert into produce_table (produce_idx, orderwork_idx, process_name, orderwork_date, product_idx, product_modelno,
-										   order_regdate, order_deadline, order_exdate, order_cnt, order_unit, order_unit_price, order_amt, orderwork_status)
+										   order_regdate, order_deadline, order_exdate, order_cnt, order_unit, order_unit_price, order_amt, 
+                                           produce_cnt, produce_losscnt, produce_badcnt,
+                                           orderwork_status)
 										select produce_seq.nextval, orderwork_idx, process_name, orderwork_date, product_idx, product_modelno, 
-							               order_regdate, order_deadline, order_exdate, order_cnt, order_unit, order_unit_price, order_amt, orderwork_status
+							               order_regdate, order_deadline, order_exdate, order_cnt, order_unit, order_unit_price, order_amt, 
+                                           (SELECT trunc(DBMS_RANDOM.VALUE(
+                                            (select order_cnt from orderwork_table where orderwork_idx = #{orderwork_idx}), (select order_cnt from orderwork_table where orderwork_idx = #{orderwork_idx})*1.1)
+                                            ) as produce_cnt FROM DUAL),
+                                            (SELECT trunc(DBMS_RANDOM.VALUE(
+                                            0, (select order_cnt from orderwork_table where orderwork_idx = #{orderwork_idx})*0.01)
+                                            ) as produce_losscnt FROM DUAL),
+                                            (SELECT trunc(DBMS_RANDOM.VALUE(
+                                            0, (select order_cnt from orderwork_table where orderwork_idx = #{orderwork_idx})*0.01)
+                                            ) as produce_badcnt FROM DUAL),
+                                           orderwork_status
 										from orderwork_table
 										where orderwork_idx = #{orderwork_idx}
 			]]>
 		</insert>
 		
+		<!-- produce_table의 생산율 계산-->
+	<update id="updateProcessRate" parameterType="java.lang.String">
+		<![CDATA[
+			update produce_table set produce_processrate = produce_cnt/order_cnt * 100
+			where orderwork_idx=#{orderwork_idx}
+		]]>
+	</update>
 <!-- 	orderwork_table 작업상태 '주문승인' -> '생산진행'-->
 	<update id="updateOrderworkStatus" parameterType="java.lang.String">
 		<![CDATA[

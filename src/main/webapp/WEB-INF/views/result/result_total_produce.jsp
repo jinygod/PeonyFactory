@@ -16,11 +16,16 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body style="height: 100%; margin: 0">
+  <div class="wrapper">
   <c:import url="/WEB-INF/views/include/top_menu.jsp"/>
   <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
- <div id="container" style="height: 50%; width:1000px;  position:absolute; transform: translate(50%, -900px);" ></div>
+ <div id="container" style="height: 60%; width:1000px;  position:absolute; transform: translate(50%, -950px);" ></div>
+ <div style="height: 70%; width:900px;  position:absolute; transform: translate(55.5%, -250px);">
+		<input type="button" class="btn btn-dark" value="뒤로가기" onclick="history.back();"/>
+		</div>
+   </div>
 
-  
+		
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.3.3/dist/echarts.min.js"></script>
   <!-- Uncomment this line if you want to dataTool extension
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.3.3/dist/extension/dataTool.min.js"></script>
@@ -198,6 +203,8 @@
 
     window.addEventListener('resize', myChart.resize);
   </script>
+
+
 </body>
 <footer>
 	<c:import url="/WEB-INF/views/include/bottom_info.jsp"/>

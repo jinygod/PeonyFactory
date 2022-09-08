@@ -4,22 +4,22 @@
 <mapper namespace="result">
    <select id="getResultProcessList" resultType="result.ResultBean">
       <![CDATA[
-		select (select trunc(avg(produce_badcnt)/avg(produce_cnt)*100) from produce_table where process_name = '재단' and substr(orderwork_date,5,2) = '07') as cut_july ,
-               (select trunc(avg(produce_badcnt)/avg(produce_cnt)*100) from produce_table where process_name = '재단' and substr(orderwork_date,5,2) = '08') as cut_august,
-               (select trunc(avg(produce_badcnt)/avg(produce_cnt)*100) from produce_table where process_name = '재단' and substr(orderwork_date,5,2) = '09') as cut_september,
-               (select trunc(avg(produce_badcnt)/avg(produce_cnt)*100) from produce_table where process_name = '재봉' and substr(orderwork_date,5,2) = '07') as sew_july,
-               (select trunc(avg(produce_badcnt)/avg(produce_cnt)*100) from produce_table where process_name = '재봉' and substr(orderwork_date,5,2) = '08') as sew_august,
-               (select trunc(avg(produce_badcnt)/avg(produce_cnt)*100) from produce_table where process_name = '재봉' and substr(orderwork_date,5,2) = '09') as sew_september,
-               (select trunc(avg(produce_badcnt)/avg(produce_cnt)*100) from produce_table where process_name = '포장' and substr(orderwork_date,5,2) = '07') as pack_july,
-               (select trunc(avg(produce_badcnt)/avg(produce_cnt)*100) from produce_table where process_name = '포장' and substr(orderwork_date,5,2) = '08')as pack_august,
-               (select trunc(avg(produce_badcnt)/avg(produce_cnt)*100) from produce_table where process_name = '포장' and substr(orderwork_date,5,2) = '09') as pack_september
+		select (select round(avg(produce_badcnt)/avg(produce_cnt)*100,2) from produce_table where process_name = '재단' and substr(orderwork_date,5,2) = '07') as cut_july ,
+               (select round(avg(produce_badcnt)/avg(produce_cnt)*100,2) from produce_table where process_name = '재단' and substr(orderwork_date,5,2) = '08') as cut_august,
+               (select round(avg(produce_badcnt)/avg(produce_cnt)*100,2) from produce_table where process_name = '재단' and substr(orderwork_date,5,2) = '09') as cut_september,
+               (select round(avg(produce_badcnt)/avg(produce_cnt)*100,2) from produce_table where process_name = '재봉' and substr(orderwork_date,5,2) = '07') as sew_july,
+               (select round(avg(produce_badcnt)/avg(produce_cnt)*100,2) from produce_table where process_name = '재봉' and substr(orderwork_date,5,2) = '08') as sew_august,
+               (select round(avg(produce_badcnt)/avg(produce_cnt)*100,2) from produce_table where process_name = '재봉' and substr(orderwork_date,5,2) = '09') as sew_september,
+               (select round(avg(produce_badcnt)/avg(produce_cnt)*100,2) from produce_table where process_name = '포장' and substr(orderwork_date,5,2) = '07') as pack_july,
+               (select round(avg(produce_badcnt)/avg(produce_cnt)*100,2) from produce_table where process_name = '포장' and substr(orderwork_date,5,2) = '08')as pack_august,
+               (select round(avg(produce_badcnt)/avg(produce_cnt)*100,2) from produce_table where process_name = '포장' and substr(orderwork_date,5,2) = '09') as pack_september
 		from produce_table
 		where rownum = 1
       ]]>
    </select>
       <select id="getResultProcessSummary" resultType="result.ResultBean">
       <![CDATA[
-  		select  process_name, substr(orderwork_date,5,2) orderwork_date, trunc(avg(produce_badcnt)) produce_badcnt, trunc(avg(produce_cnt)) produce_cnt, trunc(avg(produce_badcnt)/avg(produce_cnt)*100) produce_processrate
+  		select  process_name, substr(orderwork_date,5,2) orderwork_date, round(avg(produce_badcnt),2) produce_badcnt, round(avg(produce_cnt),2) produce_cnt, round(avg(produce_badcnt)/avg(produce_cnt)*100,2) produce_processrate
 				from produce_table
 				group by process_name, substr(orderwork_date, 5, 2)
 				order by process_name
@@ -60,10 +60,10 @@
             where substr(orderwork_date,5,2) = '07' and p2.product_name = 'slacks' and p1.product_idx = p2.product_idx) slacks_july,
             (select trunc(sum(p1.produce_cnt)) as produce_cnt
             from produce_table p1, product_table p2
-            where substr(orderwork_date,5,2) = '07' and p2.product_name = 'slacks' and p1.product_idx = p2.product_idx) slacks_august,
+            where substr(orderwork_date,5,2) = '08' and p2.product_name = 'slacks' and p1.product_idx = p2.product_idx) slacks_august,
             (select trunc(sum(p1.produce_cnt)) as produce_cnt
             from produce_table p1, product_table p2
-            where substr(orderwork_date,5,2) = '07' and p2.product_name = 'slacks' and p1.product_idx = p2.product_idx) slacks_september
+            where substr(orderwork_date,5,2) = '09' and p2.product_name = 'slacks' and p1.product_idx = p2.product_idx) slacks_september
 			from produce_table
 			where rownum = 1
             

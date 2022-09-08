@@ -92,7 +92,6 @@ function request() {
   <c:import url="/WEB-INF/views/include/top_menu.jsp"/>
   <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
   
-	<div class="container">
 		<form name='orderwork_info'>
 		<div class="table_arrange">
 		<div class="table_title">
@@ -195,7 +194,6 @@ function request() {
 		</div>
 		</div>
 	</form>
-	</div>
 	</div>
 	<footer>
 		<c:import url="/WEB-INF/views/include/bottom_info.jsp"/>
