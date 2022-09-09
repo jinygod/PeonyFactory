@@ -6,7 +6,7 @@ Peony Factory
 
 Description
 =============
-* 개발 기간: 2022. 08. 29 ~ 현재 (진행 중)
+* 개발 기간: 2022. 08. 29 ~ 2022. 09. 08 (약 2주)
 
 * 참여 인원: Backend 4명
 
@@ -27,6 +27,14 @@ Views
 ![image](https://user-images.githubusercontent.com/103230840/188063647-d4e5035f-ca26-4c61-9e5c-905c6ff85060.png)
 * 실제 DB 연동하여 구현한 Chart (Echarts)
 ![image](https://user-images.githubusercontent.com/103230840/188654789-754a0c02-4377-4c05-88d7-784eeb53e136.png)
+
+Tables
+==========
+![image](https://user-images.githubusercontent.com/103230840/189382850-76969c64-80a0-49a9-bf93-ec71d965f258.png)
+
+Implementation
+===========
+* 메인 화면
 
 스케쥴 및 유즈케이스
 ===========
