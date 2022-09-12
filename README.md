@@ -78,8 +78,7 @@ Implementation
     - 체크된 항목을 index값으로 구별하여 개별로 리스트로 담아 POST방식으로 컨트롤러에 전송하여 mapper에 개별 mapping 시키고
        각각 method 실행
 
-스케쥴 및 유즈케이스
+프로젝트 스케쥴
 ===========
 ![image](https://user-images.githubusercontent.com/103230840/189007983-d8ddf2c5-f88e-4921-899f-33fbc59ef99f.png)
 
-![image](https://user-images.githubusercontent.com/103230840/188064176-3779e28f-8eef-4dd4-ad46-309e6cc78919.png)
