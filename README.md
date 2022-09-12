@@ -35,6 +35,29 @@ Tables
 Implementation
 ===========
 * 메인 화면
+![image](https://user-images.githubusercontent.com/103230840/189580609-98cb919a-e6bf-46fb-9115-18718b13163d.png)
+    - 총 수주금액, 총 생산량, 불량률 통계 구현
+![image](https://user-images.githubusercontent.com/103230840/189580900-f2957010-4e01-46e9-9ddc-ce54674a1f1a.png)
+    - 비로그인 상태로는 다른 메뉴 접근 불가 , Interceptor 활용
+
+* 정보 조회
+![image](https://user-images.githubusercontent.com/103230840/189581228-906265be-23eb-4dca-aa8d-80ea9e2e8164.png)
+![image](https://user-images.githubusercontent.com/103230840/189581372-8d745f76-e2a6-44c1-833c-85137ee2c718.png)
+![image](https://user-images.githubusercontent.com/103230840/189581411-99b16f6a-ee8a-4645-ac5b-0d06e41aeaa3.png)
+![image](https://user-images.githubusercontent.com/103230840/189581480-f44d22ca-5b67-4557-90aa-aca6e7384b35.png)
+
+    - 페이징처리(10행 이상인 경우)
+
+* 실제 데이터를 이용한 Echart구현(Js)
+![image](https://user-images.githubusercontent.com/103230840/189594608-6d21db0e-272f-44b2-92e8-0c9763dca156.png)
+![image](https://user-images.githubusercontent.com/103230840/189594355-6ad7fc29-e261-4d80-aa66-77ffd4cd4b05.png)
+![image](https://user-images.githubusercontent.com/103230840/189594414-865b16da-3472-41a3-a3f0-d9eb53d9eb39.png)
+
+* 체크박스 구현 : 선택된 항목만 요청 처리
+![image](https://user-images.githubusercontent.com/103230840/189594885-a1defcb4-1568-4d41-8b0c-853f9dce007d.png)
+    - 전체체크
+![image](https://user-images.githubusercontent.com/103230840/189594953-da8f0a47-f7c7-4f63-abed-cc31d82d8321.png)
+
 
 스케쥴 및 유즈케이스
 ===========
