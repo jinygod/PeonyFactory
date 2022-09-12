@@ -44,6 +44,7 @@ Tables
 ==========
 ![image](https://user-images.githubusercontent.com/103230840/189382850-76969c64-80a0-49a9-bf93-ec71d965f258.png)
 
+
 Implementation
 ===========
 * 메인 화면
@@ -70,10 +71,12 @@ Implementation
 
 ![image](https://user-images.githubusercontent.com/103230840/189594885-a1defcb4-1568-4d41-8b0c-853f9dce007d.png)
 
-    - 전체체크
+    - 전체체크(전체체크 체크박스를 체크하면 전체가 체크되고 반대로 모든게 체크되면 전체체크 체크박스가 체크됨)
     
 ![image](https://user-images.githubusercontent.com/103230840/189594953-da8f0a47-f7c7-4f63-abed-cc31d82d8321.png)
 
+    - 체크된 항목을 index값으로 구별하여 개별로 리스트로 담아 POST방식으로 컨트롤러에 전송하여 mapper에 개별 mapping 시키고
+       각각 method 실행
 
 스케쥴 및 유즈케이스
 ===========
