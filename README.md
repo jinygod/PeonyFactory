@@ -80,5 +80,5 @@ Implementation
 
 프로젝트 스케쥴
 ===========
-![image](https://user-images.githubusercontent.com/103230840/189007983-d8ddf2c5-f88e-4921-899f-33fbc59ef99f.png)
+![image](https://user-images.githubusercontent.com/103230840/189784185-76c169b3-001e-47b6-a68b-582dabcd2ecd.png)
 
