@@ -27,7 +27,7 @@ Description
 
 Work Flow
 ============
-![image](https://user-images.githubusercontent.com/103230840/189595507-f2bf5a86-7e92-47ed-83eb-928383c8d1b0.png)
+![image](https://user-images.githubusercontent.com/103177577/190033160-6b1f4479-4afd-4108-b379-13cafbd37cd2.png)
 
 
 Views
