@@ -4,9 +4,18 @@
 <mapper namespace="menu">
 	<select id="getMenuInfo" resultType="menu.MenuBean">
 		<![CDATA[
-			select menu_idx, menu_title, menu_content
+			select menu_idx, menu_title, menu_eng, menu_content
 			from menu_table
 			order by menu_idx
+		]]>
+	</select>
+
+	<select id="getSubMenuInfo" parameterType="java.lang.String" resultType="menu.MenuBean">
+		<![CDATA[
+			select menu_idx, menu_title, menu_eng, submenu_idx, submenu_title, submenu_eng
+			from submenu_table
+			where menu_idx = #{menu_idx}
+			order by submenu_idx
 		]]>
 	</select>
 </mapper>

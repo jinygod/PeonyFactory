@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+	<select id="checkUserIdExist" parameterType="java.lang.String" resultType="java.lang.String">
+			<![CDATA[
+			select user_name 
+			from user_table 
+			where user_id = #{user_id}
+			]]>
+	</select>
+	
+	<insert id="addUserInfo" parameterType="user.UserBean">
+		<![CDATA[
+			insert into user_table (user_idx, user_name, user_id, user_pw, user_email, user_tel) 
+			values (user_seq.nextval, #{user_name}, #{user_id}, #{user_pw}, #{user_email}, #{user_tel})
+		]]>
+	</insert>
+	
+	<select id = "getLoginUserInfo" parameterType="user.UserBean" resultType="user.UserBean">
+		<![CDATA[
+			select user_idx, user_name , user_id, user_pw, user_email, user_tel
+			from user_table
+			where user_id = #{user_id} and user_pw = #{user_pw}
+		]]>
+	</select>
+	
+	<select id="getModifyUserInfo" parameterType="java.lang.Integer" resultType="user.UserBean">
+		<![CDATA[
+			select user_id, user_name , user_id, user_pw, user_email, user_tel
+			from user_table
+			where user_idx = #{user_idx}
+		]]>
+	</select>
+	
+	<select id="modifyUserInfo" parameterType="user.UserBean">
+		<![CDATA[
+			update user_table 
+			set user_pw = #{user_pw} , user_email = #{user_email}, user_tel = #{user_tel} 
+			where user_idx = #{user_idx}
+		]]>
+	</select>
+</mapper>

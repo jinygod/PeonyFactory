@@ -9,12 +9,18 @@ import org.springframework.stereotype.Service;
 public class MenuService {
 
 	@Autowired
-	private MenuDao MenuDao;
+	private MenuDao menuDao;
 	
 	public List<MenuBean> getMenuInfo(){
 		
-		List<MenuBean> MenuList = MenuDao.getMenuInfo();
+		List<MenuBean> MenuList = menuDao.getMenuInfo();
+		
 		return MenuList;
+	}
+	
+	public List<MenuBean> getSubMenuInfo(String menu_idx){
+		
+		return menuDao.getSubMenuInfo(menu_idx);
 	}
 	
 }

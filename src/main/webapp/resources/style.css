@@ -10,6 +10,10 @@
   color: #000;
 }
 
+body{
+	height:100vh;
+}
+
 h1 {
   font-size: 48px;
   font-weight: 100;
@@ -20,6 +24,7 @@ h1 {
 }
 .contents2{
   font-size: 18px;
+  height:40px;
 }
 .contents3 {
   font-size: 14px;
@@ -77,9 +82,23 @@ h1 {
 .nav > li {
   margin-left:84px;
 }
+.nav_top{
+  display: flex;
+  justify-content: flex-end;
+  width:calc(1280px - 300px);
+  line-height: 86px;
+}
+.nav_top > li {
+  margin-left:84px;
+}
 
 .nav > li > a {
   color: #fff;
+  text-decoration:none;
+}
+.nav_top > li > a {
+  color: #fff;
+  text-decoration: none;
 }
 
 .amount{
@@ -134,20 +153,24 @@ h1 {
   text-align: center;
   display: flex;
   width:1280px;
-  height: 302px;
-  /* background: orange; */
+/*   height: 302px; */
+  height: auto;
+/*   background: orange; */
   margin:auto;
   margin-top:20px;
 }
+
 .icons > li {
   flex: 1;
   background: white;
   margin-top:49px;
-  height:302px;
+  height:302;
   text-align: center;
 }
+
 .icons > li > .icon_img{
   margin-top:18px;
+
 }
 
 .icons > li:not(:last-child){
@@ -168,12 +191,27 @@ h1 {
   line-height: 30px;
   margin:25px auto;
 }
+.reg_button {
+  width:100px;
+  height: 30px;
+  background: #2F7AF4;
+/*   color: #fff; */
+/*   font-size: 12px; */
+  line-height: 30px;
+  margin:25px auto;
+}
+.reg_button > a{
+  color: #fff;
+  font-size: 12px;
+  text-decoration: none;
+}
+
 
 /* main_text1*/
 
 .main_text1{
   width: 100%;
-  height:659px;
+  height:759px;
 
   /* margin-top:-132px; */
   /* background: #2F7AF4 */
@@ -189,20 +227,18 @@ h1 {
   width:1280px;
   display: flex;
   margin: 49px auto;
-  height:427px;
+  height:450px;
 }
 
 .service > .contents2 {
-  padding: 20px;
-}
-.service > .contents2 > h2{
-  margin-bottom: 27px;
+  padding-top: 0px;
+  padding-left: 100px;
 }
 
 /* main_text2 */
 .main_text2 {
   width:100%;
-  height:418px;
+  height:574px;
   background-image: url("image/company1.jpg");
 }
 
@@ -229,11 +265,13 @@ h1 {
   margin:16px auto;
 }
 
+
 .footer{
   display: flex;
   background: #1f1f1f;
   padding:30px;
 }
+
 .footer > div:first-child {
   flex:3;
   text-align: center;
@@ -242,4 +280,79 @@ h1 {
 .footer > div:last-child {
   flex:9;
   color: #fff;
+}
+
+/* table */
+.table_arrange {
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+}
+
+.table_arrange_orderlist {
+	position:absolute;
+	top:50%;
+	left:50%;
+    transform: translate(-60%,-20%);
+}
+
+
+.table_title{
+	  margin-bottom: 20px;
+	  text-align: center;
+}
+
+.button-arrange {
+	float: right;
+}
+
+.side_menu {
+	 background: #1f1f1f;
+	 height: 100vh;
+	 width: 300px;
+	 margin:0px;
+}
+
+.side_menu > ul {
+	 padding-top: 50px;
+	 padding-left: 50px;
+}
+.side_menu >ul > li{
+	
+	 padding-top:20px;
+	 
+}
+.side_menu > ul > li > a{
+	 text-decoration:none;
+	 font-size: 20px;
+	 color: #fff;
+}
+
+
+.container {
+	display:flex;
+	transform: translate(150px,-750px);
+}
+
+.login_button {
+	
+	margin-top:20px;
+	float:right;
+}
+
+.wrapper{
+  height: auto;
+  min-height: 100vh;
+  padding-bottom: 156px;
+  
+/*   display: flex; */
+/*   justify-content: center; */
+/*   align-items: center; */
+/*   min-height: 100vh; */
+}
+footer{
+  height: 156px;
+  position : relative;
+  transform : translateY(-100%);
 }
