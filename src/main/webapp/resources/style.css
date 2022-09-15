@@ -290,11 +290,11 @@ h1 {
 	transform: translate(-50%,-50%);
 }
 
-.table_arrange_orderlist {
-	position:absolute;
-	top:50%;
-	left:50%;
-    transform: translate(-60%,-20%);
+.table_arrange_list {
+	padding-left: 400px;
+    padding-right: 500px;
+    position: absolute;
+    top: 300px;
 }
 
 
@@ -315,7 +315,7 @@ h1 {
 }
 
 .side_menu > ul {
-	 padding-top: 50px;
+	 padding-top: 10px;
 	 padding-left: 50px;
 }
 .side_menu >ul > li{
@@ -346,10 +346,6 @@ h1 {
   min-height: 100vh;
   padding-bottom: 156px;
   
-/*   display: flex; */
-/*   justify-content: center; */
-/*   align-items: center; */
-/*   min-height: 100vh; */
 }
 footer{
   height: 156px;

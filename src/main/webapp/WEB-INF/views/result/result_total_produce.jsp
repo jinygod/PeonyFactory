@@ -20,7 +20,7 @@
   <c:import url="/WEB-INF/views/include/top_menu.jsp"/>
   <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
  <div id="container" style="height: 60%; width:1000px;  position:absolute; transform: translate(50%, -950px);" ></div>
- <div style="height: 70%; width:900px;  position:absolute; transform: translate(55.5%, -250px);">
+ <div style="width:900px;  position:absolute; transform: translate(55.5%, -250px);">
 		<input type="button" class="btn btn-dark" value="뒤로가기" onclick="history.back();"/>
 		</div>
    </div>

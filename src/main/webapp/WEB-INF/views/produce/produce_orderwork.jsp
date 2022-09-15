@@ -54,10 +54,13 @@ function request() {
 	else{
 	var url = "request?menu_idx=${menu_idx}";
 	var valueArr = new Array();
+// 	var pnameArr = new Array();	// *
 	var list = $("input[name='RowCheck']");
+// 	var pnamelist = $("input[name='process_name']"); // *
 	for (var i = 0; i < list.length; i++) {
 		if (list[i].checked) { // 선택되어있으면 배열에 값을 저장함
 			valueArr.push(list[i].value);
+// 			pnameArr.push(pnamelist[i].value); // *
 		}
 	}
 	
@@ -71,7 +74,8 @@ function request() {
 			type : 'POST',
 			traditional : true,
 			data : {
-				valueArr : valueArr
+				valueArr : valueArr,
+// 				pnameArr : pnameArr // * 
 			},
 			success : function() {
 					alert("작업요청 하였습니다.");
@@ -93,7 +97,7 @@ function request() {
   <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
   
 		<form name='orderwork_info'>
-		<div class="table_arrange">
+		<div class="table_arrange_list">
 		<div class="table_title">
 		<h1>작업지시서</h1>
 		</div>

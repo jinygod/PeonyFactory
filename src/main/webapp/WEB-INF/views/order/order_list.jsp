@@ -18,7 +18,7 @@
   <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
   
   
-		<div class="table_arrange">
+		<div class="table_arrange_list">
 	<form:form action="${root }order/modify" method="post" modelAttribute="modifyOrderBean">
 		
 		<div class="table_title">
@@ -37,10 +37,10 @@
 						<th><span class="input-group-text" id="basic-addon1">생산예상기간</span></th>
 						<th><span class="input-group-text" id="basic-addon1">수량</span></th>
 						<th><span class="input-group-text" id="basic-addon1">단위</span></th>
-						<th><span class="input-group-text" id="basic-addon1" style="width:70px">단가</span></th>
-						<th><span class="input-group-text" id="basic-addon1" style="width:100px">금액</span></th>
+						<th><span class="input-group-text" id="basic-addon1">단가</span></th>
+						<th><span class="input-group-text" id="basic-addon1">금액</span></th>
 						<th><span class="input-group-text" id="basic-addon1">담당자</span></th>
-						<th><span class="input-group-text" id="basic-addon1" style="width:100px">등록일시</span></th>
+						<th><span class="input-group-text" id="basic-addon1">등록일시</span></th>
 						<th><span class="input-group-text" id="basic-addon1">주문상태</span></th>
 					</tr>
 					<c:forEach var="obj" items="${OrderList }">
@@ -55,10 +55,10 @@
 						<td><input type="text" id="order_exdate" name="order_exdate" class="form-control" value="${obj.order_exdate }" readonly style=background:white></td>
 						<td><input type="text" id="order_cnt" name="order_cnt" class="form-control" value="${obj.order_cnt }" readonly style=background:white></td>
 						<td><input type="text" id="order_unit" name="order_unit" class="form-control" value="${obj.order_unit }" readonly style=background:white></td>
-						<td><input type="text" id="order_unit_price" name="order_unit_price" class="form-control" value="${obj.order_unit_price }" readonly style=background:white></td>
-						<td><input type="text" id="order_amt" name="order_amt" class="form-control" value="${obj.order_amt }" readonly style=background:white></td>
+						<td><input type="text" id="order_unit_price" name="order_unit_price" class="form-control" value="${obj.order_unit_price }" readonly style="background:white; width:70px"></td>
+						<td><input type="text" id="order_amt" name="order_amt" class="form-control" value="${obj.order_amt }" readonly style="background:white; width:100px"></td>
 						<td><input type="text" id="order_manager" name="order_manager" class="form-control" value="${obj.order_manager }" readonly style=background:white></td>
-						<td><input type="text" id="order_date" name="order_date" class="form-control" value="${obj.order_date }" readonly style=background:white></td>
+						<td><input type="text" id="order_date" name="order_date" class="form-control" value="${obj.order_date }" readonly style="background:white; width:100px"></td>
 						<td><input type="text" id="order_status" name="order_status" class="form-control" value="${obj.order_status }" readonly style=background:white></td>
 					</tr>
 					</c:forEach>

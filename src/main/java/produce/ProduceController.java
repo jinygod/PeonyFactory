@@ -61,7 +61,6 @@ public class ProduceController {
 		
 		PageBean pageBean = produceService.getProduceContentCnt(page);
 		model.addAttribute("pageBean", pageBean);
-		
 		model.addAttribute("page", page);
 		
 		return "produce/produce_status";
@@ -82,6 +81,7 @@ public class ProduceController {
 						  @RequestParam("menu_idx") String menu_idx, Model model) {
 			
 		String[] ajaxMsg = request.getParameterValues("valueArr");
+//		String[] pnameMsg = request.getParameterValues("pnameArr");
 		int size = ajaxMsg.length;
 		for(int i=0; i<size; i++) {
 			produceService.updateOrderworkStatus(ajaxMsg[i]);

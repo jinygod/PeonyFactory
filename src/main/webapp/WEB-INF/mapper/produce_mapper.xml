@@ -75,7 +75,8 @@
 										select produce_seq.nextval, orderwork_idx, process_name, orderwork_date, product_idx, product_modelno, 
 							               order_regdate, order_deadline, order_exdate, order_cnt, order_unit, order_unit_price, order_amt, 
                                            (SELECT trunc(DBMS_RANDOM.VALUE(
-                                            (select order_cnt from orderwork_table where orderwork_idx = #{orderwork_idx}), (select order_cnt from orderwork_table where orderwork_idx = #{orderwork_idx})*1.1)
+                                            (select order_cnt from orderwork_table where orderwork_idx = #{orderwork_idx}), 
+                                            (select order_cnt from orderwork_table where orderwork_idx = #{orderwork_idx})*1.1)
                                             ) as produce_cnt FROM DUAL),
                                             (SELECT trunc(DBMS_RANDOM.VALUE(
                                             0, (select order_cnt from orderwork_table where orderwork_idx = #{orderwork_idx})*0.01)
@@ -125,6 +126,7 @@
 				   produce_processrate,
 				   orderwork_status
 				from produce_table
+				order by produce_idx
 		]]>
 	</select>
 <!-- 	produce_table 작업상태 '생산진행' -> '생산완료'-->

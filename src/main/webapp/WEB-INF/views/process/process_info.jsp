@@ -19,7 +19,7 @@
 		
 	<form:form action="${root }process/process_info" method="post" modelAttribute="processInfoBean">
 		
-		<div class="table_arrange">
+		<div class="table_arrange_list">
 		<div class="table_title">
 		<h1>품목별공정정보</h1>
 		</div>

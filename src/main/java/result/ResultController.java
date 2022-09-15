@@ -56,5 +56,43 @@ public class ResultController {
 		return "result/result_product_total";
 	}
 	
+	@GetMapping("/result_report")
+	public String result_report(@RequestParam("menu_idx") String menu_idx, Model model) {
+		model.addAttribute("menu_idx", menu_idx);
+		return "result/result_report";
+	}
+	
+	@GetMapping("/result_report_data")
+	public String result_report_data(@RequestParam("menu_idx") String menu_idx,
+									ResultBean resultBean, Model model) {
+		
+		List<ResultBean> ResultProductTotalSummary = resultService.getResultProductTotalSummary(resultBean);
+		ResultBean ResultTotal = resultService.getResultProductTotalCnt(resultBean);
+
+		model.addAttribute("menu_idx", menu_idx);
+		model.addAttribute("ResultProductTotalSummary", ResultProductTotalSummary);
+		model.addAttribute("ResultTotal", ResultTotal);
+		
+		return "result/result_report_data";
+	}
+	
+	@GetMapping("/result_report_write")
+	public String result_report_write(@RequestParam("menu_idx") String menu_idx,
+										ResultBean resultBean, Model model) {
+		List<ResultBean> ResultProductTotalSummary = resultService.getResultProductTotalSummary(resultBean);
+		ResultBean ResultTotal = resultService.getResultProductTotalCnt(resultBean);
+		
+		model.addAttribute("menu_idx", menu_idx);
+		model.addAttribute("ResultProductTotalSummary", ResultProductTotalSummary);
+		model.addAttribute("ResultTotal", ResultTotal);
+		return "result/result_report_write";
+	}
+	
+	@GetMapping("/result_report_standard")
+	public String result_report_standard(@RequestParam("menu_idx") String menu_idx, Model model) {
+		
+		model.addAttribute("menu_idx", menu_idx);
+		return "result/result_report_standard";
+	}
 	
 }

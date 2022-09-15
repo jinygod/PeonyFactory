@@ -18,7 +18,7 @@
 		
 	<form:form action="${root }process/process_list" method="post" modelAttribute="processListBean">
 		
-		<div class="table_arrange">
+		<div class="table_arrange_list">
 		<div class="table_title">
 		<h1>공정조회</h1>
 		</div>

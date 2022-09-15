@@ -52,7 +52,7 @@
   <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
   
 <!-- 	<div class="container"> -->
-	<div class="table_arrange">
+	<div class="table_arrange_list">
 	<form:form action="${root }produce/produce_status_pro?menu_idx=${menu_idx }" method="post" modelAttribute="produceStatusBean" onsubmit="return chkRate();">
 		
 		<div class="table_title">

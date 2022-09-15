@@ -116,8 +116,7 @@
   
   <c:import url="/WEB-INF/views/include/top_menu.jsp"/>
   <c:import url="/WEB-INF/views/include/side_menu.jsp"/>
-  	
-		<div class="table_arrange">
+		<div class="table_arrange_list">
 		<div class="table_title">
 		<h1>주문승인</h1>
 		</div>
@@ -135,10 +134,10 @@
 						<th><span class="input-group-text" id="basic-addon1">생산예상기간</span></th>
 						<th><span class="input-group-text" id="basic-addon1">수량</span></th>
 						<th><span class="input-group-text" id="basic-addon1">단위</span></th>
-						<th><span class="input-group-text" id="basic-addon1" style="width:70px">단가</span></th>
-						<th><span class="input-group-text" id="basic-addon1" style="width:100px">금액</span></th>
+						<th><span class="input-group-text" id="basic-addon1">단가</span></th>
+						<th><span class="input-group-text" id="basic-addon1">금액</span></th>
 						<th><span class="input-group-text" id="basic-addon1">담당자</span></th>
-						<th><span class="input-group-text" id="basic-addon1" style="width:100px">등록일시</span></th>
+						<th><span class="input-group-text" id="basic-addon1">등록일시</span></th>
 						<th><span class="input-group-text" id="basic-addon1">주문상태</span></th>
 						
 					</tr>
@@ -150,15 +149,15 @@
 						<td><input type="text" id="client_idx" name="client_idx" class="form-control" value="${obj.client_idx }" style="background-color:white" readonly></td>
 						<td><input type="text" id="product_idx" name="product_idx" class="form-control" value="${obj.product_idx }" style="background-color:white" readonly></td>
 						<td><input type="text" id="product_modelno" name="product_modelno" class="form-control" value="${obj.product_modelno }" style="background-color:white" readonly></td>
-						<td><input type="text" id="order_regdate" name="order_regdate" class="form-control" value="${obj.order_regdate }" style="background-color:white" readonly></td>
-						<td><input type="text" id="order_deadline" name="order_deadline" class="form-control" value="${obj.order_deadline }" style="background-color:white" readonly></td>
+						<td><input type="text" id="order_regdate" name="order_regdate" class="form-control" value="${obj.order_regdate }" style="background-color:white; width:110px" readonly></td>
+						<td><input type="text" id="order_deadline" name="order_deadline" class="form-control" value="${obj.order_deadline }" style="background-color:white; width:110px" readonly></td>
 						<td><input type="text" id="order_exdate" name="order_exdate" class="form-control" value="${obj.order_exdate }" style="background-color:white" readonly></td>
 						<td><input type="text" id="order_cnt" name="order_cnt" class="form-control" value="${obj.order_cnt }" style="background-color:white" readonly></td>
 						<td><input type="text" id="order_unit" name="order_unit" class="form-control" value="${obj.order_unit }" style="background-color:white" readonly></td>
-						<td><input type="text" id="order_unit_price" name="order_unit_price" class="form-control" value="${obj.order_unit_price }" style="background-color:white" readonly></td>
-						<td><input type="text" id="order_amt" name="order_amt" class="form-control" value="${obj.order_amt }" style="background-color:white" readonly></td>
+						<td><input type="text" id="order_unit_price" name="order_unit_price" class="form-control" value="${obj.order_unit_price }" style="background-color:white; width:80px" readonly></td>
+						<td><input type="text" id="order_amt" name="order_amt" class="form-control" value="${obj.order_amt }" style="background-color:white; width:110px" readonly></td>
 						<td><input type="text" id="order_manager" name="order_manager" class="form-control" value="${obj.order_manager }" style="background-color:white" readonly></td>
-						<td><input type="text" id="order_date" name="order_date" class="form-control" value="${obj.order_date }" style="background-color:white" readonly></td>
+						<td><input type="text" id="order_date" name="order_date" class="form-control" value="${obj.order_date }" style="background-color:white; width:100px" readonly></td>
 						<td><input type="text" id="order_status" name="order_status" class="form-control" value="${obj.order_status }" style="background-color:white" readonly></td>
 					</tr>
 					</c:forEach>
