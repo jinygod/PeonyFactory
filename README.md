@@ -76,6 +76,12 @@ Implementation
 
     - 체크된 항목을 index값으로 구별하여 개별로 리스트로 담아 POST방식으로 컨트롤러에 전송하여 mapper에 개별 mapping 시키고
        각각 method 실행
+       
+트러블 슈팅
+===========       
+![image](https://user-images.githubusercontent.com/103230840/190345436-15bf3888-4109-4e3a-ac7b-ab321eb6d462.png)
+![image](https://user-images.githubusercontent.com/103230840/190345476-178c1920-c26a-4932-9133-76ad69ffb5ee.png)
+      
 
 프로젝트 스케쥴
 ===========
