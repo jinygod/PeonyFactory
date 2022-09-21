@@ -1,4 +1,4 @@
-package main;
+package controller;
 
 import java.util.List;
 
@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import main.MainBean;
+import main.MainService;
 import menu.MenuBean;
 import menu.MenuService;
 
